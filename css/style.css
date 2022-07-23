@@ -22,13 +22,18 @@ fondo #1a193b
   padding: 0;
   box-sizing: border-box;
 }
+.contenido--titulo{
+  font-family: 'Fira Code', monospace;
+  font-weight: 700;
+  color: #79b5f7;
+  font-size:  clamp(32px, 7vw , 120px);
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
 /**  ---MENU--- */
 
-.navbar{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.header{
   font-family: 'Fira Code', monospace;
   background-color: #1a193b; 
 }
@@ -37,7 +42,7 @@ fondo #1a193b
   background-color: #8f6fc6 ;
 }
 h1{
-  
+  color:#8f6fc6;
   font-size: clamp(.85rem, 3vw , 1.5rem);
 }
 
@@ -59,13 +64,77 @@ color: #79b5f7;
 .nav-color-e{
 color:#d68074;
 }
-
-
-
-
-.enlaces .iconos{
-  list-style: none;
+.navbar-nav a:hover{
+  color: #efd955;
+  text-decoration: overline underline;
 }
+
+
+/* * PRESENTACION */
+
+.contenido{
+  background-color: #dddada;
+}
+
+.presentacion{
+    display: flex;    
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+    
+  }
+  .titulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
+}
+.titulo--nombre h2{
+  font-size:  clamp(32px, 7vw , 120px);
+}
+.titulo--subtitulo h3{
+  font-size:  clamp(.75rem, 1.5rem + 2vw , 3rem);
+}
+
+
+
+.presentacion--descripcion{
+font-weight: 400;
+font-size: clamp(1rem, 50vw , 1.5rem);
+margin: 0 2rem;
+padding: 1rem;
+}
+
+
+.presentacion--imagen{
+  border-radius:  75% 25% 18% 82% / 55% 13% 87% 45% ;
+  width: clamp(10rem, 50vw, 50rem);
+  margin-left: 1rem;
+  
+}
+
+/* * SOBRE MI */
+.info-personal{
+font-family: 'Lato', sans-serif;
+font-size: clamp(.70rem, 30vw , 1.5rem);
+color: #79b5f7;
+line-height: 2rem;
+width: 70%;
+margin: 0 auto;
+text-align: justify;
+padding-bottom: 2rem;
+}
+
+
+/* * ENLACES */
+
+.enlaces{
+  background-color: #1a193b;
+  font-size: clamp(1rem, 30vw , 5rem);
+  display: flex;
+  justify-content: space-around;
+}
+
+
 
 .acerca{
   background-color: #1a193b;
@@ -76,3 +145,14 @@ color:#d68074;
 
 
 
+
+
+@media screen and (max-width: 760px) {
+  .presentacion{
+    flex-direction: column;
+  }
+  .enlaces{
+    flex-direction: column;
+    align-items: center;
+  }
+}

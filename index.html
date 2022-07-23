@@ -9,24 +9,20 @@
   <meta name="description"
     content="Soy Gianni Pasquinelli, y esta es mi página con información de contacto, trabajos, habilidades y conocimientos dentro del desarrollo Web. Entré a conocerme y trabajemos juntos.">
   <meta name="keywords" content="desarrollo Web Front-end trabajo remoto experiencia web paginas sitios">
-  <meta property="og">
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;700&family=Lato:ital,wght@0,400;0,700;1,100;1,700&display=swap"
+    rel="stylesheet">
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/e6baea6b33.js" crossorigin="anonymous"></script>
   <!-- Microanalitics -->
   <script data-host="https://microanalytics.io" data-dnt="false" src="https://microanalytics.io/js/script.js"
     id="ZwSg9rf6GA" async defer></script>
   <!-- Boostrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-    crossorigin="anonymous"></script>
-      <!-- google fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;700&family=Lato:ital,wght@0,400;0,700;1,100;1,700&display=swap"
-    rel="stylesheet">
-    <!-- font awesome -->
-    <script src="https://kit.fontawesome.com/e6baea6b33.js" crossorigin="anonymous"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/style.css">
@@ -35,86 +31,87 @@
 
 <body>
 
-  <header>
-    <nav class="navbar navbar-expand-lg">
+  <header class="header">
+
+    <nav class="navbar navbar-expand-xl">
       <div class="container-fluid">
-        <div>
-          <a class="navbar-brand justify-content-center" href="#"><h1>GianniPasquinelli =<span class="nav-color-a">"Desarrollador web";</span></h1></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-        <div>
-          <div class="collapse navbar-collapse " id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item ">
-                <a class="nav-link nav-color-b" href="#sobreMi" >Gianni.sobreMi()</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-color-c" href="#skills" title="Mis habilidades">.skills()</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-color-d" href="#formacion" title="Mis Estudios">.formacion()</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-color-b" href="#proyectos" title="Mis trabajos">.proyectos()</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-color-e" href="#contacto" title="giannipasquinelli@gmail.com">.contacto()</a>
-              </li>
-            </ul>
+        <a class="navbar-brand" href="#">
+          <h1>GianniPasquinelli =<span class="nav-color-a">"Desarrollador web";</span></h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link nav-color-b" href="#sobreMi">Gianni.sobreMi()</a>
+            <a class="nav-link nav-color-c" href="#skills" title="Mis habilidades">.skills()</a>
+            <a class="nav-link nav-color-d" href="#formacion" title="Mis Estudios">.formacion()</a>
+            <a class="nav-link nav-color-b" href="#proyectos" title="Mis trabajos">.proyectos()</a>
+            <a class="nav-link nav-color-e" href="#contacto" title="giannipasquinelli@gmail.com">.contacto()</a>
           </div>
         </div>
       </div>
     </nav>
   </header>
 
+
+
   <main class="contenido">
 
-    <img class="waves" src="./img/bg/wave(2).svg" alt="waves">
+    <img class="waves" src="./img/bg/wave(6).svg" alt="waves">
 
-    <div class="container-fluid">
+    <div class="">
       <section class="presentacion">
-        <img src="./img/gianni.JPEG" alt="foto de gianni">
+        <div>
+          <img src="./img/gianni.JPEG" alt="foto de gianni" class="img-fluid img-thumbnail+ presentacion--imagen">
+        </div>
         <div class="titulo">
-          <h2 class="borde">Gianni Pasquinelli</h2>
-          <h2 class="wave">Gianni Pasquinelli</h2>
-          <div class="subtitulo">
-            <h3 class="borde">Front-end Developer</h3>
-            <h3 class="wave">Front-end Developer</h3>
+          <div class="titulo--nombre">
+            <h2 class="borde">Gianni Pasquinelli</h2>
           </div>
-          <p class="presentacion--descripcion">Desarrollador web en constante formación, autodidacta, curioso, meticuloso, concentrado y pensante.</p>
+          <div class="titulo--subtitulo">
+            <h3 class="borde">Front-end Developer</h3>
+          </div>
+          <p class="presentacion--descripcion">Desarrollador web en constante formación, autodidacta, curioso,
+            meticuloso, concentrado.</p>
         </div>
       </section>
     </div>
-    
+
     <img class="waves" src="./img/bg/wave(1).svg" alt="waves">
 
-    <div class="container-fluid">
+    <div class="">
       <section class="acerca">
-        <h2 id="sobreMi">Sobre MI</h2>
-        <p class="info-personal">Hola! Mi nombre es Gianni, soy de Argentina. Desde fines del 2020 estoy estudiando de forma ininterrumpida y autodidacta desarrollo web, me gusta mucho, y quiero trabajar en esto. En el mometo que finalicé el colegio secundario estaba en la dudad de que carrera realizar, sistemas o música. Lo emocional ganó la partida y comencé la carrera de composición musical en la UNR. Luego de algunas dificulatades laborales ampliadas por la pandemia, una posibilidad de formación en desarrollo web apareció, y sin dudarlo comencé esta otra pasión. </p>
+        <h2 class="contenido--titulo" id="sobreMi">SOBRE MI</h2>
+        <p class="info-personal fs-5">Hola! Mi nombre es Gianni, soy de Argentina. Desde fines del 2020 estoy estudiando de
+          forma ininterrumpida y autodidacta desarrollo web, me gusta mucho, y quiero trabajar en esto. En el mometo que
+          finalicé el colegio secundario estaba en la dudad de que carrera realizar, sistemas o música. Lo emocional
+          ganó la partida y comencé la carrera de composición musical en la UNR. Luego de algunas dificulatades
+          laborales ampliadas por la pandemia, una posibilidad de formación en desarrollo web apareció, y sin dudarlo
+          comencé esta otra pasión. </p>
         <p class="info-personal"></p>
         <p class="info-personal"></p>
       </section>
     </div>
-    
-    <div class="container-fluid">
+
+    <div class="">
       <div class="enlaces">
-        
-        <a href="https://www.linkedin.com/in/gianni-pasquinelli/" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+
+        <a href="https://www.linkedin.com/in/gianni-pasquinelli/" title="LinkedIn"><i
+            class="fa-brands fa-linkedin"></i></a>
         <a href="https://github.com/Gianni03" title="GitHub"><i class="fa-brands fa-github-square"></i></a>
         <a href="mailto:giannipasquinelli@gmail.com" title="E-Mail"><i class="fa-solid fa-at"></i></a>
-        <a href="./docs/Pasquinelli cv Front-End Dev.pdf" download title="Descargar Curriculum"><i class="fa-solid fa-file-arrow-down"></i></a>
-        
+        <a href="./docs/Pasquinelli cv Front-End Dev.pdf" download title="Descargar Curriculum"><i
+            class="fa-solid fa-file-arrow-down"></i></a>
+
       </div>
     </div>
-    
-    <img class="waves" src="./img/bg/wave(3).svg" alt="waves">
 
-    <div class="container-fluid">
-      <h2 id="proyectos"></h2>
+    <img class="waves" src="./img/bg/wave(4).svg" alt="waves">
+
+    <div class="">
+      <h2 class="contenido--titulo" id="proyectos">PROYECTOS</h2>
       <div class="proyectos">
         <div class="proyectos--card">
           <img src="./img/fok.png" alt="focus on kids">
@@ -173,60 +170,60 @@
       </div>
     </div>
 
-    <img class="waves" src="./img/bg/wave.svg" alt="waves">
+    <img class="waves" src="./img/bg/wave(3).svg" alt="waves">
 
-    <div class="container-fluid">
-      
+    <div class="">
+
       <div class="estudios">
-        <h2 id="formacion"></h2>
+        <h2 class="contenido--titulo" id="formacion">FORMACIÓN</h2>
         <div class="formacion">
           <div class="formacion--card">
             <img src="" alt="">
-              <a href=""></a>
-              <p></p>
+            <a href=""></a>
+            <p></p>
             </img>
           </div>
         </div>
         <div class="formacion">
           <div class="formacion--card">
             <img src="" alt="">
-              <a href=""></a>
-              <p></p>
+            <a href=""></a>
+            <p></p>
             </img>
           </div>
         </div>
         <div class="formacion">
           <div class="formacion--card">
             <img src="" alt="">
-              <a href=""></a>
-              <p></p>
+            <a href=""></a>
+            <p></p>
             </img>
           </div>
         </div>
         <div class="formacion">
           <div class="formacion--card">
             <img src="" alt="">
-              <a href=""></a>
-              <p></p>
+            <a href=""></a>
+            <p></p>
             </img>
           </div>
         </div>
         <div class="formacion">
           <div class="formacion--card">
             <img src="" alt="">
-              <a href=""></a>
-              <p></p>
+            <a href=""></a>
+            <p></p>
             </img>
           </div>
-      </div>
+        </div>
       </div>
     </div>
 
-    <img class="waves" src="./img/bg/wave(2).svg" alt="waves">
+    <img class="waves" src="./img/bg/wave(7).svg" alt="waves">
 
-    <div class="container-fluid">
+    <div class="">
       <div class="contacto">
-        <h2 id="contacto"></h2>
+        <h2 class="contenido--titulo" id="contacto">CONTÁCTO</h2>
         <form action="">
           <input type="text" name="" id="">
           <input type="email" name="" id="">
@@ -243,6 +240,12 @@
   </footer>
 
 
+  <!-- bootstrap  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+
+  <script src="./js/index.js"></script>
 </body>
 
 </html>
