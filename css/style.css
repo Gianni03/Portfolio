@@ -123,6 +123,9 @@ margin: 0 auto;
 text-align: justify;
 padding-bottom: 2rem;
 }
+.acerca{
+  background-color: #1a193b;
+}
 
 
 /* * ENLACES */
@@ -133,12 +136,81 @@ padding-bottom: 2rem;
   display: flex;
   justify-content: space-around;
 }
+.enlaces:hover{
+  /* tambien agregar la animaciones */
+}
+.enlaces--cv__flex{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.enlaces--cv{
+  font-size: 12px;
+}
 
 
+/* * SKILLS */
 
-.acerca{
+.skills{
   background-color: #1a193b;
 }
+
+.skills h2{
+  padding: 4rem 0 2rem 0;
+}
+.skills--container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+.skills--item{
+  font-family: 'Fira Code', monospace;
+  font-size: clamp(.75rem, 10vw , 2rem);
+  color: #79b5f7;
+  margin: 2rem;
+  text-align: center;
+
+  padding: 2rem;
+}
+
+.skills--item img{
+  width: clamp(2rem, 80px ,6rem);
+  object-fit: contain;
+}
+
+/* * PROYECTOS */
+
+.proyectos--card{
+  width: 100%;
+  border-top: #1a193b solid 2px;
+  border-bottom: #1a193b solid 2px;
+}
+.proyectos--card h4{
+  font-family: 'Fira Code', monospace;
+  margin-left: 1rem;
+  padding: 1rem;
+}
+.proyectos--card img{
+  width: 45%;
+  text-align: left;
+  margin: 2rem 0;
+}
+.proyectos--card--flex{
+  display: flex;
+}
+.proyectos--card--texto{
+width: 50%;
+padding: 2rem;
+}
+
+
+
+
+
+
 .estudios{
   background-color: #1a193b;
 }
@@ -155,4 +227,17 @@ padding-bottom: 2rem;
     flex-direction: column;
     align-items: center;
   }
+
+  .proyectos--card--flex{
+    flex-direction: column;
+  }
+  .proyectos--card img{
+    width: 90%;
+    z-index: 1;
+  }
+  .proyectos--card--texto{
+    z-index: 0;
+    width: 90%;
+    padding: 1rem;
+    }
 }
