@@ -29,6 +29,7 @@ fondo #1a193b
   font-size:  clamp(32px, 7vw , 120px);
   text-align: center;
   margin-bottom: 2rem;
+  text-shadow: -3px 2px 4px #1A193B;
 }
 
 /**  ---MENU--- */
@@ -161,23 +162,23 @@ padding-bottom: 2rem;
 .skills--container{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 80%;
   margin: 0 auto;
+
 }
 .skills--item{
   font-family: 'Fira Code', monospace;
-  font-size: clamp(.75rem, 10vw , 2rem);
+  font-size: 3rem;
   color: #79b5f7;
   margin: 2rem;
   text-align: center;
-
   padding: 2rem;
+
 }
 
 .skills--item img{
-  width: clamp(2rem, 80px ,6rem);
+  width: 8rem;
   object-fit: contain;
 }
 
@@ -186,7 +187,6 @@ padding-bottom: 2rem;
 .proyectos--card{
   width: 100%;
   border-top: #1a193b solid 2px;
-  border-bottom: #1a193b solid 2px;
 }
 .proyectos--card h4{
   font-family: 'Fira Code', monospace;
@@ -204,7 +204,40 @@ padding-bottom: 2rem;
 .proyectos--card--texto{
 width: 50%;
 padding: 2rem;
+font-family: 'Lato', sans-serif;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
 }
+.proyectos--card--texto p {
+  font-size: clamp(.7rem, 1.125rem, 1.5rem);
+}
+.proyectos--card--texto div{
+  display: flex;
+  justify-content: space-around;
+}
+.proyectos--card--texto a {
+  text-decoration: none;
+  color: #79b5f7;
+  font-size: 1.5rem;
+  padding: .725rem;
+  border: #1A193B 1px solid;
+  border-radius: 7px;
+  background-color: #1A193B;
+  }
+  .proyectos--card--texto a:hover{
+    color: #1A193B;
+    background-color: #79b5f7;
+  }
+  .proyectos--card img{
+    opacity: 0.7;
+    border-radius: 7px;
+    box-shadow: -3px 2px 4px #1A193B;
+  }
+  .proyectos--card img:hover{
+    opacity: 1;
+    transition: ease-in-out .5s;
+  }
 
 
 
@@ -239,5 +272,13 @@ padding: 2rem;
     z-index: 0;
     width: 90%;
     padding: 1rem;
+    }
+    .skills--item{
+      padding: .7rem;
+      
+    }
+    .skills--item img{
+      width: 4rem;
+      font-size: .9rem;
     }
 }
