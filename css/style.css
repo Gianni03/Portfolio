@@ -233,6 +233,7 @@ justify-content: space-between;
     opacity: 0.7;
     border-radius: 7px;
     box-shadow: -3px 2px 4px #1A193B;
+    object-fit: cover;
   }
   .proyectos--card img:hover{
     opacity: 1;
@@ -240,12 +241,15 @@ justify-content: space-between;
   }
 
 
+/* * FORMACION */
 
 
 
 
 .estudios{
   background-color: #1a193b;
+  margin-bottom: 0;
+
 }
 
 

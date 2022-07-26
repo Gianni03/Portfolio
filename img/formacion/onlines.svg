@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <defs>
+    <clipPath id="clip-Web_1920_1">
+      <rect width="1000" height="1000"/>
+    </clipPath>
+  </defs>
+  <g id="Web_1920_1" data-name="Web 1920 – 1" clip-path="url(#clip-Web_1920_1)">
+    <path id="Trazado_1" data-name="Trazado 1" d="M25.9-11.614c0,294.671,196.894,488.886,433.97,488.886s433.97-194.215,433.97-488.886S696.947-500.5,459.87-500.5,25.9-306.285,25.9-11.614Zm433.97-388.43c131.263,0,137.96,242.434,137.96,388.43s-6.7,388.43-137.96,388.43-137.96-242.434-137.96-388.43S328.608-400.044,459.87-400.044Z" transform="translate(39.83 511.614)"/>
+  </g>
+</svg>
