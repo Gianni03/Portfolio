@@ -251,6 +251,61 @@ justify-content: space-between;
   margin-bottom: 0;
 
 }
+.card{
+  background-color: #1a193b;
+  border: #79b5f7 solid 2px;
+  /* margin-bottom: 2rem; */
+}
+.formacion--card img{
+object-fit: contain;
+
+}
+
+.formacion--card .card-title{
+  color: #79b5f7;
+}
+.formacion--card p{
+  color: #79b5f7;
+ 
+}
+.card-footer .btn{
+color: #1A193B;
+background-color: #79b5f7;
+}
+.card-footer .btn:hover{
+  color: #79b5f7;
+  background-color: #1A193B;
+}
+
+.certificados{
+  background-color: #1a193b;
+  padding: 3rem;
+}
+.certificados .btn{
+  font-size: 1.125rem;
+  color: #79b5f7;
+  background-color: #1A193B;
+}
+
+/* * Contacto */
+
+.contacto .btn{
+  width: 100%;
+  color: #1A193B;
+background-color: #79b5f7;
+}
+.contacto .btn:hover{
+  border: #79b5f7 .5px solid;
+  color: #79b5f7;
+  background-color: #1A193B;
+}
+.contacto--mail{
+  font-size: 1.25rem;
+}
+
+
+
+
 
 
 
