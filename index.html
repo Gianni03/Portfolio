@@ -23,6 +23,8 @@
   <!-- Boostrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <!-- CSS -->
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/style.css">
@@ -50,30 +52,36 @@
             <a class="nav-link nav-color-d" href="#formacion" title="Mis Estudios">.formacion()</a>
             <a class="nav-link nav-color-e" href="#contacto" title="giannipasquinelli@gmail.com">.contacto()</a>
           </div>
-        </div>
+          <!--fin navabr-->
+        </div><!-- fin collapse-->
       </div>
+      <!--fin container-->
     </nav>
   </header>
 
 
-
   <main class="contenido">
 
-    <img class="waves" src="./img/bg/wave(6).svg" alt="waves">
+    <img class="waves" src="./img/bg/wave(5).svg" alt="waves">
 
+    <!-- Presentacion -->
     <div>
       <section class="presentacion">
         <div>
-          <img src="./img/gianni.JPEG" alt="foto de gianni" class="img-fluid img-thumbnail+ presentacion--imagen">
+          <img src="./img/gianni.JPEG" alt="foto de gianni" class="img-fluid presentacion--imagen" data-aos="fade-right" data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000" >
         </div>
         <div class="titulo">
           <div class="titulo--nombre">
-            <h2 class="borde">Gianni Pasquinelli</h2>
+            <h2 class="borde" data-aos="fade-left" data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000">Gianni Pasquinelli</h2>
           </div>
           <div class="titulo--subtitulo">
-            <h3 class="borde">Front-end Developer</h3>
+            <h3 class="borde" data-aos="fade-left" data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000">Front-end Developer</h3>
           </div>
-          <p class="presentacion--descripcion">Desarrollador web en constante formación, autodidacta, curioso,
+          <p class="presentacion--descripcion" data-aos="fade-up-left" data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000">Desarrollador web en constante formación, autodidacta, curioso,
             meticuloso, concentrado, creativo.</p>
         </div>
       </section>
@@ -81,104 +89,143 @@
 
     <img class="waves" src="./img/bg/wave(1).svg" alt="waves">
 
+    <!-- Acerca -->
     <div>
       <section class="acerca">
-        <h2 class="contenido--titulo" id="sobreMi">SOBRE MI</h2>
-        <p class="info-personal fs-5">Hola! Mi nombre es Gianni, soy de Argentina. Desde fines del 2020 estoy estudiando
-          de forma ininterrumpida y autodidacta desarrollo web. En el momento que finalicé el colegio secundario estaba
-          en la duda de que carrera realizar, sistemas o música. Lo emocional ganó la partida y comencé la carrera de
-          composición musical en la UNR. Luego de algunas dificultades
-          laborales ampliadas por la pandemia, apareció una posibilidad de formación en desarrollo web, y sin dudarlo
-          comencé esta otra pasión.</p>
-        <p class="info-personal fs-5">Con mis bases artísticas musicales, siempre estoy enfocado de forma creativa, en
-          el balance de lo sensible y funcional. Acostumbrado a pensar desde distintas perspectivas, con pensamiento
-          lateral o "outiside the box". Mateniendo la capacidad de asombro intacta, disfruto de ver como se llega a una
-          solución por diferentes caminos y como un mismo camino tiene diferentes finales.</p>
-        <p class="info-personal fs-5">Tal vez las palabras no sean mi fuerte, pero si tengo una intensa necesidad de
-          expresarme y mostarme al mundo desde lo sensible hasta lo inteligente.</p>
+        <h2 class="contenido--titulo" id="sobreMi" data-aos="zoom-in" data-aos-easing="linear"
+        data-aos-duration="750">Sobre mí</h2>
+        <div   data-aos="zoom-in" data-aos-easing="linear"
+        data-aos-duration="600">
+          <p class="info-personal fs-5" >Hola! Mi nombre es Gianni, soy de Argentina. Desde fines del 2020 estoy estudiando
+            de forma ininterrumpida y autodidacta desarrollo web. En el momento que finalicé el colegio secundario estaba
+            en la duda de que carrera realizar, sistemas o música. Lo emocional ganó la partida y comencé la carrera de
+            composición musical en la UNR. Luego de algunas dificultades
+            laborales ampliadas por la pandemia, apareció una posibilidad de formación en desarrollo web, y sin dudarlo
+            comencé esta otra pasión.</p>
+          <p class="info-personal fs-5" >Con mis bases artísticas musicales, siempre estoy enfocado de forma creativa, en
+            el balance de lo sensible y funcional. Acostumbrado a pensar desde distintas perspectivas, con pensamiento
+            lateral o "outiside the box". Mateniendo la capacidad de asombro intacta, disfruto de ver como se llega a una
+            solución por diferentes caminos y como un mismo camino tiene diferentes finales.</p>
+          <p class="info-personal fs-5">Tal vez las palabras no sean mi fuerte, pero si tengo una intensa necesidad de
+            expresarme y mostarme al mundo desde lo sensible hasta lo inteligente.</p>
+        </div>
       </section>
     </div>
 
+    <!-- Enlaces -->
     <div>
       <section class="enlaces">
 
-        <a href="https://www.linkedin.com/in/gianni-pasquinelli/" title="LinkedIn"><i
-            class="fa-brands fa-linkedin"></i></a>
-        <a href="https://github.com/Gianni03" title="GitHub"><i class="fa-brands fa-github-square"></i></a>
-        <a href="mailto:giannipasquinelli@gmail.com" title="E-Mail"><i class="fa-solid fa-at"></i></a>
-        <a href="./docs/Pasquinelli cv Front-End Dev.pdf" download target="_blank" title="Descargar Curriculum"
-          class="enlaces--cv__flex"><label class="enlaces--cv">Descargar cv</label><i
-            class="fa-solid fa-file-arrow-down"></i></a>
+        <div>
+          <a href="https://www.linkedin.com/in/gianni-pasquinelli/" title="LinkedIn"><i
+              class="fa-brands fa-linkedin" data-aos="flip-right"></i></a>
+          <a href="https://github.com/Gianni03" title="GitHub"><i class="fa-brands fa-github-square" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000"></i></a>
+          <a href="mailto:giannipasquinelli@gmail.com" title="E-Mail"><i class="fa-solid fa-at" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000"></i></a>
+          <a href="./docs/Pasquinelli cv Front-End Dev.pdf" download target="_blank" title="Descargar Curriculum"><i
+              class="fa-regular fa-file-pdf" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+              data-aos-duration="2000"></i></a>
+        </div>
 
       </section>
     </div>
 
+    <!-- Skills -->
     <section class="skills container-fluid">
-      <h2 class="contenido--titulo" id="skills">HABILIDÁDES</h2>
+      <h2 class="contenido--titulo" id="skills" data-aos="zoom-in" data-aos-easing="linear"
+      data-aos-duration="500">Habilidades</h2>
 
       <div class="skills--container">
         <div class="skills--item">
-          <h4 class="skills--titulo">HTML</h4>
-          <img src="./img/skills/html5.svg" alt="html">
+          <h4 class="skills--titulo" data-aos="flip-down" data-aos-easing="linear"
+          data-aos-duration="750">HTML</h4>
+          <img src="./img/skills/html5.svg" alt="html" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+          data-aos-duration="1200">
         </div>
 
         <div class="skills--item">
-          <h4 class="skill--titulo">CSS</h4>
-          <img src="./img/skills/css3.svg" alt="css">
+          <h4 class="skill--titulo" data-aos="flip-down" data-aos-easing="linear"
+          data-aos-duration="750">CSS</h4>
+          <img src="./img/skills/css3.svg" alt="css" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+          data-aos-duration="1200">
         </div>
         <div class="skills--item">
-          <h4 class="skills--titulo">JavaScript</h4>
-          <img src="./img/skills/javascript.svg" alt="java script">
+          <h4 class="skills--titulo" data-aos="flip-down" data-aos-easing="linear"
+          data-aos-duration="750">JavaScript</h4>
+          <img src="./img/skills/javascript.svg" alt="java script" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+          data-aos-duration="1200">
         </div>
         <div class="skills--item">
-          <h4 class="skills--titulo">Git</h4>
-          <img src="./img/skills/git.svg" alt="git">
+          <h4 class="skills--titulo" data-aos="flip-down" data-aos-easing="linear"
+          data-aos-duration="750">Git</h4>
+          <img src="./img/skills/git.svg" alt="git" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+          data-aos-duration="1200">
         </div>
         <div class="skills--item">
-          <h4 class="skills--titulo">Bootstrap</h4>
-          <img src="./img/skills/bootstrap-5-1.svg" alt="bootstrap">
+          <h4 class="skills--titulo" data-aos="flip-down" data-aos-easing="linear"
+          data-aos-duration="750">Bootstrap</h4>
+          <img src="./img/skills/bootstrap-5-1.svg" alt="bootstrap" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+          data-aos-duration="1200">
         </div>
         <div class="skills--item">
-          <h4 class="skills--titulo">Materialize</h4>
-          <img src="./img/skills/materialize.svg" alt="materialize">
+          <h4 class="skills--titulo" data-aos="flip-down" data-aos-easing="linear"
+          data-aos-duration="750">Materialize</h4>
+          <img src="./img/skills/materialize.svg" alt="materialize" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+          data-aos-duration="1200">
         </div>
         <div class="skills--item">
-          <h4 class="skills--titulo">GitHub </h4>
-          <img src="./img/skills/github.svg" alt="git hub">
+          <h4 class="skills--titulo" data-aos="flip-down" data-aos-easing="linear"
+          data-aos-duration="750">GitHub </h4>
+          <img src="./img/skills/github.svg" alt="git hub" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+          data-aos-duration="1200">
         </div>
         <div class="skills--item">
-          <h4 class="skills--titulo">Sass</h4>
-          <img src="./img/skills/sass.svg" alt="sass">
+          <h4 class="skills--titulo" data-aos="flip-down" data-aos-easing="linear"
+          data-aos-duration="750">Sass</h4>
+          <img src="./img/skills/sass.svg" alt="sass" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+          data-aos-duration="1200">
         </div>
         <div class="skills--item">
-          <h4 class="skills--titulo">Visual Studio Code</h4>
-          <img src="./img/skills/visual-studio-code-1.svg" alt="visual studio code">
+          <h4 class="skills--titulo" data-aos="flip-down" data-aos-easing="linear"
+          data-aos-duration="750">Visual Studio Code</h4>
+          <img src="./img/skills/visual-studio-code-1.svg" alt="visual studio code" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+          data-aos-duration="1200">
         </div>
         <div class="skills--item">
-          <h4 class="skills--titulo">Figma</h4>
-          <img src="./img/skills/figma.svg" alt="figma">
+          <h4 class="skills--titulo" data-aos="flip-down" data-aos-easing="linear"
+          data-aos-duration="750">Figma</h4>
+          <img src="./img/skills/figma.svg" alt="figma" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+          data-aos-duration="1200">
         </div>
         <div class="skills--item">
-          <h4 class="skills--titulo">Linux Mint</h4>
-          <img src="./img/skills/Linux_Mint_logo_without_wordmark.svg" alt="linux mint">
+          <h4 class="skills--titulo" data-aos="flip-down" data-aos-easing="linear"
+          data-aos-duration="750">Linux Mint</h4>
+          <img src="./img/skills/Linux_Mint_logo_without_wordmark.svg" alt="linux mint" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+          data-aos-duration="1200">
         </div>
 
         <div class="skills--item">
-          <h4 class="skills--titulo">Node</h4>
-          <img src="./img/skills/node.svg" alt="node">
+          <h4 class="skills--titulo" data-aos="flip-down" data-aos-easing="linear"
+          data-aos-duration="750">Node</h4>
+          <img src="./img/skills/node.svg" alt="node" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+          data-aos-duration="1200">
         </div>
         <div class="skills--item">
-          <h4 class="skills--titulo">Trello</h4>
-          <img src="./img/skills/trello.svg" alt="trello">
+          <h4 class="skills--titulo" data-aos="flip-down" data-aos-easing="linear"
+          data-aos-duration="750">Trello</h4>
+          <img src="./img/skills/trello.svg" alt="trello" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+          data-aos-duration="1200">
         </div>
       </div>
-
     </section>
 
     <img class="waves" src="./img/bg/wave(4).svg" alt="waves">
 
+    <!-- Proyectos -->
     <div class="container-fluid">
-      <h2 class="contenido--titulo" id="proyectos">PROYECTOS</h2>
+      <h2 class="contenido--titulo" id="proyectos" data-aos="zoom-in" data-aos-easing="linear"
+      data-aos-duration="750">Proyectos</h2>
       <div class="proyectos">
 
         <div class="proyectos--card">
@@ -187,7 +234,7 @@
             <div class="proyectos--card--texto">
               <p>Sitio creado como proyecto final del curso de desarrollo web en Coderhouse. A la vez también es un
                 sitio en funcionamiento ya que fue ralizado para la clínica Focus on Kids.
-                Utilicé HTML, Css con Scss, Bootstrap, AOS. El diseño tambien lo desarrolle, con varios cambios
+                Utilicé HTML, Css con Scss, Bootstrap, AOS. El diseño tambien lo desarrollé, con varios cambios
                 estéticos desde la primera idea hasta llegar al producto final.
               </p>
               <div>
@@ -198,21 +245,20 @@
                   Sitio</a>
               </div>
             </div>
-            <img src="./img/fok.png" alt="focus on kids" class="img-fluid">
+            <img src="./img/fok.png" alt="focus on kids" class="img-fluid mx-auto">
           </div>
         </div>
 
         <div class="proyectos--card">
           <h4>Encriptador de texto</h4>
           <div class="proyectos--card--flex">
-            <img src="./img/alura1.png" alt="encriptador" class="img-fluid">
+            <img src="./img/alura1.png" alt="encriptador" class="img-fluid m-5 mx-auto">
             <div class="proyectos--card--texto">
-              <p>Proyecto realizado como Challenge del curso "ONE Oracle next education", Consistia en crear un
+              <p>Proyecto realizado como Challenge del curso "ONE Oracle next education", Consiste en crear un
                 encriptador que reciba un texto y al presionar el botón encriptar mostrara el texto encriptado en el
-                cuadro lateral, luego este texto encriptado puede ser copiado para ntroducrlo en el input principal y
+                cuadro lateral, luego este texto encriptado puede ser copiado para introducirlo en el input principal y
                 desencriptarlo. El diseño nos fue entregado, el cuál realice tal cual el diseño de Figma y responsivo.
-              </p>
-              <p>Proyecto realizado con HTML, css y JavaScript</p>
+                Proyecto realizado con HTML, CSS y JavaScript</p>
               <div>
                 <a href="https://github.com/Gianni03/Encriptador" target="_blank"><i
                     class="fa-brands fa-github-square"></i> GitHub</a>
@@ -229,7 +275,7 @@
             <div class="proyectos--card--texto">
               <p>Como parte del curso de JavaScript en Coderhouse, reutilicé mi proyecto del curso de desarrollo web.
                 Utlizando la página de contacto para generar alertas, utilización de funciones, template literals, local
-                y sesion storage en el formulario, JSON.</p>
+                y sesion storage en el formulario, JSON. También agregando librerias.</p>
               <div>
                 <a href="https://github.com/Gianni03/coderhouse-proyecto-js" target="_blank"><i
                     class="fa-brands fa-github-square"></i> GitHub</a>
@@ -237,16 +283,16 @@
                     class="fa-regular fa-window-maximize"></i> Sitio</a>
               </div>
             </div>
-            <img src="./img/fok2.png" alt="focus on kids" class="img-fluid">
+            <img src="./img/fok2.png" alt="focus on kids" class="img-fluid mx-auto">
           </div>
         </div>
 
         <div class="proyectos--card">
           <h4>Café Pasquinelli</h4>
           <div class="proyectos--card--flex">
-            <img src="./img/cafe.png" alt="pagina de un bar" class="img-fluid">
+            <img src="./img/cafe.png" alt="pagina de un bar" class="img-fluid m-5 mx-auto">
             <div class="proyectos--card--texto">
-              <p>Página de práctica realizada con HTML, CSS y JavaScript, usando un poco de Jquery y parallax</p>
+              <p>Página de práctica realizada con HTML, CSS y JavaScript, usando un poco de Jquery y parallax.</p>
               <div>
                 <a href="https://github.com/Gianni03/Restaurant" target="_blank"><i
                     class="fa-brands fa-github-square"></i> GitHub</a>
@@ -261,7 +307,7 @@
           <h4>Cálculo con JavaScript</h4>
           <div class="proyectos--card--flex">
             <div class="proyectos--card--texto">
-              <p>Utilización de funciones, operadores, pedidos de datos al usuario y mostrar resultados en página</p>
+              <p>Utilización de funciones, operadores, pedidos de datos al usuario y mostrar resultados en página. </p>
               <div>
                 <a href="https://github.com/Gianni03/desafio-simulador" target="_blank"><i
                     class="fa-brands fa-github-square"></i> GitHub</a>
@@ -269,16 +315,16 @@
                     class="fa-regular fa-window-maximize"></i> Sitio</a>
               </div>
             </div>
-            <img src="./img/js1.png" alt="dinero" class="img-fluid">
+            <img src="./img/js1.png" alt="dinero" class="img-fluid mx-auto">
           </div>
         </div>
 
         <div class="proyectos--card">
           <h4>Google page</h4>
           <div class="proyectos--card--flex">
-            <img src="./img/google.png" alt="google" class="img-fluid">
+            <img src="./img/google.png" alt="google" class="img-fluid m-5 mx-auto">
             <div class="proyectos--card--texto">
-              <p>Como parte de mis estudios autodidactas, llegue a The Odin Proyect, donde una de las tareas era
+              <p>Como parte de mis estudios autodidactas, llegue a The Odin Project, donde una de las tareas era
                 realizar una copia de la página principal de google. Uno de mis primeros pasos en el desarrollo y un
                 desafío muy agradable, cuando el resultado es el esperado</p>
               <div>
@@ -304,14 +350,14 @@
                     class="fa-regular fa-window-maximize"></i> Sitio</a>
               </div>
             </div>
-            <img src="./img/ola.png" alt="guitarras" class="img-fluid">
+            <img src="./img/ola.png" alt="guitarras" class="img-fluid mx-auto">
           </div>
         </div>
 
         <div class="proyectos--card">
           <h4>Recetas Odin</h4>
           <div class="proyectos--card--flex">
-            <img src="./img/odin.png" alt="comida" class="img-fluid">
+            <img src="./img/odin.png" alt="comida" class="img-fluid m-5 mx-auto">
             <div class="proyectos--card--texto">
               <p>Otra tarea de The Odin Proyect. En este caso era crear un sitio de recetas con listas ordenadas y
                 desordenadas. Como desafio personal intente realizarlo lo más rápido posible y sin recurrir a ninguna
@@ -330,7 +376,7 @@
           <h4>Zapatos NOVA</h4>
           <div class="proyectos--card--flex">
             <div class="proyectos--card--texto">
-              <p>La empresa Onlines&co realizo una guía de estudio de desarrollo web. Como práctica final debía realizar
+              <p>La empresa Onlines&Co realizo una guía de estudio de desarrollo web. Como práctica final debía realizar
                 esta página desde el modelo diseñado que se facilito. Con todo lo aprendido hasta ese momento, es la
                 primera página web que realicé por fuera de las que copiaba en algunos cursos. Y así tambien de las
                 primeras veces que utilizaba GitHub y por la falta de experiencia en ese momento no subi de forma
@@ -340,25 +386,25 @@
                     class="fa-brands fa-github-square"></i> GitHub</a>
               </div>
             </div>
-            <img src="./img/nova1.png" alt="pagina de zapatos" class="img-fluid">
+            <img src="./img/nova1.png" alt="pagina de zapatos" class="img-fluid mx-auto">
           </div>
         </div>
       </div>
     </div>
+    <img class="waves" src="./img/bg/wave(2).svg" alt="waves">
 
-    <img class="waves" src="./img/bg/wave(3).svg" alt="waves">
-
-
-
+    <!-- Formacion -->
     <div class="estudios container-fluid">
-      <h2 class="contenido--titulo" id="formacion">FORMACIÓN</h2>
+      <h2 class="contenido--titulo" id="formacion" data-aos="zoom-in" data-aos-easing="linear"
+      data-aos-duration="750">Formación</h2>
 
       <div class="card-group">
-        <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 g-3">
+        <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 g-3">
 
           <div class="col">
             <div class="card h-100">
-              <img src="./img/formacion/onlines.svg" alt="logo onlines" class="card-img-top p-4 m-2 w-50 mx-auto">
+              <img src="./img/formacion/onlines.svg" alt="logo onlines" class="card-img-top p-4 m-2 w-50 mx-auto" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+              data-aos-duration="2000">
               <div class="formacion--card card-body">
                 <h5 class="card-title m-3">Onlines&Co</h5>
                 <p class="card-text p-4 m-1">Mi primer encuentro con el desarrollo web fue aquí. Prepararon una guía
@@ -375,10 +421,11 @@
 
           <div class="col">
             <div class="card h-100">
-              <img src="./img/formacion/logo-udemy.svg" alt="logo udemy" class="card-img-top p-4 m-2">
+              <img src="./img/formacion/logo-udemy.svg" alt="logo udemy" class="card-img-top p-4 m-2" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+              data-aos-duration="2000">
               <div class="formacion--card card-body">
                 <h5 class="card-title m-3">Udemy</h5>
-                <p class="card-text p-4 m-2">Muchos cursos realicé en esta plataforma, que me dieron una visión y
+                <p class="card-text p-4 m-2">En esta plataforma realicé varios cursos, que me dieron una visión y
                   entendimiento
                   de
                   muchos temas para reforzar más adelante</p>
@@ -391,10 +438,11 @@
 
           <div class="col">
             <div class="card h-100">
-              <img src="./img/formacion/misuse-3.png" alt="logo free Code Camp" class="card-img-top p-4 m-2">
+              <img src="./img/formacion/misuse-3.png" alt="logo free Code Camp" class="card-img-top p-4 m-2" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+              data-aos-duration="2000">
               <div class="formacion--card card-body">
                 <h5 class="card-title m-3">FreeCodeamp</h5>
-                <p class="card-text p-4 m-2">Aquí realicé la formación "Reponsive web development" y estoy en proceso
+                <p class="card-text p-4 m-2">Aquí realicé la formación "Reponsive web desing" y estoy en proceso
                   de la
                   formación de JavaScript</p>
               </div>
@@ -406,7 +454,8 @@
 
           <div class="col">
             <div class="card h-100">
-              <img src="./img/formacion/W3Schools_logo.svg" alt="w3 logo" class="card-img-top p-4 m-2 w-50 mx-auto">
+              <img src="./img/formacion/W3Schools_logo.svg" alt="w3 logo" class="card-img-top p-4 m-2 w-50 mx-auto" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+              data-aos-duration="2000">
               <div class="formacion--card card-body">
                 <h5 class="card-title m-3">W3 schools</h5>
                 <p class="card-text p-4 m-2">Cursos autodidactas de HTML, CSS y JavaScript. Más allá de los cursos es
@@ -422,12 +471,13 @@
 
           <div class="col">
             <div class="card h-100">
-              <img src="./img/formacion/odin.jpeg" alt="odin logo" class="card-img-top p-4 m-2 w-50 mx-auto">
+              <img src="./img/formacion/odin.jpeg" alt="odin logo" class="card-img-top p-4 m-2 w-50 mx-auto" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+              data-aos-duration="2000">
               <div class="formacion--card card-body">
                 <h5 class="card-title m-3">The Odin Project</h5>
                 <p class="card-text p-4 m-2">Curso de Full-Stack, en proceso. Autodidacta, super completo, y con
                   muchas prácticas.
-                  Algunos de kis proyectos son de las pŕacticas de estos cursos.</p>
+                  Algunos de mis proyectos son de las pŕacticas de estos cursos.</p>
               </div>
               <div class="card-footer text-center">
                 <a href="https://www.theodinproject.com/dashboard" class="btn">The Odin Project</a>
@@ -438,7 +488,8 @@
           <div class="col">
             <div class="card h-100">
               <img src="./img/formacion/1558441737613.png" alt="logo coderhouse"
-                class="card-img-top p-4 m-2 w-50 mx-auto">
+                class="card-img-top p-4 m-2 w-50 mx-auto" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000">
               <div class="formacion--card card-body">
                 <h5 class="card-title m-3">Coderhouse</h5>
                 <p class="card-text p-4 m-2">Con la necesidad de una guía mas personal, adquirí la carrera de
@@ -455,7 +506,8 @@
 
           <div class="col">
             <div class="card h-100">
-              <img src="./img/formacion/egg.svg" alt="egg logo" class="card-img-top p-4 m-2 w-75 mx-auto">
+              <img src="./img/formacion/egg.svg" alt="egg logo" class="card-img-top p-4 m-2 w-75 mx-auto" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+              data-aos-duration="2000">
               <div class="formacion--card card-body">
                 <h5 class="card-title m-3">EGG</h5>
                 <p class="card-text p-4 m-2">Curso de introducción a la programación. Una manera diferente de estudiar
@@ -471,7 +523,8 @@
 
           <div class="col">
             <div class="card h-100">
-              <img src="./img/formacion/oracle-one-logo.svg" alt="one logo" class="card-img-top p-4 m-2 w-75 mx-auto">
+              <img src="./img/formacion/oracle-one-logo.svg" alt="one logo" class="card-img-top p-4 m-2 w-75 mx-auto" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+              data-aos-duration="2000">
               <div class="formacion--card card-body">
                 <h5 class="card-title m-3">ONE</h5>
                 <p class="card-text p-4 m-2">ONE - Oracle next education. Programa de formación ideado por Oracle para
@@ -489,7 +542,8 @@
           <div class="col mx-auto">
             <div class="card h-100">
               <img src="./img/formacion/logo.b70109da.jpg" alt="logo argentina programa"
-                class="card-img-top p-4 m-2 w-50 mx-auto">
+                class="card-img-top p-4 m-2 w-50 mx-auto" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000">
               <div class="formacion--card card-body">
                 <h5 class="card-title m-3">r/argentina Programa</h5>
                 <p class="card-text p-4 m-2">r/argentina programa - Desde la comunidad de reddit surgio este curso
@@ -509,7 +563,8 @@
           <div class="col mx-auto">
             <div class="card h-100">
               <img src="./img/formacion/HQy3tFfX_400x400.png" alt="logo openbootcamp"
-                class="card-img-top p-4 m-2 w-50 mx-auto">
+                class="card-img-top p-4 m-2 w-50 mx-auto" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000">
               <div class="formacion--card card-body">
                 <h5 class="card-title m-3">Open Bootcamp</h5>
                 <p class="card-text p-4 m-2">Cursos completamente gratuitos de formacion Full-Stack con temas como
@@ -528,7 +583,7 @@
       </div>
     </div>
 
-
+    <!-- certificados -->
     <section class="certificados d-flex justify-content-around flex-wrap">
       <div>
         <a href="https://drive.google.com/drive/folders/1QzMsUCx2nly2047IvccyQyNDWWj4RGRO?usp=sharing" target="_blank"
@@ -543,26 +598,19 @@
         <a href="https://app.aluracursos.com/emprega-one/profile/giannipasquinelli" target="_blank" class="btn">Perfil
           ONE</a>
       </div>
+
     </section>
 
-    <img class="waves" src="./img/bg/wave(7).svg" alt="waves">
+    <img class="waves" src="./img/bg/wave(5).svg" alt="waves">
 
-    <!-- <div class="">
-        <div class="contacto">
-          <h2 class="contenido--titulo" id="contacto">CONTACTO</h2>
-          <form action="">
-            <input type="text" name="" id="">
-            <input type="email" name="" id="">
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-            <button type="submit"></button>
-          </form>
-        </div>
-      </div> -->
+
+    <!-- Contacto -->
     <section id="contact" class="contacto">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <h2 class="contenido--titulo" id="contacto">Contacto</h2>
+            <h2 class="contenido--titulo" id="contacto" data-aos="zoom-in" data-aos-easing="linear"
+            data-aos-duration="750">Contacto</h2>
           </div>
         </div>
 
@@ -571,24 +619,26 @@
             <div class="row">
               <div class="col-md-12 col-lg-7">
                 <form class="form" id="contact-form" action="./php/mail.php" method="POST">
-                  <div class="">
+                  <div class="form">
                     <div class="col-md-12">
                       <div class="form-group mb-3">
                         <label for="name" class="form-label">Tu Nombre</label>
-                        <input id="name" type="text" name="name" placeholder="Tu Nombre" required="required" class="form-control">
+                        <input id="name" type="text" name="name" placeholder="Tu Nombre" required="required"
+                          class="form-control">
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group mb-3">
                         <label for="email" class="form-label">Tu Email</label>
-                        <input id="form_email" type="email" name="email" placeholder="Tu Email" required="required"  class="form-control">
+                        <input id="form_email" type="email" name="email" placeholder="Tu Email" required="required"
+                          class="form-control">
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group mb-3">
                         <label for="message" class="form-label">Tu Mensaje</label>
                         <textarea id="message" name="message" placeholder="Pronto te respondo" rows="4"
-                          required="required"  class="form-control"></textarea>
+                          required="required" class="form-control"></textarea>
                       </div>
                     </div>
                     <div class="col-md-12">
@@ -600,19 +650,15 @@
                 </form>
                 <p class="form-message"></p>
               </div>
-              
+
 
               <div class="col-lg-5 col-md-12 col-12">
                 <div class="text-center">
-                    <i class="fa fa-envelope"></i>
-                    <div class="contacto--mail">
-                      <h4>Mensaje Directo</h4>
-                      <p>giannipasquinelli@gmail.com</p>
-                    </div>
-                    <div class="contacto--img">
-                      <img src="" alt="" class="img-fluid">
-                    </div>
-                  
+                  <div class="contacto--mail">
+                    <img src="./img/retocado.png" alt="logo contacto" class=" contacto--img img-fluid">
+                    <h4><i class="fa fa-envelope"></i> Mensaje Directo</h4>
+                    <p>giannipasquinelli@gmail.com</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -623,6 +669,7 @@
 
   </main>
 
+  <!-- footer -->
   <footer class="footer">
 
   </footer>
@@ -632,7 +679,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"></script>
-
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
   <script src="./js/index.js"></script>
   <script src="./js/form-contact.js"></script>
 </body>
