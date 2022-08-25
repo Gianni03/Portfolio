@@ -141,9 +141,9 @@ h1 {
   font-size: clamp(.70rem, 30vw, 1.5rem);
   color: #79b5f7;
   line-height: 2rem;
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
-  text-align: justify;
+  /* text-align: justify; */
   padding-bottom: 2rem;
 }
 
@@ -193,7 +193,6 @@ h1 {
   font-family: 'Fira Code', monospace;
   font-size: 3rem;
   color: #79b5f7;
-  /* margin: 2rem; */
   text-align: center;
   padding: 2rem;
 
@@ -208,8 +207,6 @@ h1 {
 
 .proyectos .proyectos--card {
   width: 90%;
-  /* border: none; */
-  /* border-radius: 0; */
   border-top: #1a193b solid 2px;
   margin: 0 auto;
   background-color: #dddada;
@@ -217,6 +214,7 @@ h1 {
 
 .proyectos--card h4 {
   font-family: 'Fira Code', monospace;
+  margin-top: 3rem;
   margin-left: 1rem;
   padding: 1rem;
 }
