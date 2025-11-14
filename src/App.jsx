@@ -1,14 +1,23 @@
-
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./app/layout";
+import Home from "./app/index";
+import Projects from "./app/projects";
+import Studies from "./app/studies";
+import Resume from "./app/resume";
 
 function App() {
-
   return (
-    <>
-      <h1>Welcome to my Portfolio</h1>
-      <p>This is a simple portfolio website built with Vite and React.</p>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}> 
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/studies" element={<Studies />} />
+          <Route path="/resume" element={<Resume />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
