@@ -1,16 +1,55 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-
-const navItems = [
-  { label: 'Home', path: '/' },
-  { label: 'Proyectos', path: '/projects' },
-  { label: 'Estudios', path: '/studies' },
-  { label: 'Resume', path: '/resume' },
-];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState(null);
+  const location = useLocation();
+  const isResume = location.pathname === '/resume';
+
+  // Smooth Scroll handler
+  const scrollToId = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    el.scrollIntoView({ behavior: 'smooth' });
+  };
+  useEffect(() => {
+    const sections = ['projects', 'skills', 'studies', 'contact'];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.6, // 60% visible = activa la sección
+      }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Dynamic menu
+  const navItems = [
+    { label: 'Home', path: '/' },
+    { label: 'Proyectos', path: '#projects' },
+    { label: 'Habilidades', path: '#skills' },
+    { label: 'Estudios', path: '#studies' },
+    { label: 'Contact', path: '#contact' },
+    isResume
+      ? { label: 'Home', path: '/' }
+      : { label: 'Resume Web', path: '/resume' },
+  ];
 
   return (
     <header className="sticky top-0 z-50 bg-neutral-950/90 backdrop-blur-md border-b border-neutral-800">
@@ -23,21 +62,40 @@ export default function Header() {
           Gianni.dev
         </NavLink>
 
-        {/* Desktop nav */}
+        {/* Desktop Nav */}
         <nav className="hidden md:flex gap-6 text-neutral-300">
-          {navItems.map(({ label, path }) => (
-            <NavLink
-              key={path}
-              to={path}
-              className={({ isActive }) =>
-                `hover:text-white transition ${
-                  isActive ? 'text-white font-semibold' : ''
-                }`
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
+          {navItems.map(({ label, path }) => {
+            // HASH LINKS (smooth scroll)
+            if (path.startsWith('#')) {
+              const id = path.replace('#', '');
+              return (
+                <button
+                  key={path}
+                  onClick={() => scrollToId(id)}
+                  className={`hover:text-white transition ${
+                    activeSection === id ? 'text-white font-semibold' : ''
+                  }`}
+                >
+                  {label}
+                </button>
+              );
+            }
+
+            // NORMAL ROUTES
+            return (
+              <NavLink
+                key={path}
+                to={path}
+                className={({ isActive }) =>
+                  `hover:text-white transition ${
+                    isActive ? 'text-white font-semibold' : ''
+                  }`
+                }
+              >
+                {label}
+              </NavLink>
+            );
+          })}
         </nav>
 
         {/* Mobile toggle */}
@@ -49,23 +107,43 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu */}
       {open && (
         <nav className="md:hidden px-4 pb-4 flex flex-col gap-4 text-neutral-300">
-          {navItems.map(({ label, path }) => (
-            <NavLink
-              key={path}
-              to={path}
-              onClick={() => setOpen(false)}
-              className={({ isActive }) =>
-                `py-2 border-b border-neutral-800 ${
-                  isActive ? 'text-white font-semibold' : 'hover:text-white'
-                }`
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
+          {navItems.map(({ label, path }) => {
+            // HASH LINKS (smooth scroll)
+            if (path.startsWith('#')) {
+              const id = path.replace('#', '');
+              return (
+                <button
+                  key={path}
+                  onClick={() => {
+                    scrollToId(id);
+                    setOpen(false);
+                  }}
+                  className="py-2 border-b border-neutral-800 hover:text-white"
+                >
+                  {label}
+                </button>
+              );
+            }
+
+            // NORMAL ROUTES
+            return (
+              <NavLink
+                key={path}
+                to={path}
+                onClick={() => setOpen(false)}
+                className={({ isActive }) =>
+                  `py-2 border-b border-neutral-800 ${
+                    isActive ? 'text-white font-semibold' : 'hover:text-white'
+                  }`
+                }
+              >
+                {label}
+              </NavLink>
+            );
+          })}
         </nav>
       )}
     </header>
