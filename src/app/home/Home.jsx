@@ -1,12 +1,12 @@
-import Section from '../ui/Section';
-import Projects from './projects/Projects';
-import Studies from './studies/Studies';
+import Section from '../../ui/Section';
+import Projects from '../projects/Projects';
+import Studies from '../studies/Studies';
 
-export default function Main() {
+export default function Home() {
   return (
     <>
       <Section title="Hero" id="hero"></Section>
-      <div className='mb-16 h-10 bg-amber-700 border'></div>
+      <div className="mb-32 h-10 w-full bg-amber-700 "></div>
       <Section title="About Me" id="about"></Section>
       <Section title="Skills" id="skills"></Section>
 
