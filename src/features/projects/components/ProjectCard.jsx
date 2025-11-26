@@ -4,6 +4,7 @@ export default function ProjectCard({ project }) {
   return (
     <Card>
       <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+      <img src={project.image} alt={project.title} />
       <p className="text-neutral-300 mb-4">{project.description}</p>
 
       <div className="flex flex-wrap gap-2 mb-4">
@@ -20,6 +21,13 @@ export default function ProjectCard({ project }) {
         className="text-blue-400 underline hover:text-blue-300"
       >
         Ver proyecto →
+      </a>
+      <a
+        href={project.github}
+        target="_blank"
+        className="text-blue-400 underline hover:text-blue-300"
+      >
+        GitHub →
       </a>
     </Card>
   );

@@ -7,7 +7,7 @@ export default function Layout() {
     <div className="min-h-screen flex flex-col bg-neutral-950 text-white">
       <Header />
       
-      <main className="flex-grow container mx-auto px-4 py-10">
+      <main className="grow container mx-auto px-4 py-10">
         <Outlet />
       </main>
 
