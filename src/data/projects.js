@@ -3,81 +3,81 @@ export const projects = [
     id: 1,
     title: "Support Chat",
     image: "../../public/img/minigianniround.webp",
-    description: "support chat application built with React, TypeScript, Vite, and React Router Dom. This project demonstrates routing, authentication layouts, and UI components.",
+    description: "A real-time support chat application built with React, TypeScript, Vite, and React Router DOM. It includes authentication, protected layouts, nested routing, and reusable UI components. Designed to showcase front-end architecture, clean state management, and full user flows from login to dashboard.",
     link: "https://tu-link.com",
     github: "https://github.com/Gianni03/support-chat",
-    tags: ["HTML", "CSS"]
+    tags: ["React", "Shadcn/ui", "React Router", "typeScript" ]
   },
   {
     id: 2,
     title: "ComunicaYa",
     image: "../../public/img/comunicaya.webp",
-    description: "Personal project to build an Augmentative and Alternative Communication (AAC) tool, aimed at simplifying daily communication for children with Autism Spectrum Disorder (ASD) and limited functional language. The app focuses on basic requests, functional refusal and routine visualization.",
+    description: "An Augmentative and Alternative Communication (AAC) tool designed for children with Autism Spectrum Disorder and limited functional language. It enables basic requests, functional refusal, and routine visualization. With a strong focus on accessibility, simplicity, and real therapeutic use cases.",
     link: "https://gianni03.github.io/ComunicaYa/",
     github: "https://github.com/Gianni03/ComunicaYa",
-    tags: ["React", "Tailwind"]
+    tags: ["HTML", "Tailwind", "JavaScipt"]
   },
   {
     id: 24,
     title: "JS Clock",
     image: "../../public/img/clock.webp",
-    description: "This project implements an analog clock using HTML, CSS, and JavaScript. It features a minimalist user interface that allows toggling between two animation modes for each hand:",
+    description: "An interactive analog clock built with HTML, CSS, and JavaScript. It features two animation modes for each clock hand, demonstrating DOM manipulation, real-time calculations, and smooth micro-interactions within a minimalist UI.",
     link: "https://jsclock-plum.vercel.app/",
     github: "https://github.com/Gianni03/JSclock",
-    tags: ["React", "Tailwind"]
+    tags: ["HTML", "JavaScript", "CSS"]
   },
   {
     id: 22,
     title: "Drum Kit",
     image: "../../public/img/drums.webp",
-    description: "JS Drum Kit Pro is a compact and responsive browser-based drum pad app built with vanilla JavaScript, HTML and CSS. You can play beats using your keyboard or by clicking on the pads. Designed to be minimal yet responsive, it creates a snappy interaction with multiple sounds overlapping thanks to dynamic audio instancing.",
+    description: "A browser-based drum pad application created with vanilla JavaScript, HTML, and CSS. Users can play sounds via keyboard or clicks, with dynamic audio instancing that allows natural overlapping. Fully responsive and focused on performance, interaction, and user experience.",
     link: "https://drum-kit-five-tan.vercel.app/drums.html",
     github: "https://github.com/Gianni03/drumKit",
-    tags: ["React", "Tailwind"]
+    tags: ["HTML", "CSS", "JavaScript"]
   },
   {
     id: 3,
     title: "Focus On Kids",
     image: "../../public/img/focus.webp",
-    description: "sitio de focus on kid, un proyecto para crear u sitio e una clinica de terapia ocupacional que era muy lindo e interesante, donde yo cree y lidere un equipo para el desarrollo, que por probblemas de presupuesto quedo inconcluso",
+    description: "A website concept for an occupational therapy clinic. I led the design, structure, and development of the project with a small team. It includes a full site architecture, visual identity exploration, and reusable component patterns. The project remained incomplete due to budget constraints, but it reflects real production work.",
     link: "https://focus-on-kids.vercel.app/",
     github: "https://github.com/Gianni03/FocusOnKids",
-    tags: ["React", "Tailwind"]
+    tags: ["React", "CSS", "JavaScipt", "Figma", "Agile"]
   },
   {
     id: 4,
     title: "Holocruxe",
     image: "../../public/img/holocap.webp",
-    description: "sitio de Holocruxe",
+    description: "A landing site for Holocruxe, built with React and Tailwind. Focused on clean UI, clear layout, accessible navigation, and a visual style aligned with the brand identity.",
     link: "/",
     github: "https://github.com/Gianni03/Kamino/tree/main",
-    tags: ["React", "Tailwind"]
+    tags: ["Next", "CSS", "Figma", "Blender", "Three.js"]
   },
   {
     id: 5,
     title: "Google home page",
     image: "../../public/img/google.webp",
-    description: "This project involved recreating the appearance and design of the Google.com homepage using HTML and CSS. Through this practice, the aim was to develop skills in HTML structure, CSS styling, and handling interactive elements.",
+    description: "A pixel-perfect recreation of the Google.com homepage using only HTML and CSS. This project strengthened HTML semantics, responsive layout techniques, and mastery of styling without JavaScript.",
     link: "https://gianni03.github.io/Google-Homepage/",
     github: "https://github.com/Gianni03/Google-Homepage",
-    tags: ["React", "Tailwind"]
+    tags: ["HTML", "CSS"]
   },
   {
     id: 6,
     title: "Zapatos Nova",
     image: "../../public/img/nova1.webp",
-    description: "I can proudly say that this is my first web page.We were provided with a design that we replicated on this page. It was my first experience in web development, starting from working with a design, avoiding copying what I saw in videos, structuring the HTML based on my knowledge, and applying the CSS, which was quite challenging but I managed to achieve the desired result. It was also my first time using GitHub.",
+    description: "My very first web project. A full webpage recreated from a provided design, built entirely with custom HTML and CSS—no tutorials or copied code. It was my first experience structuring a layout from scratch and using GitHub for versioning and deployment.",
     link: "https://gianni03.github.io/Practica-ZapatosNOVA/",
     github: "https://github.com/Gianni03/Practica-ZapatosNOVA",
-    tags: ["React", "Tailwind"]
+    tags: ["HTML", "CSS", "Figma"]
   },
   {
     id: 7,
     title: "Café Pasquinelli",
     image: "../../public/img/cafe.webp",
-    description: "It is a design where JavaScript libraries were incorporated to achieve parallax effects and animations. In this page, you can appreciate the parallax effect achieved through JavaScript libraries. Animations are also included to bring the design to life and add dynamism.",
+    description: "A visually engaging website that uses JavaScript libraries to create parallax effects and scroll-based animations. The goal was to bring the static design to life with movement, interaction, and dynamic visual elements.",
     link: "https://gianni03.github.io/Restaurant/",
     github: "https://github.com/Gianni03/Restaurant",
-    tags: ["React", "Tailwind"]
+    tags: ["HTML", "CSS", "JavaScript"]
   },
 ];
