@@ -1,10 +1,18 @@
-import { projects as localProjects } from "../../../data/projects";
+import { getProjects } from "../../../api/project";
+import { useEffect, useState} from 'react'
+
 
 export default function useProjects() {
-  // Futuro: reemplazar localProjects por fetch a API
-  return {
-    projects: localProjects,
-    count: localProjects.length
-  };
+  const [projects, setProjects] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    getProjects().then(data => {
+      setProjects(data)
+      setLoading(false)
+    })
+  }, [])
+
+  return {projects, loading  };
 }
 
