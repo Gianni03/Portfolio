@@ -20,7 +20,7 @@ export const studies = [
     title: "CSS, React & Animations Courses",
     institution: "Josh Comeau",
     year: "2024–Present",
-    image: "/img/studies/josh-comeau.png",
+    image: "/img/studies/josh-happy-dark.png",
     certificateUrl: "https://www.joshwcomeau.com/courses/"
   },
   {
@@ -28,7 +28,7 @@ export const studies = [
     title: "Three.js Journey",
     institution: "Bruno Simon",
     year: "2024–Present",
-    image: "/img/studies/threejs-journey.png",
+    image: "/img/studies/threejs.webp",
     certificateUrl: "https://threejs-journey.com/"
   },
   {
@@ -37,6 +37,14 @@ export const studies = [
     institution: "University of Helsinki",
     year: "2024–Present",
     image: "/img/studies/fullstackopen.png",
+    certificateUrl: "https://fullstackopen.com/"
+  },
+  {
+    id: "freecodecamp",
+    title: "FreeCodeCamp",
+    institution: "FreeCodeCamp",
+    year: "2023–Present",
+    image: "/img/studies/fcc.png",
     certificateUrl: "https://fullstackopen.com/"
   }
 ];
