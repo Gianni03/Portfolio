@@ -6,9 +6,6 @@ export default function Projects() {
   const { projects } = useProjects();
 
   return (
-    <div>
-      <h1>Mis Proyectos</h1>
       <ProjectsGrid projects={projects}/>
-    </div>
   );
 }

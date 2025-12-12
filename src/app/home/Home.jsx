@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <>
       <Section title="Hero" id="hero"></Section>
-      <div className="mb-32 h-10 w-full bg-amber-700 "></div>
       <Section title="About Me" id="about"></Section>
       <Section title="Skills" id="skills"></Section>
 
