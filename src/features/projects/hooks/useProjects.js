@@ -1,4 +1,4 @@
-import { getProjects } from "../../../api/project";
+import { getProjects } from "../../../api/projects.supabase";
 import { useEffect, useState} from 'react'
 
 

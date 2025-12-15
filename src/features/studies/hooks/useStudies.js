@@ -1,4 +1,4 @@
-import { getStudies } from "../../../api/studies";
+import { getStudies } from "../../../api/studies.supabase";
 import { useEffect, useState} from 'react'
 
 

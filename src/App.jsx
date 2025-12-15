@@ -7,6 +7,7 @@ import Resume from './app/resume/Resume';
 import Admin from './app/admin/Admin';
 import ProjectsAdmin from './app/admin/ProjectsAdmin';
 import StudiesAdmin from './app/admin/StudiesAdmin';
+import Login from './app/admin/Login';
 
 function App() {
   return (
@@ -17,11 +18,12 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/studies" element={<Studies />} />
           <Route path="/resume" element={<Resume />} />
+          <Route path="/login" element={<Login />} />
         </Route>
-          <Route path="/admin" element={<Admin />}>
-            <Route path="projects" element={<ProjectsAdmin />} />
-            <Route path="studies" element={<StudiesAdmin />} />
-          </Route>
+        <Route path="/admin" element={<Admin />}>
+          <Route path="projects" element={<ProjectsAdmin />} />
+          <Route path="studies" element={<StudiesAdmin />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
