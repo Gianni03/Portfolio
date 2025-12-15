@@ -1,19 +1,9 @@
 import { Link, Outlet, Navigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabaseClient';
-// import { useEffect, useState } from 'react';
 import { useSession } from '../../hooks/useSession';
 
 export default function Admin() {
-  // const [session, setSession] = useState(null);
-  // const [loading, setLoading] = useState(true);
   const { session, loading } = useSession();
-
-  // useEffect(() => {
-  //   supabase.auth.getSession().then(({ data }) => {
-  //     setSession(data.session);
-  //     setLoading(false);
-  //   });
-  // }, []);
 
   if (loading) {
     return <div className="text-white p-10">Loading...</div>;
