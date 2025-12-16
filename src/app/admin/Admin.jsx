@@ -24,8 +24,8 @@ export default function Admin() {
           Studies
         </Link>
         <button
-          onClick={async () => {
-            await supabase.auth.signOut();
+          onClick={() => {
+            supabase.auth.signOut();
           }}
           className="ml-auto underline"
         >

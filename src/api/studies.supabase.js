@@ -2,7 +2,7 @@ import { supabase } from "../lib/supabaseClient";
 
 export async function getStudies() {
   const { data, error } = await supabase
-    .from("projects")
+    .from("studies")
     .select("*")
     .order("created_at", { ascending: false });
 
@@ -10,10 +10,10 @@ export async function getStudies() {
   return data;
 }
 
-export async function addProject(studie) {
+export async function addStudy(study) {
   const { data, error } = await supabase
     .from("studies")
-    .insert(studie)
+    .insert(study)
     .select()
     .single();
 
@@ -21,6 +21,6 @@ export async function addProject(studie) {
   return data;
 }
 
-export async function deleteStudies(id) {
+export async function deleteStudy(id) {
   await supabase.from("studies").delete().eq("id", id);
 }
