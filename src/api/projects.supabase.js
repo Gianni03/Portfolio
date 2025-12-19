@@ -18,6 +18,14 @@ export async function addProject({
   demo_url,
   repo_url,
 }) {
+
+   if (!title) {
+    throw new Error("Title is required");
+  }
+  if (!image) {
+    throw new Error("Image is required");
+  }
+
   // 1. Upload image
   const fileName = `project-${Date.now()}-${image.name}`;
 
@@ -39,11 +47,11 @@ export async function addProject({
     .from("projects")
     .insert({
       title,
-      description,
-      stack,
+      description: description || null,
+      stack: Array.isArray(stack) ? stack : [],
       image: publicData.publicUrl,
-      demo_url,
-      repo_url,
+      demo_url: demo_url || null,
+      repo_url: repo_url || null,
     })
     .select()
     .single();
