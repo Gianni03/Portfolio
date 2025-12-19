@@ -82,6 +82,7 @@ export default function StudiesAdmin() {
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Study title"
           className="px-3 py-1 text-black"
+          required
         />
         <input
           value={description}
@@ -101,6 +102,7 @@ export default function StudiesAdmin() {
           onChange={(e) => setInstitution(e.target.value)}
           placeholder="Study institution"
           className="px-3 py-1 text-black"
+          required
         />
         <input
           value={year}
@@ -108,7 +110,12 @@ export default function StudiesAdmin() {
           placeholder="Study year"
           className="px-3 py-1 text-black"
         />
-        <button className="bg-green-600 px-3 py-1 rounded">Add</button>
+        <button 
+          className="bg-green-600 px-3 py-1 rounded"
+          disabled={saving}
+          >
+            {saving ? 'Saving...' : 'Add'}
+          </button>
       </form>
 
 

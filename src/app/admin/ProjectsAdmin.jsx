@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import useProjects from '../../features/projects/hooks/useProjects';
-import { addProject, deleteProject, updateProject } from '../../api/projects.supabase';
+import {
+  addProject,
+  deleteProject,
+  updateProject,
+} from '../../api/projects.supabase';
 
 export default function ProjectsAdmin() {
   const { projects, loading, refetch } = useProjects();
@@ -13,7 +17,6 @@ export default function ProjectsAdmin() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
   const [editingId, setEditingId] = useState(null);
-
 
   const techsArray = stack
     .split(',')
@@ -91,12 +94,14 @@ export default function ProjectsAdmin() {
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Project title"
           className="px-3 py-1 text-black"
+          required
         />
         <input
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Project description"
           className="px-3 py-1 text-black"
+          required
         />
         <input
           value={stack}
@@ -110,6 +115,7 @@ export default function ProjectsAdmin() {
           onChange={(e) => setImage(e.target.files?.[0] ?? null)}
           placeholder="Project image"
           className="px-3 py-1 text-black"
+          required
         />
         <input
           value={demo_url}

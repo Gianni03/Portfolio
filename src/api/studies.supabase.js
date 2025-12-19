@@ -17,31 +17,41 @@ export async function addStudy({
   description,
   image,
 }) {
-  // 1. Upload image
-  const fileName = `study-${Date.now()}-${image.name}`;
+  // 1. Validaciones mínimas
+  if (!title || !institution) {
+    throw new Error("Title and institution are required");
+  }
 
-  const { data: uploadData, error: uploadError } =
-    await supabase.storage
+  let image_url = null;
+
+  // 2. Upload image (solo si existe)
+  if (image) {
+    const fileName = `study-${Date.now()}-${image.name}`;
+
+    const { data: uploadData, error: uploadError } =
+      await supabase.storage
+        .from("studies")
+        .upload(fileName, image);
+
+    if (uploadError) throw uploadError;
+
+    const { data: publicData } = supabase
+      .storage
       .from("studies")
-      .upload(fileName, image);
+      .getPublicUrl(uploadData.path);
 
-  if (uploadError) throw uploadError;
+    image_url = publicData.publicUrl;
+  }
 
-  // 2. Get public URL
-  const { data: publicData } = supabase
-    .storage
-    .from("studies")
-    .getPublicUrl(uploadData.path);
-
-  // 3. Insert into DB
+  // 3. Insert DB
   const { data, error } = await supabase
     .from("studies")
     .insert({
       title,
       institution,
-      year,
-      description,
-      image: publicData.publicUrl,
+      year: year || null,
+      description: description || null,
+      image: image_url,
     })
     .select()
     .single();
