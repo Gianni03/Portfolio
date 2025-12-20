@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getProfile, updateProfile } from '../../api/profile.supabase';
+import { getProfile, updateProfile } from '../../../api/profile.supabase';
 
 export function useProfile() {
   const [profile, setProfile] = useState(null);

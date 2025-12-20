@@ -8,6 +8,10 @@ import Admin from './app/admin/Admin';
 import ProjectsAdmin from './app/admin/ProjectsAdmin';
 import StudiesAdmin from './app/admin/StudiesAdmin';
 import Login from './app/admin/Login';
+import ResumeAdmin from './app/admin/ResumeAdmin';
+import ProfileAdmin from './app/admin/resume/ProfileAdmin';
+import WorkExperienceAdmin from './app/admin/resume/WorkExperienceAdmin';
+import ResumeStudiesAdmin from './app/admin/resume/StudiesAdmin';
 
 function App() {
   return (
@@ -23,6 +27,11 @@ function App() {
         <Route path="/admin" element={<Admin />}>
           <Route path="projects" element={<ProjectsAdmin />} />
           <Route path="studies" element={<StudiesAdmin />} />
+          <Route path="resume" element={<ResumeAdmin />}>
+            <Route path="profile" element={<ProfileAdmin />} />
+            <Route path="work-experience" element={<WorkExperienceAdmin />} />
+            <Route path="studies" element={<ResumeStudiesAdmin />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

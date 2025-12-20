@@ -23,6 +23,9 @@ export default function Admin() {
         <Link to="/admin/studies" className="underline">
           Studies
         </Link>
+        <Link to="/admin/resume" className="underline">
+          Resume
+        </Link>
         <button
           onClick={() => {
             supabase.auth.signOut();
