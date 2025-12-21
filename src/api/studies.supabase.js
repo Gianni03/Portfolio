@@ -4,7 +4,7 @@ export async function getStudies() {
   const { data, error } = await supabase
     .from("studies")
     .select("*")
-    .order("created_at", { ascending: false });
+    .order('year', { ascending: false });
 
   if (error) throw error;
   return data;

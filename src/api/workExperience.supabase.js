@@ -4,7 +4,9 @@ export async function getWorkExperience() {
   const { data, error } = await supabase
     .from("work_experience")
     .select("*")
-    .order("created_at", { ascending: false });
+    .order('is_current', { ascending: false })
+    .order('end_date', { ascending: false, nullsFirst: true })
+    .order('start_date', { ascending: false });
 
   if (error) throw error;
   return data;
