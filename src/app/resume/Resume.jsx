@@ -6,16 +6,13 @@ import Studies from "../../features/resume/components/Studies";
 
 export default function Resume() {
 
-  const { profile, loading } = useProfile();
+  const { loading } = useProfile();
 
 if (loading) return 'Loading...';
 
-console.log(profile);
 
   return (
     <div>
-      <h1>Mi CV</h1>
-      {/* componentes del resume  */}
       <Profile />
       <Skills />
       <WorkExperience />

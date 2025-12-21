@@ -3,12 +3,21 @@ import { useProfile } from '../../../features/resume/hooks/useProfile';
 
 export default function ProfileAdmin() {
   const { profile, loading, saving, saveProfile } = useProfile();
-  const [form, setForm] = useState(null);
+  const [form, setForm] = useState({
+    name: '',
+    role: '',
+    location: '',
+    email: '',
+    github: '',
+    linkedin: '',
+    portfolio: '',
+    summary: '',
+  });
 
   useEffect(() => {
-    if (!profile) return;
-
-    setForm((prev) => (prev.id === profile.id ? prev : profile));
+    if (profile) {
+      setForm(profile);
+    }
   }, [profile]);
 
   if (loading || !form) return <p>Loading profile...</p>;
