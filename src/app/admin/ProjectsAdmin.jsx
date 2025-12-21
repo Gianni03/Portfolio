@@ -129,7 +129,9 @@ export default function ProjectsAdmin() {
           placeholder="Project repo_url"
           className="px-3 py-1 text-black"
         />
-        <button className="bg-green-600 px-3 py-1 rounded">Add</button>
+        <button className="bg-green-600 px-3 py-1 rounded" disabled={saving}>
+          {saving ? 'Saving...' : 'Add'}
+        </button>
       </form>
 
       <ul className="space-y-4">

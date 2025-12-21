@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useWorkExperience  from '../../../features/resume/hooks/useWorkExperience';
+import useWorkExperience from '../../../features/resume/hooks/useWorkExperience';
 import {
   addWorkExperience,
   updateWorkExperience,
@@ -14,14 +14,46 @@ export default function WorkExperienceAdmin() {
   const [endDate, setEndDate] = useState('');
   const [isCurrent, setIsCurrent] = useState(false);
   const [description, setDescription] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(null);
+  const [editingId, setEditingId] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSaving(true);
+    setError(null);
 
     const descriptionArray = description
       .split('\n')
       .map((d) => d.trim())
       .filter(Boolean);
+
+    if (editingId){
+      try {
+        await updateWorkExperience(editingId, {
+          position,
+          company,
+          start_date: startDate,
+          end_date: endDate,
+          is_current: isCurrent,
+          description: descriptionArray,
+        });
+        console.log('UPDATE OK');
+        setPosition('');
+        setCompany('');
+        setStartDate('');
+        setEndDate('');
+        setIsCurrent(false);
+        setDescription('');
+        setEditingId(null);
+        refetch();
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setSaving(false);
+      }
+      return;
+    }
 
     try {
       await addWorkExperience({
@@ -45,6 +77,7 @@ export default function WorkExperienceAdmin() {
   };
 
   if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error</p>;
 
   return (
     <div>
@@ -106,8 +139,9 @@ export default function WorkExperienceAdmin() {
             className="px-3 py-2 text-black w-full"
           />
 
+          
           <button className="bg-green-600 px-4 py-2 rounded">
-            Add experience
+            {saving ? 'Saving...' : 'Add experience'}
           </button>
         </form>
       </div>
@@ -129,6 +163,20 @@ export default function WorkExperienceAdmin() {
                 </p>
               </div>
 
+              <button 
+                onClick={() => {
+                  setEditingId(exp.id);
+                  setPosition(exp.position);
+                  setCompany(exp.company);
+                  setStartDate(exp.start_date);
+                  setEndDate(exp.end_date);
+                  setIsCurrent(exp.is_current);
+                  setDescription(exp.description);
+                }}
+                className="bg-blue-600 px-3 py-1 rounded"
+              >
+                Edit
+              </button>
               <button
                 onClick={async () => {
                   await deleteWorkExperience(exp.id);
