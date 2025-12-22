@@ -41,14 +41,14 @@ export default function Header() {
 
   // Dynamic menu
   const navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'Proyectos', path: '#projects' },
-    { label: 'Habilidades', path: '#skills' },
-    { label: 'Estudios', path: '#studies' },
-    { label: 'Contact', path: '#contact' },
+    { id: 'home-main', label: 'Home', path: '/' },
+    { id: 'projects', label: 'Proyectos', path: '#projects' },
+    { id: 'skills', label: 'Habilidades', path: '#skills' },
+    { id: 'studies', label: 'Estudios', path: '#studies' },
+    { id: 'contact', label: 'Contact', path: '#contact' },
     isResume
-      ? { label: 'Home', path: '/' }
-      : { label: 'Resume Web', path: '/resume' },
+      ? { id: 'home-resume', label: 'Home', path: '/' }
+      : { id: 'resume-web', label: 'Resume Web', path: '/resume' },
   ];
 
   return (
@@ -64,7 +64,7 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-6 text-neutral-300">
-          {navItems.map(({ label, path }) => {
+          {navItems.map(({ id, label, path }) => {
             // HASH LINKS (smooth scroll)
             if (path.startsWith('#')) {
               const id = path.replace('#', '');
@@ -84,7 +84,7 @@ export default function Header() {
             // NORMAL ROUTES
             return (
               <NavLink
-                key={path}
+                key={id}
                 to={path}
                 className={({ isActive }) =>
                   `hover:text-white transition ${
@@ -110,13 +110,13 @@ export default function Header() {
       {/* Mobile Menu */}
       {open && (
         <nav className="md:hidden px-4 pb-4 flex flex-col gap-4 text-neutral-300">
-          {navItems.map(({ label, path }) => {
+          {navItems.map(({ id, label, path }) => {
             // HASH LINKS (smooth scroll)
             if (path.startsWith('#')) {
               const id = path.replace('#', '');
               return (
                 <button
-                  key={path}
+                  key={id}
                   onClick={() => {
                     scrollToId(id);
                     setOpen(false);
@@ -131,7 +131,7 @@ export default function Header() {
             // NORMAL ROUTES
             return (
               <NavLink
-                key={path}
+                key={id}
                 to={path}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
