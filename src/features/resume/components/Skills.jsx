@@ -1,9 +1,18 @@
 export default function Skills() {
   const skills = [
+    { name: 'Html', icon: '/img/skills/html5.svg' },
+    { name: 'CSS', icon: '/img/skills/csslang.webp' },
+    { name: 'JavaScript', icon: '/img/skills/javascript.svg' },
     { name: 'React', icon: '/img/skills/react.svg' },
     { name: 'TypeScript', icon: '/img/skills/typescript-icon.svg' },
-    { name: 'CSS', icon: '/img/skills/csslang.webp' },
     { name: 'Tailwind', icon: '/img/skills/tailwindcss-icon.svg' },
+    { name: 'Figma', icon: '/img/skills/figma.svg' },
+    { name: 'Git', icon: '/img/skills/git.svg' },
+    { name: 'GitHub', icon: '/img/skills/github.svg' },
+    { name: 'Python', icon: '/img/skills/python.svg' },
+    { name: 'Twig', icon: '/img/skills/twig.svg' },
+
+
   ];
   return (
     <section>
