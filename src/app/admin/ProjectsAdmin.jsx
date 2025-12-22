@@ -115,7 +115,6 @@ export default function ProjectsAdmin() {
           onChange={(e) => setImage(e.target.files?.[0] ?? null)}
           placeholder="Project image"
           className="px-3 py-1 text-black"
-          required
         />
         <input
           value={demo_url}
@@ -149,7 +148,7 @@ export default function ProjectsAdmin() {
                   setEditingId(p.id);
                   setTitle(p.title);
                   setDescription(p.description);
-                  setStack((p.techs || []).join(', '));
+                  setStack((p.stack || []).join(', '));
                   setDemo_url(p.demo_url || '');
                   setRepo_url(p.repo_url || '');
                 }}
