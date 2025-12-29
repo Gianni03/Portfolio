@@ -41,10 +41,9 @@ export default function Header() {
 
   // Dynamic menu
   const navItems = [
-    { id: 'home-main', label: 'Home', path: '/' },
-    { id: 'projects', label: 'Proyectos', path: '#projects' },
-    { id: 'skills', label: 'Habilidades', path: '#skills' },
-    { id: 'studies', label: 'Estudios', path: '#studies' },
+    { id: 'projects', label: 'Projects', path: '#projects' },
+    { id: 'skills', label: 'Skills', path: '#skills' },
+    { id: 'studies', label: 'Studies', path: '#studies' },
     { id: 'contact', label: 'Contact', path: '#contact' },
     isResume
       ? { id: 'home-resume', label: 'Home', path: '/' }
