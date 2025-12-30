@@ -1,4 +1,5 @@
 import Section from '../../ui/Section';
+import CurvedSectionTitle from '../../ui/section-titles/CurvedLoopSectionTitle';
 
 export default function Skills() {
   const skillsLogos = [
@@ -16,6 +17,11 @@ export default function Skills() {
 
   return (
     <Section title="Skills" id="skills" fullWidth={false}>
+      <CurvedSectionTitle
+        text="Skills"
+        curve={-50}
+        className="fill-[#7A43C1] transition-colors duration-500 hover:fill-[#fbfffe]"
+      />
       <p className="text-lg text-neutral-300">
         Here are some of the skills I possess:
       </p>
