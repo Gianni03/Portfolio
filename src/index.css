@@ -1,52 +1,41 @@
-@import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
 
-@layer base {
-  :root {
-    --bg: 185 100% 5%;        /* #001514 */
-    --surface: 270 40% 12%;   /* #290045 */
-    --text-primary: 0 0% 98%; /* #FBFFFE */
-    --text-secondary: 0 0% 70%;
-    --accent: 282 56% 51%;   /* #C12EAD */
-    --accent-soft: 260 45% 55%; /* #7A43C1 */
-  }
-}
 
 @layer base {
   html {
-    font-size: 16px;
     scroll-behavior: smooth;
   }
 
   body {
+    @apply min-h-screen bg-[#001514] text-[#FBFFFE] font-sans antialiased;
     font-family: 'Geist', system-ui, sans-serif;
-    background-color: hsl(var(--bg));
-    color: hsl(var(--text-primary));
-    line-height: 1.6;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
-
   h1 {
-    @apply text-4xl font-semibold tracking-tight;
+    @apply text-4xl md:text-5xl font-bold tracking-tight;
   }
 
   h2 {
-    @apply text-3xl font-semibold tracking-tight;
+    @apply text-3xl md:text-4xl font-semibold;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold;
+  }
+
+  h4 {
+    @apply text-xl font-medium;
   }
 
   p {
-    @apply text-base text-neutral-300 leading-relaxed;
+    @apply text-base leading-relaxed text-[#FBFFFE]/80;
   }
 
   a {
-    color: hsl(var(--accent));
-    @apply font-medium transition-colors;
+    @apply text-[#7A43C1] hover:text-[#C12EAD] transition-colors;
   }
 
-  a:hover {
-    color: hsl(var(--accent-soft));
+  ::selection {
+    background-color: #7a43c1;
+    color: #fbfffe;
   }
 }

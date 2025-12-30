@@ -3,6 +3,8 @@ import Section from '../../ui/Section';
 
 export default function AboutMe() {
   return (
+
+    // <div className="space-y-6"> este espaciando interno
     <Section title="About Me">
       <p className="text-lg text-neutral-300">
         Hello! I'm Gianni, a passionate frontend developer with a knack for
