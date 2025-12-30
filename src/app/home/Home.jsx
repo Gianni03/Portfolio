@@ -3,13 +3,15 @@ import Hero from '../hero/Hero';
 import AboutMe from '../about/AboutMe';
 import Projects from '../projects/Projects';
 import Studies from '../studies/Studies';
+import Skills from '../skills/Skills';
+import Contact from '../contact/Contact';
 
 export default function Home() {
   return (
     <>
       <Hero />
       <AboutMe />
-      <Section title="Skills" id="skills"></Section>
+      <Skills />
 
       <Section title="Projects" id="projects">
         <Projects />
@@ -17,7 +19,7 @@ export default function Home() {
       <Section title="Studies" id="studies">
         <Studies />
       </Section>
-      <Section title="Contact Me" id="contact"></Section>
+      <Contact />
     </>
   );
 }
