@@ -18,7 +18,7 @@ export default function Home() {
         <CurvedSectionTitle
           text="Projects"
                 curve={120}
-                className="fill-[#fbfffe] transition-colors duration-500 hover:fill-[#7A43C1]"
+                className="fill-[#fbfffe] transition-colors duration-1000 hover:fill-[#7A43C1]"
               />
         <Projects />
       </Section>
@@ -26,7 +26,7 @@ export default function Home() {
         <CurvedSectionTitle
                 text="Studies"
                 curve={-60}
-                className="fill-[#7A43C1] transition-colors duration-500 hover:fill-[#fbfffe]"
+                className="fill-[#7A43C1] transition-colors duration-1000 hover:fill-[#fbfffe]"
               />
         <Studies />
       </Section>

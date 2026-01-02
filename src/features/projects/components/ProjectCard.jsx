@@ -1,5 +1,4 @@
 import Card from '../../../ui/Card';
-import Button from '../../../ui/Button';
 
 export default function ProjectCard({ project }) {
   return (
@@ -37,9 +36,6 @@ export default function ProjectCard({ project }) {
           Repo →
         </a>
       )}
-      <Button variant="ghost" onClick={() => console.log('Button clicked!')}>
-        Custom Button
-      </Button>
     </Card>
   );
 }

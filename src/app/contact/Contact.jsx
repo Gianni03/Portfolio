@@ -8,7 +8,7 @@ export default function Contact() {
       <CurvedSectionTitle
         text="Contact Me"
         curve={60}
-        className="fill-[#fbfffe] transition-colors duration-500 hover:fill-[#7A43C1]"
+        className="fill-[#fbfffe] transition-colors duration-1000 hover:fill-[#7A43C1]"
         />
       </div>
       <div className="-mt-16">
@@ -16,7 +16,7 @@ export default function Contact() {
       <CurvedSectionTitle
         text="Get in Touch"
         curve={-60}
-        className="fill-[#7A43C1] transition-colors duration-500 hover:fill-[#fbfffe]"
+        className="fill-[#7A43C1] transition-colors duration-1000 hover:fill-[#fbfffe]"
         direction={"right"}
       />
       </div>

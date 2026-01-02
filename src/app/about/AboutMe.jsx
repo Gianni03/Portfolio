@@ -7,7 +7,7 @@ export default function AboutMe() {
       <CurvedSectionTitle
         text="About Me"
         curve={160}
-        className="fill-[#fbfffe] transition-colors duration-500 hover:fill-[#7A43C1]"
+        className="fill-[#fbfffe] transition-colors duration-1000 hover:fill-[#7A43C1]"
       />
 
       <div className="container mx-auto px-4 mt-12">
