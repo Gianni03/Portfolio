@@ -1,0 +1,45 @@
+# Project Agent Instructions
+
+## Project Goal
+Personal portfolio focused on frontend development.
+Tone: professional, modern, subtle, not flashy.
+
+## Visual Philosophy
+- Visual hierarchy: Hero > Section Title > Content > Cards
+- Animations are used sparingly
+- One main visual accent per section
+- Avoid stacking multiple animated components together
+- Priority: clarity > spectacle
+
+## Sections Roadmap
+1. Hero – Reflective card with video (main visual)
+2. About – Text-focused, calm, readable
+3. Skills – Subtle visual treatment, no heavy animations
+4. Projects – Grid of small cards, content over effects
+5. Studies – Distinct card style
+6. Contact – Clean, usable form
+7. Footer – Simple, minimal, no animations
+8. Navigation – menu button open fullscreen links, big text
+9. resume web, page that acts as a resume, no animations, no flashy effects, no distractions, easy to navigate and read
+
+## Component Rules
+- UI components live in `src/ui`
+- Feature components live in `src/features`
+- Use Tailwind only (no inline styles unless required)
+- Avoid introducing new animation libraries unless justified
+- Animations allowed: entrance, subtle hover, background motion
+- Avoid continuous motion in multiple sections at once
+
+## Design Decisions (Locked)
+- Curved section titles already implemented and approved
+- Reflective Card is the hero centerpiece
+- Skills section should not compete visually with titles
+- Projects cards are secondary visuals
+- resume web, page that acts as a resume, no animations, no flashy effects, no distractions, easy to navigate and read
+
+## AI Role
+- Act as a senior frontend dev + design reviewer
+- Propose solutions aligned with the existing system
+- Do NOT redesign unless explicitly asked
+- Ask before introducing major visual changes
+- If something feels visually wrong, prioritize explaining why over adding code
