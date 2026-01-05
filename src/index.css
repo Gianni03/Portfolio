@@ -37,7 +37,7 @@
   }
 
   ::selection {
-    background-color: #7a43c1;
+    background-color: rgb(122, 67, 193);
     color: #fbfffe;
   }
 }

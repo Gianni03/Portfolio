@@ -4,7 +4,7 @@ export default function HeroCard() {
   return (
     <div style={{ height: '600px', position: 'relative' }}>
       <ReflectiveCard
-        overlayColor="rgba(0, 0, 0, 0.2)"
+        overlayColor="rgba(122, 67, 193, 0.3)"
         blurStrength={5}
         glassDistortion={30}
         metalness={0.8}
