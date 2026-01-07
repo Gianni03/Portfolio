@@ -14,6 +14,8 @@ export default function ProjectsAdmin() {
   const [image, setImage] = useState(null);
   const [demo_url, setDemo_url] = useState('');
   const [repo_url, setRepo_url] = useState('');
+  const [visibility, setVisibility] = useState('secondary');
+  const [order, setOrder] = useState('');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
   const [editingId, setEditingId] = useState(null);
@@ -23,10 +25,25 @@ export default function ProjectsAdmin() {
     .map((t) => t.trim())
     .filter(Boolean);
 
+  const resetForm = () => {
+    setTitle('');
+    setDescription('');
+    setStack('');
+    setImage(null);
+    setDemo_url('');
+    setRepo_url('');
+    setVisibility('secondary');
+    setOrder('');
+    setEditingId(null);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSaving(true);
     setError(null);
+
+    const orderValue =
+      visibility === 'primary' && order !== '' ? parseInt(order, 10) : null;
 
     if (editingId) {
       try {
@@ -37,15 +54,11 @@ export default function ProjectsAdmin() {
           image,
           demo_url,
           repo_url,
+          visibility,
+          order: orderValue,
         });
         console.log('UPDATE OK');
-        setTitle('');
-        setDescription('');
-        setStack('');
-        setImage(null);
-        setDemo_url('');
-        setRepo_url('');
-        setEditingId(null);
+        resetForm();
         refetch();
       } catch (error) {
         console.log('UPDATE ERROR', error);
@@ -63,15 +76,11 @@ export default function ProjectsAdmin() {
         image,
         demo_url,
         repo_url,
+        visibility,
+        order: orderValue,
       });
       console.log('INSERT OK', result);
-
-      setTitle('');
-      setDescription('');
-      setStack('');
-      setImage(null);
-      setDemo_url('');
-      setRepo_url('');
+      resetForm();
       refetch();
     } catch (error) {
       console.log('INSERT ERROR', error);
@@ -88,7 +97,7 @@ export default function ProjectsAdmin() {
     <div>
       <h2 className="text-xl font-bold mb-4">Projects</h2>
 
-      <form onSubmit={handleSubmit} className="mb-6 flex gap-3">
+      <form onSubmit={handleSubmit} className="mb-6 flex flex-wrap gap-3">
         <input
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -128,8 +137,26 @@ export default function ProjectsAdmin() {
           placeholder="Project repo_url"
           className="px-3 py-1 text-black"
         />
+        <select
+          value={visibility}
+          onChange={(e) => setVisibility(e.target.value)}
+          className="px-3 py-1 text-black"
+        >
+          <option value="secondary">Secondary</option>
+          <option value="primary">Primary</option>
+        </select>
+        {visibility === 'primary' && (
+          <input
+            type="number"
+            value={order}
+            onChange={(e) => setOrder(e.target.value)}
+            placeholder="Order (1, 2, 3...)"
+            className="px-3 py-1 text-black w-32"
+            min="1"
+          />
+        )}
         <button className="bg-green-600 px-3 py-1 rounded" disabled={saving}>
-          {saving ? 'Saving...' : 'Add'}
+          {saving ? 'Saving...' : editingId ? 'Update' : 'Add'}
         </button>
       </form>
 
@@ -139,7 +166,16 @@ export default function ProjectsAdmin() {
             key={p.id}
             className="bg-neutral-800 p-4 rounded flex justify-between"
           >
-            <span>{p.title}</span>
+            <span>
+              {p.title}
+              <span className="ml-2 text-sm text-neutral-400">
+                ({p.visibility || 'secondary'}
+                {p.visibility === 'primary' && p.order != null
+                  ? ` #${p.order}`
+                  : ''}
+                )
+              </span>
+            </span>
 
             <div className="flex gap-3">
               <button
@@ -151,6 +187,8 @@ export default function ProjectsAdmin() {
                   setStack((p.stack || []).join(', '));
                   setDemo_url(p.demo_url || '');
                   setRepo_url(p.repo_url || '');
+                  setVisibility(p.visibility || 'secondary');
+                  setOrder(p.order != null ? String(p.order) : '');
                 }}
               >
                 Edit

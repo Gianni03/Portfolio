@@ -22,6 +22,31 @@ Tone: professional, modern, subtle, not flashy.
 8. Navigation – menu button open fullscreen links, big text
 9. resume web, page that acts as a resume, no animations, no flashy effects, no distractions, easy to navigate and read
 
+## Projects Architecture (Locked)
+
+Projects are divided by narrative role, not importance.
+
+### Project Visibility
+Each project must have a `visibility` field with one of the following values:
+
+- `primary` → Core projects, shown in a dedicated scroll-based narrative section (max 3)
+- `secondary` → Supporting projects, shown as cards/grid
+
+
+### Ordering
+- `primary` projects use an explicit `order` field to control narrative flow.
+- `secondary` projects do not require ordering.
+
+### Rendering Rules
+- Primary projects are rendered in a vertical or pinned scroll section.
+- Secondary projects are rendered as static cards.
+
+
+### Admin Rules
+- Admin must allow changing `visibility`
+- Admin must allow editing `order` only for `primary` projects
+- No visual effects or animations are managed from admin
+
 ## Component Rules
 - UI components live in `src/ui`
 - Feature components live in `src/features`

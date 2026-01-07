@@ -17,6 +17,8 @@ export async function addProject({
   image,
   demo_url,
   repo_url,
+  visibility = 'secondary',
+  order = null,
 }) {
 
   if (!title) {
@@ -57,6 +59,8 @@ export async function addProject({
       image: publicData.publicUrl,
       demo_url: demo_url || null,
       repo_url: repo_url || null,
+      visibility,
+      order: visibility === 'primary' ? order : null,
     })
     .select()
     .single();
@@ -73,6 +77,8 @@ export async function updateProject(id, {
   image,
   demo_url,
   repo_url,
+  visibility,
+  order,
 }) {
   let imageUrl;
 
@@ -105,6 +111,8 @@ export async function updateProject(id, {
     stack,
     demo_url,
     repo_url,
+    visibility,
+    order: visibility === 'primary' ? order : null,
   };
 
   if (imageUrl) {
