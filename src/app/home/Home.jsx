@@ -17,17 +17,21 @@ export default function Home() {
       <Section title="Projects" id="projects">
         <CurvedSectionTitle
           text="Projects"
-                curve={120}
-                className="fill-[#fbfffe] transition-colors duration-1000 hover:fill-[#7A43C1]"
-              />
-        <Projects />
+          curve={120}
+          className="fill-[#fbfffe] transition-colors duration-1000 hover:fill-[#7A43C1]"
+        />
+        <div id="projects" className="relative">
+          <div className="pt-20 pb-10 px-4">
+            <Projects />
+          </div>
+        </div>
       </Section>
       <Section title="Studies" id="studies">
         <CurvedSectionTitle
-                text="Studies"
-                curve={-60}
-                className="fill-[#7A43C1] transition-colors duration-1000 hover:fill-[#fbfffe]"
-              />
+          text="Studies"
+          curve={-60}
+          className="fill-[#7A43C1] transition-colors duration-1000 hover:fill-[#fbfffe]"
+        />
         <Studies />
       </Section>
       <Contact />
