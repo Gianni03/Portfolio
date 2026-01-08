@@ -41,6 +41,10 @@ Each project must have a `visibility` field with one of the following values:
 - Primary projects are rendered in a vertical or pinned scroll section.
 - Secondary projects are rendered as static cards.
 
+### studies
+- studies are rendered as a scroll stack.
+- studies are rendered as cards.
+
 
 ### Admin Rules
 - Admin must allow changing `visibility`

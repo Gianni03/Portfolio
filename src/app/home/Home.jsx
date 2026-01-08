@@ -20,8 +20,8 @@ export default function Home() {
           curve={120}
           className="fill-[#fbfffe] transition-colors duration-1000 hover:fill-[#7A43C1]"
         />
-        <div id="projects" className="relative">
-          <div className="pt-20 pb-10 px-4">
+        <div id="projects" className="relative w-full">
+          <div className="pt-20 pb-10 px-4 relative w-full">
             <Projects />
           </div>
         </div>
