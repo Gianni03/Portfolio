@@ -13,7 +13,7 @@ export default function Admin() {
     return <Navigate to="/login" replace />;
   }
   return (
-    <div className="text-white p-10">
+    <div className="text-white p-10 bg-black">
       <h2 className="text-3xl font-bold mb-10">Admin Panel</h2>
 
       <nav className="flex gap-6 mb-10">

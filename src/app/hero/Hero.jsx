@@ -6,25 +6,23 @@ import LightRays from '@/components/LightRays';
 export default function Hero() {
   return (
     <Section id="home" fullWidth={false} className="relative">
-      <div className="grid gap-12 items-start mt-6 md:grid-cols-[420px_1fr]">
+       <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 mt-6 md:grid md:grid-cols-[420px_1fr] md:items-start md:gap-12">
         {/* Left: Video Card */}
-        <div className="flex justify-center md:justify-start">
+        <div className="flex w-full justify-center md:justify-start">
           <HeroCard />
         </div>
 
         {/* Right: Text */}
-        <div className="relative z-10 max-w-xl md:mt-20">
+        <div className="relative z-10 w-full max-w-xl text-center md:text-left md:mt-20">
           <GradientText
             colors={['#7a43c1', '#FF9FFC', '#fbfffe']}
             animationSpeed={10}
             yoyo={false}
-            className="text-7xl md:text-6xl font-semibold leading-tight"
+            className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-semibold leading-tight"
           >
             Frontend Developer
           </GradientText>
-          <div
-            className="mt-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/15 p-6 md:p-8"
-          >
+          <div className="mt-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/15 p-6 md:p-8">
             <span className="block text-3xl font-medium tracking-tight text-[#fbfffe]/90">
               focused on clean UI
             </span>
@@ -32,7 +30,7 @@ export default function Hero() {
               & real-world products
             </span>
           </div>
-          <p className="mt-6 max-w-sm text-sm leading-relaxed text-[#fbfffe]/70">
+          <p className="mt-6 max-w-sm mx-auto md:mx-0 text-sm leading-relaxed text-[#fbfffe]/70">
             I build thoughtful interfaces with React, CSS and motion,
             prioritizing clarity, performance and detail.
           </p>

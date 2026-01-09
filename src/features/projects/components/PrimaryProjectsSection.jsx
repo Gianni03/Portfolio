@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'motion/react';
 
 export default function PrimaryProjectSection({ project, index }) {
   const containerRef = useRef(null);
+  
 
   // Medimos el scroll dentro de esta sección específica que mide 200vh
   const { scrollYProgress } = useScroll({
