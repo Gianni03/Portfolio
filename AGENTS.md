@@ -45,6 +45,25 @@ Each project must have a `visibility` field with one of the following values:
 - studies are rendered as a scroll stack.
 - studies are rendered as cards.
 
+### contact
+- contact is rendered as a form.  
+- contact form has a submit button that sends the form data to the server.
+- contact form has a reset button that resets the form.
+- contact form has a success message that appears when the form is submitted.
+- contact form has an error message that appears when the form fails to submit.
+- contact form has a loading message that appears when the form is being submitted.
+- structure 
+             |  Contact                          |
+             |  Title                             |
+             |  Short copy                        |
+             |                                    |
+             |  → Email                           |
+             |  → LinkedIn                        |
+             |                                    |
+             |  Divider                           |
+             |                                    |
+             |  Form (simple)                     |
+
 
 ### Admin Rules
 - Admin must allow changing `visibility`
