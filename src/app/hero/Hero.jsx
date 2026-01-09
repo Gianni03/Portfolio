@@ -13,7 +13,7 @@ export default function Hero() {
         </div>
 
         {/* Right: Text */}
-        <div className="relative z-10 w-full max-w-xl text-center md:text-left md:mt-20">
+        <div className="relative z-10 w-full max-w-xl text-center md:text-left">
           <GradientText
             colors={['#7a43c1', '#FF9FFC', '#fbfffe']}
             animationSpeed={10}
