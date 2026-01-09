@@ -69,6 +69,10 @@ Each project must have a `visibility` field with one of the following values:
 - Admin must allow changing `visibility`
 - Admin must allow editing `order` only for `primary` projects
 - No visual effects or animations are managed from admin
+- admin must have a solid and clear layout
+- admin must have a solid and clear navigation
+- admin must have a solid and clear footer
+- admin must have a solid and clear forms for each section and nice styling
 
 ## Component Rules
 - UI components live in `src/ui`

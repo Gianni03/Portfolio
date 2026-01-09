@@ -21,26 +21,40 @@ export default function Login() {
   }
 
   return (
-    <div className="max-w-md mx-auto mt-20">
-      <h2 className="text-2xl font-bold mb-6">Admin Login</h2>
+    <div className="min-h-screen bg-black flex items-center justify-center p-6">
+      <div className="w-full max-w-md bg-neutral-900/50 border border-neutral-800 p-8 rounded-2xl shadow-2xl backdrop-blur-lg">
+        <div className="mb-8 text-center">
+          <h2 className="text-2xl font-light text-white tracking-widest uppercase mb-2">
+            Admin Access
+          </h2>
+          <p className="text-neutral-500 text-sm">
+            Enter you email to receive a magic link
+          </p>
+        </div>
 
-      <form onSubmit={handleLogin} className="flex flex-col gap-4">
-        <input
-          type="email"
-          placeholder="you@email.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="p-2 rounded text-black"
-          required
-        />
+        <form onSubmit={handleLogin} className="flex flex-col gap-6">
+          <div className="flex flex-col gap-2">
+            <label className="text-xs uppercase tracking-wider text-neutral-500 ml-1">
+              Email Address
+            </label>
+            <input
+              type="email"
+              placeholder="you@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-3 text-white placeholder-neutral-700 focus:outline-none focus:border-neutral-600 focus:ring-1 focus:ring-neutral-600 transition-all"
+              required
+            />
+          </div>
 
-        <button
-          disabled={loading}
-          className="bg-amber-600 p-2 rounded font-bold"
-        >
-          {loading ? 'Sending...' : 'Send magic link'}
-        </button>
-      </form>
+          <button
+            disabled={loading}
+            className="w-full bg-white text-black font-medium py-3 rounded-lg hover:bg-neutral-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          >
+            {loading ? 'Sending...' : 'Send Magic Link'}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
