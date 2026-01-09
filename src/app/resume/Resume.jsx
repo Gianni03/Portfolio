@@ -12,11 +12,11 @@ if (loading) return 'Loading...';
 
 
   return (
-    <div>
+     <main className="max-w-4xl mx-auto px-6 py-20 space-y-28">
       <Profile />
       <Skills />
       <WorkExperience />
       <Studies />
-    </div>
+    </main>
   );
 }

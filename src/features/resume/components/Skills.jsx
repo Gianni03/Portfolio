@@ -15,10 +15,10 @@ export default function Skills() {
 
   ];
   return (
-    <section>
+    <section className="space-y-10">
       <h2 className="text-3xl font-bold mb-8">Skills</h2>
 
-      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 gap-y-6 bg-neutral-900 p-6 rounded-lg">
         {skills.map((skill) => (
           <li
             key={skill.name}
