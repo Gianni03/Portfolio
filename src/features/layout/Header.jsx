@@ -8,14 +8,15 @@ export default function Header() {
   const location = useLocation();
   const isResume = location.pathname === '/resume';
 
-  // Smooth Scroll handler
   const scrollToId = (id) => {
     const el = document.getElementById(id);
     if (!el) return;
-
     el.scrollIntoView({ behavior: 'smooth' });
   };
+
   useEffect(() => {
+    if (isResume) return;
+
     const sections = ['projects', 'skills', 'studies', 'contact'];
 
     const observer = new IntersectionObserver(
@@ -26,9 +27,7 @@ export default function Header() {
           }
         });
       },
-      {
-        threshold: 0.6, // 60% visible = activa la sección
-      }
+      { threshold: 0.6 }
     );
 
     sections.forEach((id) => {
@@ -37,64 +36,69 @@ export default function Header() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [isResume]);
 
-  // Dynamic menu
-  const navItems = [
-    { id: 'projects', label: 'Projects', path: '#projects' },
-    { id: 'skills', label: 'Skills', path: '#skills' },
-    { id: 'studies', label: 'Studies', path: '#studies' },
-    { id: 'contact', label: 'Contact', path: '#contact' },
-    isResume
-      ? { id: 'home-resume', label: 'Home', path: '/' }
-      : { id: 'resume-web', label: 'Resume Web', path: '/resume' },
+  const homeNavItems = [
+    { id: 'projects', label: 'Projects' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'studies', label: 'Studies' },
+    { id: 'contact', label: 'Contact' },
+    { id: 'resume', label: 'Resume Web', path: '/resume' },
   ];
 
   return (
     <header className="sticky top-0 z-50 bg-neutral-950/90 backdrop-blur-md border-b border-neutral-800">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div className="container mx-auto px-6 py-6 flex justify-between items-center">
+
         {/* Logo */}
-        <NavLink
-          to="/"
+        <button
+          onClick={() => {
+            if (isResume) {
+              window.location.href = '/';
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
           className="text-xl font-bold tracking-tight hover:text-neutral-300 transition"
         >
           Gianni.dev
-        </NavLink>
+        </button>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-6 text-neutral-300">
-          {navItems.map(({ id, label, path }) => {
-            // HASH LINKS (smooth scroll)
-            if (path.startsWith('#')) {
-              const id = path.replace('#', '');
+          {!isResume ? (
+            homeNavItems.map((item) => {
+              if (item.path) {
+                return (
+                  <NavLink
+                    key={item.id}
+                    to={item.path}
+                    className="hover:text-white transition"
+                  >
+                    {item.label}
+                  </NavLink>
+                );
+              }
+
               return (
                 <button
-                  key={path}
-                  onClick={() => scrollToId(id)}
+                  key={item.id}
+                  onClick={() => scrollToId(item.id)}
                   className={`hover:text-white transition ${
-                    activeSection === id ? 'text-white font-semibold' : ''
+                    activeSection === item.id
+                      ? 'text-white font-semibold'
+                      : ''
                   }`}
                 >
-                  {label}
+                  {item.label}
                 </button>
               );
-            }
-
-            // NORMAL ROUTES
-            return (
-              <NavLink
-                key={id}
-                to={path}
-                className={({ isActive }) =>
-                  `hover:text-white transition ${
-                    isActive ? 'text-white font-semibold' : ''
-                  }`
-                }
-              >
-                {label}
-              </NavLink>
-            );
-          })}
+            })
+          ) : (
+            <NavLink to="/" className="hover:text-white transition">
+              Portfolio
+            </NavLink>
+          )}
         </nav>
 
         {/* Mobile toggle */}
@@ -109,40 +113,43 @@ export default function Header() {
       {/* Mobile Menu */}
       {open && (
         <nav className="md:hidden px-4 pb-4 flex flex-col gap-4 text-neutral-300">
-          {navItems.map(({ id, label, path }) => {
-            // HASH LINKS (smooth scroll)
-            if (path.startsWith('#')) {
-              const id = path.replace('#', '');
+          {!isResume ? (
+            homeNavItems.map((item) => {
+              if (item.path) {
+                return (
+                  <NavLink
+                    key={item.id}
+                    to={item.path}
+                    onClick={() => setOpen(false)}
+                    className="py-2 border-b border-neutral-800 hover:text-white"
+                  >
+                    {item.label}
+                  </NavLink>
+                );
+              }
+
               return (
                 <button
-                  key={id}
+                  key={item.id}
                   onClick={() => {
-                    scrollToId(id);
+                    scrollToId(item.id);
                     setOpen(false);
                   }}
-                  className="py-2 border-b border-neutral-800 hover:text-white"
+                  className="py-2 border-b border-neutral-800 hover:text-white text-left"
                 >
-                  {label}
+                  {item.label}
                 </button>
               );
-            }
-
-            // NORMAL ROUTES
-            return (
-              <NavLink
-                key={id}
-                to={path}
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  `py-2 border-b border-neutral-800 ${
-                    isActive ? 'text-white font-semibold' : 'hover:text-white'
-                  }`
-                }
-              >
-                {label}
-              </NavLink>
-            );
-          })}
+            })
+          ) : (
+            <NavLink
+              to="/"
+              onClick={() => setOpen(false)}
+              className="py-2 border-b border-neutral-800 hover:text-white"
+            >
+              Portfolio
+            </NavLink>
+          )}
         </nav>
       )}
     </header>
