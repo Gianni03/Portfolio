@@ -10,7 +10,12 @@ export default function Login() {
   async function handleLogin(e) {
     e.preventDefault();
     setLoading(true);
-    const { error } = await supabase.auth.signInWithOtp({ email });
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: `${window.location.origin}/admin`,
+      },
+    });
     setLoading(false);
     if (error) {
       alert('Error sending login link: ' + error.message);
