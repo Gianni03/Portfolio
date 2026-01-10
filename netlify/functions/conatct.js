@@ -2,7 +2,7 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const handler = async (event) => {
+export async function handler(event) {
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
@@ -15,8 +15,8 @@ export const handler = async (event) => {
   try {
     await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
-      to: ["giannipasquinelli@gmail.com"],
-      subject: `New message from ${name}`,
+      to: ["gianipasquinelli@gmail.com"],
+      subject: `New contact from ${name}`,
       reply_to: email,
       html: `
         <p><strong>Name:</strong> ${name}</p>
@@ -29,10 +29,10 @@ export const handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({ ok: true }),
     };
-  } catch (error) {
+  } catch (err) {
     return {
       statusCode: 500,
       body: JSON.stringify({ error: "Email failed" }),
     };
   }
-};
+}
