@@ -2,19 +2,19 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).end();
+export async function handler(event) {
+  if (event.httpMethod !== "POST") {
+    return { statusCode: 405 };
   }
 
-  const { name, email, message } = req.body;
+  const { name, email, message } = JSON.parse(event.body);
 
   try {
     await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
       to: ["tuemail@gmail.com"],
       subject: `New contact from ${name}`,
-      reply_to: email,
+      replyTo: email,
       html: `
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
@@ -22,8 +22,14 @@ export default async function handler(req, res) {
       `,
     });
 
-    res.status(200).json({ ok: true });
-  } catch {
-    res.status(500).json({ error: "Email failed" });
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ ok: true }),
+    };
+  } catch (err) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "Email failed" }),
+    };
   }
 }
