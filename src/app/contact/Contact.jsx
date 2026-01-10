@@ -82,7 +82,11 @@ export default function Contact() {
         <form
           onSubmit={handleSubmit}
           className="flex flex-col gap-8 text-left pb-10"
+          method="POST"
+          data-netlify="true"
+          name="contact"
         >
+          <input type="hidden" name="contact" value="contact" />
           <input
             type="text"
             name="name"
