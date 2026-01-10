@@ -4,7 +4,6 @@
 > **Location:** Argentina  
 > **Status:** Open to new opportunities
 
-![Portfolio Banner](</public/img/bg/wave(1).svg>)
 
 ## 📖 The Story
 
@@ -35,8 +34,7 @@ This application is built on a modern, scalable stack designed for performance a
 - **API:** Serverless functions for handling contact form submissions (via Resend).
 
 ### Design Philosophy
-
-- **"Tokio Hack" Theme:** The color palette involves deep purples and neons, inspired by my VS Code theme.
+- **Minimalist & Clean:** Focus on content with ample whitespace and clear typography.
 - **Glassmorphism & Depth:** Heavy use of transparent layers and blurs to create depth without clutter.
 - **Performance First:** 3D elements are carefully optimized (using OGL instead of heavier libraries where possible) to ensure smooth 60fps on most devices.
 
