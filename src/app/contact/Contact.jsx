@@ -60,7 +60,7 @@ export default function Contact() {
           className="flex flex-col gap-8 text-left pb-10"
         >
           {/* Required hidden fields */}
-          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="contact" value="contact" />
           <input type="hidden" name="bot-field" />
 
           <input
