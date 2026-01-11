@@ -2,3 +2,13 @@
   command = "pnpm build"
   publish = "dist"
 
+[redirects]
+  from = "/success.html"
+  to = "/success.html"
+  status = 200
+
+[redirects]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
