@@ -53,6 +53,7 @@ export default function Contact() {
         {/* Netlify Form */}
         <form
           name="contact"
+          action="/success"
           method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
