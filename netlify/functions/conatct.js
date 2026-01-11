@@ -1,14 +1,15 @@
-import { Resend } from "resend";
+import { Resend, process, exports } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function handler(event) {
+exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
       body: "Method Not Allowed",
     };
   }
+
 
   const { name, email, message } = JSON.parse(event.body);
 
