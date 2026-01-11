@@ -18,91 +18,70 @@ export default function Contact() {
       <div className="relative z-10 max-w-xl mx-auto text-left">
         <GradientText
           colors={['#7a43c1', '#FF9FFC', '#fbfffe']}
-          animationSpeed={10}
-          yoyo={false}
           className="text-5xl md:text-7xl font-bold tracking-tight mb-10"
         >
           Contact
         </GradientText>
 
-        <p className="mt-6 text-sm leading-relaxed text-[#fbfffe]">
-          Open to frontend roles, freelance work and collaborations. Feel free
-          to reach out.
+        <p className="mt-6 text-sm text-[#fbfffe]">
+          Open to frontend roles, freelance work and collaborations.
         </p>
 
-        {/* Direct links */}
-        <div className="mt-8 space-y-2 text-sm text-left max-w-md">
+        <div className="mt-10 space-y-4 text-base">
           <a
             href="mailto:giannipasquinelli@gmail.com"
-            className="block text-neutral-200 hover:text-white transition"
+            className="
+      group
+      flex items-center gap-3
+      rounded-xl
+      border border-white/10
+      px-6 py-4
+      text-white
+      transition-all duration-300 ease-out
+      hover:border-[#7a43c1]/50
+      hover:bg-linear-to-r hover:from-[#7a43c1]/10 hover:to-transparent
+      hover:shadow-[0_0_30px_-10px_#7a43c1]
+    "
           >
-            → giannipasquinelli@gmail.com
+            <span
+              className="
+        inline-block
+        transition-transform duration-300 ease-out
+        group-hover:translate-x-1
+      "
+            >
+              → Send me an email
+            </span>
           </a>
+
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/giannipasquinelli/"
             target="_blank"
             rel="noopener noreferrer"
-            className="block text-neutral-200 hover:text-white transition"
+            className="
+      group
+      flex items-center gap-3
+      rounded-xl
+      border border-white/10
+      px-6 py-4
+      text-white
+      transition-all duration-300 ease-out
+      hover:border-[#FF9FFC]/50
+      hover:bg-linear-to-r hover:from-[#FF9FFC]/10 hover:to-transparent
+      hover:shadow-[0_0_30px_-10px_#FF9FFC]
+    "
           >
-            → LinkedIn
+            <span
+              className="
+        inline-block
+        transition-transform duration-300 ease-out
+        group-hover:translate-x-1
+      "
+            >
+              → Connect on LinkedIn
+            </span>
           </a>
         </div>
-
-        <div className="my-14 h-px bg-white/10" />
-
-        {/* Netlify Form */}
-        <form
-          name="contact"
-          action="/success"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          className="flex flex-col gap-8 text-left pb-10"
-        >
-          {/* Required hidden fields */}
-          <input type="hidden" name="contact" value="contact" />
-          <input type="hidden" name="bot-field" />
-
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            required
-            className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-5 text-base text-white placeholder:text-neutral-500 focus:outline-none focus:border-white/20"
-          />
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            required
-            className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-5 text-base text-white placeholder:text-neutral-500 focus:outline-none focus:border-white/20"
-          />
-
-          <textarea
-            name="message"
-            placeholder="Message"
-            rows={4}
-            required
-            className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-5 text-base text-white placeholder:text-neutral-500 focus:outline-none focus:border-white/20 resize-none"
-          />
-
-          <div className="flex items-center gap-4 pt-6">
-            <button
-              type="submit"
-              className="rounded-full bg-white px-6 py-2 text-sm font-medium text-black hover:bg-neutral-200 transition"
-            >
-              Send
-            </button>
-
-            <button
-              type="reset"
-              className="text-sm text-neutral-400 hover:text-neutral-200 transition"
-            >
-              Reset
-            </button>
-          </div>
-        </form>
       </div>
     </Section>
   );
