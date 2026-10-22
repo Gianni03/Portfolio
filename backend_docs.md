@@ -101,7 +101,29 @@ VITE_SUPABASE_ANON_KEY=tu-clave-publica-anonima
 
 > **Nota de Seguridad**: La `ANON_KEY` es segura para exponer en el navegador siempre y cuando se configuren las políticas **RLS (Row Level Security)** en Supabase para restringir las escrituras/borrados solo a usuarios autenticados (Admin).
 
-## 7. Sistema de Correo Contacto
+## 7. Keep-alive de Supabase
+
+El plan Free de Supabase pausa los proyectos que no registran **actividad de base de datos** durante 7 días. Los sitios de portafolio reciben visitas esporádicas, así que sin intervención el proyecto se pausa y el sitio queda sin contenido dinámico.
+
+Ubicación: `netlify/functions/keep-alive.mjs`
+
+Es una **Netlify Scheduled Function** que corre cada 6 horas y ejecuta un `GET` contra PostgREST:
+
+```
+GET {VITE_SUPABASE_URL}/rest/v1/projects?select=id&limit=1
+```
+
+Detalle importante: el ping va a PostgREST y no a `/auth/v1/health`. El endpoint de health responde sin consultar PostgreSQL, por lo que **no reinicia el contador de inactividad**. Una lectura vía PostgREST evalúa las políticas RLS y ejecuta una query real, que es lo que Supabase mide.
+
+Respuestas de la función:
+
+- `200`: la query se ejecutó correctamente.
+- `500`: faltan `VITE_SUPABASE_URL` o `VITE_SUPABASE_ANON_KEY` en el entorno de Netlify.
+- `502`: Supabase respondió con error o la petición falló. El detalle queda en los logs de la función, sin exponer la key.
+
+No requiere configuración adicional en el dashboard: la función reutiliza las mismas variables de entorno que ya usa el build. Los logs se consultan en Netlify → Functions → `keep-alive`.
+
+## 8. Sistema de Correo Contacto
 
 Ubicación: `/php/mail.php`
 
