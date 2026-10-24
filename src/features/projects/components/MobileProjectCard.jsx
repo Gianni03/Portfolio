@@ -9,6 +9,8 @@ export default function MobileProjectCard({ project, index, total }) {
           <img
             src={image}
             alt={title}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-linear-to-t from-neutral-900 via-transparent to-transparent" />

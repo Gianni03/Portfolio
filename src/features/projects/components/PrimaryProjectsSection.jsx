@@ -42,6 +42,8 @@ export default function PrimaryProjectSection({ project, index }) {
             <img
               src={project.image}
               alt={project.title}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover opacity-30 blur-[2px]"
             />
             <div className="absolute inset-0 bg-linear-to-b from-[#001514] via-transparent to-[#001514]" />
@@ -98,6 +100,8 @@ export default function PrimaryProjectSection({ project, index }) {
                 <img
                   src={project.image}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </motion.div>

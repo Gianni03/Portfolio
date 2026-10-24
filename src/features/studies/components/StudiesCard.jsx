@@ -7,7 +7,7 @@ export default function StudiesCard({ study, index = 0, total = 1 }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
         {/* Imagen */}
         <div className="relative h-48 lg:h-64 overflow-hidden">
-          <img src={image} alt={title} className="w-full h-full object-contain aspect-auto" />
+          <img src={image} alt={title} loading="lazy" decoding="async" className="w-full h-full object-contain aspect-auto" />
           <div className="absolute inset-0 bg-linear-to-t from-neutral-900 via-transparent to-transparent lg:bg-linear-to-r" />
         </div>
 
