@@ -1,10 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useProjects from '../../features/projects/hooks/useProjects';
 import {
   addProject,
   deleteProject,
   updateProject,
 } from '../../api/projects.supabase';
+
+const MAX_IMAGE_BYTES = 300 * 1024;
+
+const formatSize = (bytes) =>
+  bytes >= 1024 * 1024
+    ? `${(bytes / (1024 * 1024)).toFixed(1)} MB`
+    : `${Math.round(bytes / 1024)} KB`;
 
 export default function ProjectsAdmin() {
   const { projects, loading, refetch } = useProjects();
@@ -19,6 +26,24 @@ export default function ProjectsAdmin() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
   const [editingId, setEditingId] = useState(null);
+  const fileInputRef = useRef(null);
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const currentProject = editingId
+    ? projects?.find((p) => p.id === editingId)
+    : null;
+  const currentImage = currentProject?.image ?? null;
+  const tooHeavy = image ? image.size > MAX_IMAGE_BYTES : false;
+
+  useEffect(() => {
+    if (!image) {
+      setImagePreview(null);
+      return;
+    }
+    const url = URL.createObjectURL(image);
+    setImagePreview(url);
+    return () => URL.revokeObjectURL(url);
+  }, [image]);
 
   const techsArray = stack
     .split(',')
@@ -35,6 +60,8 @@ export default function ProjectsAdmin() {
     setVisibility('secondary');
     setOrder('');
     setEditingId(null);
+    setError(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
   const handleSubmit = async (e) => {
@@ -91,7 +118,6 @@ export default function ProjectsAdmin() {
   };
 
   if (loading) return <p>Cargando...</p>;
-  if (error) return <p>Error</p>;
 
   return (
     <div>
@@ -212,14 +238,70 @@ export default function ProjectsAdmin() {
                 Cover Image
               </label>
               <input
+                ref={fileInputRef}
                 type="file"
                 accept="image/*"
                 onChange={(e) => setImage(e.target.files?.[0] ?? null)}
                 className="w-full text-sm text-neutral-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-neutral-800 file:text-white hover:file:bg-neutral-700 transition-all"
               />
+
+              {image ? (
+                <div className="mt-3 rounded-lg border border-neutral-800 bg-neutral-950 p-3">
+                  <div className="flex items-center justify-between gap-3 mb-2">
+                    <span className="text-xs text-neutral-400 truncate">
+                      {image.name}
+                    </span>
+                    <span
+                      className={`text-xs font-mono shrink-0 ${
+                        tooHeavy ? 'text-amber-400' : 'text-neutral-500'
+                      }`}
+                    >
+                      {formatSize(image.size)}
+                    </span>
+                  </div>
+                  {imagePreview && (
+                    <img
+                      src={imagePreview}
+                      alt="New cover preview"
+                      className="w-full h-32 object-cover rounded"
+                    />
+                  )}
+                  {tooHeavy && (
+                    <p className="mt-2 text-xs text-amber-400">
+                      Over {formatSize(MAX_IMAGE_BYTES)}. Compress it before
+                      saving — every visitor downloads this file.
+                    </p>
+                  )}
+                </div>
+              ) : currentImage ? (
+                <div className="mt-3 rounded-lg border border-neutral-800 bg-neutral-950 p-3">
+                  <div className="flex items-center justify-between gap-3 mb-2">
+                    <span className="text-xs uppercase tracking-wider text-neutral-600">
+                      Current image
+                    </span>
+                    <a
+                      href={`${currentImage}?download`}
+                      className="text-xs text-neutral-400 hover:text-white underline"
+                    >
+                      Download
+                    </a>
+                  </div>
+                  <img
+                    src={currentImage}
+                    alt="Current cover"
+                    className="w-full h-32 object-cover rounded"
+                  />
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
+
+        {error && (
+          <p className="mb-4 text-sm text-red-400 bg-red-950/20 border border-red-900/30 rounded-lg px-4 py-2">
+            {error}
+          </p>
+        )}
 
         <div className="flex justify-end pt-4 border-t border-neutral-800">
           <button
@@ -277,6 +359,9 @@ export default function ProjectsAdmin() {
                   setRepo_url(p.repo_url || '');
                   setVisibility(p.visibility || 'secondary');
                   setOrder(p.order != null ? String(p.order) : '');
+                  setImage(null);
+                  setError(null);
+                  if (fileInputRef.current) fileInputRef.current.value = '';
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               >
