@@ -12,7 +12,7 @@ export default function CurvedSectionTitle({
 
   return (
     <div className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
-      <div className="relative w-full overflow-hidden py-12">
+      <div className="relative w-full overflow-x-clip">
         <CurvedLoop
           marqueeText={marqueeText}
           curveAmount={curve}

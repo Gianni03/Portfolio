@@ -5,10 +5,10 @@ import Container from '../../ui/Container';
 
 export default function Layout() {
   return (
-    <div className="min-h-screen flex flex-col bg-neutral-950 text-white">
+    <div className="min-h-screen flex flex-col bg-neutral-950 text-white overflow-x-clip">
       <Header />
 
-      <main className="grow container mx-auto px-4 py-10">
+      <main className="grow container mx-auto py-10">
         <Container>
           <Outlet />
         </Container>
