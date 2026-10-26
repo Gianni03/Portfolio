@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useStudies from '../../features/studies/hooks/useStudies';
 import { addStudy, deleteStudy, updateStudy } from '../../api/studies.supabase';
+import { MAX_IMAGE_BYTES, formatSize } from '../../lib/imageSize';
 
 export default function StudiesAdmin() {
   const { studies, loading, refetch } = useStudies();
@@ -12,6 +13,35 @@ export default function StudiesAdmin() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
   const [editingId, setEditingId] = useState(null);
+  const fileInputRef = useRef(null);
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const currentStudy = editingId
+    ? studies?.find((s) => s.id === editingId)
+    : null;
+  const currentImage = currentStudy?.image ?? null;
+  const tooHeavy = image ? image.size > MAX_IMAGE_BYTES : false;
+
+  useEffect(() => {
+    if (!image) {
+      setImagePreview(null);
+      return;
+    }
+    const url = URL.createObjectURL(image);
+    setImagePreview(url);
+    return () => URL.revokeObjectURL(url);
+  }, [image]);
+
+  const resetForm = () => {
+    setTitle('');
+    setDescription('');
+    setImage(null);
+    setInstitution('');
+    setYear('');
+    setEditingId(null);
+    setError(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,12 +58,7 @@ export default function StudiesAdmin() {
           year,
         });
         console.log('UPDATE OK');
-        setTitle('');
-        setDescription('');
-        setImage(null);
-        setInstitution('');
-        setYear('');
-        setEditingId(null);
+        resetForm();
         refetch();
       } catch (error) {
         console.log('UPDATE ERROR', error);
@@ -52,12 +77,7 @@ export default function StudiesAdmin() {
         year,
       });
       console.log('INSERT OK', result);
-
-      setTitle('');
-      setDescription('');
-      setImage(null);
-      setInstitution('');
-      setYear('');
+      resetForm();
       refetch();
     } catch (error) {
       console.log('INSERT ERROR', error);
@@ -68,21 +88,13 @@ export default function StudiesAdmin() {
   };
 
   if (loading) return <p>Cargando...</p>;
-  if (error) return <p>Error</p>;
 
   return (
     <div>
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-2xl font-light text-white">Studies</h2>
         <button
-          onClick={() => {
-            setTitle('');
-            setDescription('');
-            setImage(null);
-            setInstitution('');
-            setYear('');
-            setEditingId(null);
-          }}
+          onClick={resetForm}
           className="text-xs uppercase tracking-wider text-neutral-500 hover:text-white transition-colors"
         >
           Reset Form
@@ -153,14 +165,70 @@ export default function StudiesAdmin() {
                 Logo / Image
               </label>
               <input
+                ref={fileInputRef}
                 type="file"
                 accept="image/*"
                 onChange={(e) => setImage(e.target.files?.[0] ?? null)}
                 className="w-full text-sm text-neutral-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-neutral-800 file:text-white hover:file:bg-neutral-700 transition-all"
               />
+
+              {image ? (
+                <div className="mt-3 rounded-lg border border-neutral-800 bg-neutral-950 p-3">
+                  <div className="flex items-center justify-between gap-3 mb-2">
+                    <span className="text-xs text-neutral-400 truncate">
+                      {image.name}
+                    </span>
+                    <span
+                      className={`text-xs font-mono shrink-0 ${
+                        tooHeavy ? 'text-amber-400' : 'text-neutral-500'
+                      }`}
+                    >
+                      {formatSize(image.size)}
+                    </span>
+                  </div>
+                  {imagePreview && (
+                    <img
+                      src={imagePreview}
+                      alt="New image preview"
+                      className="w-full h-32 object-contain rounded bg-neutral-900"
+                    />
+                  )}
+                  {tooHeavy && (
+                    <p className="mt-2 text-xs text-amber-400">
+                      Over {formatSize(MAX_IMAGE_BYTES)}. Compress it before
+                      saving — every visitor downloads this file.
+                    </p>
+                  )}
+                </div>
+              ) : currentImage ? (
+                <div className="mt-3 rounded-lg border border-neutral-800 bg-neutral-950 p-3">
+                  <div className="flex items-center justify-between gap-3 mb-2">
+                    <span className="text-xs uppercase tracking-wider text-neutral-600">
+                      Current image
+                    </span>
+                    <a
+                      href={`${currentImage}?download`}
+                      className="text-xs text-neutral-400 hover:text-white underline"
+                    >
+                      Download
+                    </a>
+                  </div>
+                  <img
+                    src={currentImage}
+                    alt="Current image"
+                    className="w-full h-32 object-contain rounded bg-neutral-900"
+                  />
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
+
+        {error && (
+          <p className="mb-4 text-sm text-red-400 bg-red-950/20 border border-red-900/30 rounded-lg px-4 py-2">
+            {error}
+          </p>
+        )}
 
         <div className="flex justify-end pt-4 border-t border-neutral-800">
           <button
@@ -192,10 +260,12 @@ export default function StudiesAdmin() {
                 onClick={() => {
                   setEditingId(s.id);
                   setTitle(s.title);
-                  setDescription(s.description);
-                  setImage(s.image);
+                  setDescription(s.description ?? '');
+                  setImage(null);
                   setInstitution(s.institution);
-                  setYear(s.year);
+                  setYear(s.year ?? '');
+                  setError(null);
+                  if (fileInputRef.current) fileInputRef.current.value = '';
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 className="px-3 py-1 text-xs font-medium text-neutral-400 hover:text-white bg-neutral-800 hover:bg-neutral-700 rounded-lg transition-colors"

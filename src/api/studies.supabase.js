@@ -62,9 +62,30 @@ export async function addStudy({
 
 
 export async function updateStudy(id, updates) {
+  const { image, ...fields } = updates;
+  const updateData = { ...fields };
+
+  // Upload the new image before the row update, so a failed upload never
+  // leaves the record pointing at a file that does not exist.
+  if (image instanceof File) {
+    const fileName = `study-${Date.now()}-${image.name}`;
+
+    const { data: uploadData, error: uploadError } = await supabase.storage
+      .from('studies')
+      .upload(fileName, image);
+
+    if (uploadError) throw uploadError;
+
+    const { data: publicData } = supabase.storage
+      .from('studies')
+      .getPublicUrl(uploadData.path);
+
+    updateData.image = publicData.publicUrl;
+  }
+
   const { error } = await supabase
     .from('studies')
-    .update(updates)
+    .update(updateData)
     .eq('id', id);
 
   if (error) throw error;

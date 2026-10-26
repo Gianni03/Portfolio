@@ -5,13 +5,7 @@ import {
   deleteProject,
   updateProject,
 } from '../../api/projects.supabase';
-
-const MAX_IMAGE_BYTES = 300 * 1024;
-
-const formatSize = (bytes) =>
-  bytes >= 1024 * 1024
-    ? `${(bytes / (1024 * 1024)).toFixed(1)} MB`
-    : `${Math.round(bytes / 1024)} KB`;
+import { MAX_IMAGE_BYTES, formatSize } from '../../lib/imageSize';
 
 export default function ProjectsAdmin() {
   const { projects, loading, refetch } = useProjects();
