@@ -147,9 +147,9 @@ const ReflectiveCard = ({
 
         <div className="flex-1 flex flex-col justify-end items-center text-center gap-6 mb-2">
           <div className="text-center">
-            <h2 className="text-xl font-bold tracking-[0.05em] m-0 mb-2 drop-shadow-md">
+            <div className="text-xl font-bold tracking-[0.05em] m-0 mb-2 drop-shadow-md">
               GIANNI PASQUINELLI
-            </h2>
+            </div>
             <p className="text-xs tracking-[0.2em] opacity-70 m-0 uppercase">
               FRONTEND DEVELOPER
             </p>
