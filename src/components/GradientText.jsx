@@ -15,6 +15,7 @@ export default function GradientText({
   direction = 'horizontal',
 
   yoyo = true,
+  as = 'div',
 }) {
   const progress = useMotionValue(0);
   const elapsedRef = useRef(0);
@@ -74,6 +75,8 @@ export default function GradientText({
   // Duplicate first color at the end for seamless looping
   const gradientColors = [...colors, colors[0]].join(', ');
 
+  const Root = motion[as] ?? motion.div;
+
   const gradientStyle = {
     backgroundImage: `linear-gradient(${gradientAngle}, ${gradientColors})`,
     backgroundSize:
@@ -86,7 +89,7 @@ export default function GradientText({
   };
 
   return (
-    <motion.div
+    <Root
       className={`relative flex max-w-fit flex-row items-center justify-center rounded-[1.25rem] font-medium backdrop-blur transition-shadow duration-500 overflow-hidden  ${
         showBorder ? 'py-1 px-2' : ''
       } ${className}`}
@@ -108,7 +111,7 @@ export default function GradientText({
           />
         </motion.div>
       )}
-      <motion.div
+      <motion.span
         className="inline-block relative z-2 text-transparent bg-clip-text"
         style={{
           ...gradientStyle,
@@ -117,7 +120,7 @@ export default function GradientText({
         }}
       >
         {children}
-      </motion.div>
-    </motion.div>
+      </motion.span>
+    </Root>
   );
 }

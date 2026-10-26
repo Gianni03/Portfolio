@@ -15,10 +15,11 @@ export default function Hero() {
         {/* Right: Text */}
         <div className="relative z-10 w-full max-w-xl text-center lg:text-left">
           <GradientText
+            as="h1"
             colors={['#7a43c1', '#FF9FFC', '#fbfffe']}
             animationSpeed={10}
             yoyo={false}
-            className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-semibold leading-tight"
+            className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-semibold leading-tight tracking-normal"
           >
             Frontend Developer
           </GradientText>

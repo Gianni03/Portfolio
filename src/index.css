@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import "tw-animate-css";
+@import './normalize.css' layer(base);
 
 @custom-variant dark (&:is(.dark *));
 

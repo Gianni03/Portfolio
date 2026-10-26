@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://giannipasquinelli-webdev.netlify.app/sitemap.xml
