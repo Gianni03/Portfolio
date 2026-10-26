@@ -105,6 +105,8 @@ export default function Header() {
         <button
           className="md:hidden text-neutral-300"
           onClick={() => setOpen(!open)}
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
         >
           {open ? <X size={26} /> : <Menu size={26} />}
         </button>
