@@ -167,6 +167,7 @@ export default function ProjectsAdmin() {
               >
                 <option value="secondary">Secondary (Grid)</option>
                 <option value="primary">Primary (Featured)</option>
+                <option value="hidden">Hidden (not published)</option>
               </select>
             </div>
 
@@ -320,7 +321,11 @@ export default function ProjectsAdmin() {
             <div className="flex items-center gap-4">
               <div
                 className={`w-2 h-2 rounded-full ${
-                  p.visibility === 'primary' ? 'bg-amber-400' : 'bg-neutral-600'
+                  p.visibility === 'primary'
+                    ? 'bg-amber-400'
+                    : p.visibility === 'hidden'
+                    ? 'bg-neutral-800'
+                    : 'bg-neutral-600'
                 }`}
               ></div>
               <div>

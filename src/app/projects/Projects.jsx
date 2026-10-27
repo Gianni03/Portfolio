@@ -10,10 +10,12 @@ export default function Projects() {
     if (loading) return <p className="opacity-50">Loading projects...</p>;
     if (!Array.isArray(projects)) return <p>Error loading projects</p>;
 
-    const primaryProjects = projects
+    const visibleProjects = projects.filter((p) => p.visibility !== 'hidden');
+
+    const primaryProjects = visibleProjects
     .filter((p) => p.visibility === 'primary')
     .sort((a, b) => a.order - b.order);
-    const secondaryProjects = projects.filter((p) => p.visibility !== 'primary');
+    const secondaryProjects = visibleProjects.filter((p) => p.visibility !== 'primary');
     
     if (!isDesktop) {
       return <MobileProjectsStack projects={[...primaryProjects, ...secondaryProjects]} />;
