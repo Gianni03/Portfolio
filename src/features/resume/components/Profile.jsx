@@ -9,7 +9,10 @@ export default function Profile() {
     <section className="space-y-10">
 
       <div className="space-y-6">
-        <h3 className="text-2xl font-semibold">{profile.name} - Frontend Developer</h3>
+        <h1 className="text-2xl font-semibold">
+          {profile.name}
+          {profile.role ? ` — ${profile.role}` : ''}
+        </h1>
 
         <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-neutral-400">
           <li>{profile.email}</li>
@@ -25,14 +28,14 @@ export default function Profile() {
             </a>
           </li>
           <li>
-            <a href={profile.website} className="hover:text-white">
+            <a href={profile.portfolio} className="hover:text-white">
               Website
             </a>
           </li>
         </ul>
 
       <h2 className="text-3xl font-bold">Profile</h2>
-        <p className="max-w-2xl text-neutral-300 leading-relaxed">
+        <p className="max-w-2xl text-neutral-300 leading-relaxed whitespace-pre-line">
           {profile.summary}
         </p>
       </div>

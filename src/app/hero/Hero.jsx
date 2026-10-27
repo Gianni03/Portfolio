@@ -21,7 +21,7 @@ export default function Hero() {
             yoyo={false}
             className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-semibold leading-tight tracking-normal"
           >
-            Frontend Developer
+            Product Engineer
           </GradientText>
           <div className="mt-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/15 p-6 md:p-8">
             <span className="block text-3xl font-medium tracking-tight text-[#fbfffe]/90">
