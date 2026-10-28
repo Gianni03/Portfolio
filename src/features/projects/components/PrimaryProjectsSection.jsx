@@ -77,6 +77,7 @@ export default function PrimaryProjectSection({ project, index }) {
                   <a
                     href={project.demo_url}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-white text-lg font-bold border-b-2 border-purple-600 pb-1 hover:text-purple-400 transition-colors"
                   >
                     LIVE DEMO
@@ -86,6 +87,7 @@ export default function PrimaryProjectSection({ project, index }) {
                   <a
                     href={project.repo_url}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-neutral-400 text-lg font-bold border-b-2 border-neutral-800 pb-1 hover:text-white transition-colors"
                   >
                     VIEW CODE

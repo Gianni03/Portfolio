@@ -22,6 +22,7 @@ export default function ProjectCard({ project }) {
         <a
           href={project.demo_url}
           target="_blank"
+          rel="noopener noreferrer"
           className="text-blue-400 underline hover:text-blue-300"
         >
           Demo →
@@ -31,6 +32,7 @@ export default function ProjectCard({ project }) {
         <a
           href={project.repo_url}
           target="_blank"
+          rel="noopener noreferrer"
           className="text-blue-400 underline hover:text-blue-300"
         >
           Repo →

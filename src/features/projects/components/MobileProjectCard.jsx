@@ -41,12 +41,12 @@ export default function MobileProjectCard({ project, index, total }) {
           {/* Links */}
           <div className="flex gap-4 text-sm">
             {demo_url && (
-              <a href={demo_url} target="_blank" className="text-purple-400">
+              <a href={demo_url} target="_blank" rel="noopener noreferrer" className="text-purple-400">
                 Demo →
               </a>
             )}
             {repo_url && (
-              <a href={repo_url} target="_blank" className="text-purple-400">
+              <a href={repo_url} target="_blank" rel="noopener noreferrer" className="text-purple-400">
                 Repo →
               </a>
             )}

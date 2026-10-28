@@ -46,12 +46,12 @@ function SecondaryProjectCard({ project }) {
         
         <div className="absolute top-4 right-4 flex gap-2 translate-y-[-10px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
           {project.repo_url && (
-            <a href={project.repo_url} target="_blank" className="p-2 bg-black/60 backdrop-blur-md text-white rounded-full hover:bg-purple-600 transition-colors">
+            <a href={project.repo_url} target="_blank" rel="noopener noreferrer" className="p-2 bg-black/60 backdrop-blur-md text-white rounded-full hover:bg-purple-600 transition-colors">
               <Github size={18} />
             </a>
           )}
           {project.demo_url && (
-            <a href={project.demo_url} target="_blank" className="p-2 bg-black/60 backdrop-blur-md text-white rounded-full hover:bg-purple-600 transition-colors">
+            <a href={project.demo_url} target="_blank" rel="noopener noreferrer" className="p-2 bg-black/60 backdrop-blur-md text-white rounded-full hover:bg-purple-600 transition-colors">
               <ExternalLink size={18} />
             </a>
           )}
