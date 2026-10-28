@@ -16,6 +16,9 @@ export default function ProfileAdmin() {
 
   useEffect(() => {
     if (profile) {
+      // The record arrives asynchronously from Supabase, so the form can only
+      // be hydrated once it resolves.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setForm(profile);
     }
   }, [profile]);

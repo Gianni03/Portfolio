@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 
-export default function PrimaryProjectSection({ project, index }) {
+export default function PrimaryProjectSection({ project }) {
   const containerRef = useRef(null);
   
 
