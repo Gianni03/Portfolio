@@ -151,7 +151,7 @@ const ReflectiveCard = ({
               GIANNI PASQUINELLI
             </div>
             <p className="text-xs tracking-[0.2em] opacity-70 m-0 uppercase">
-              FRONTEND DEVELOPER
+              PRODUCT ENGINEER
             </p>
           </div>
         </div>
