@@ -16,7 +16,7 @@ export default function SkillCard({ name, logo }) {
       <img
         src={logo}
         alt={name}
-        className="h-10 w-10 mb-4 opacity-80 group-hover:opacity-100 transition"
+        className="h-10 w-10 mb-4 object-contain opacity-80 group-hover:opacity-100 transition"
       />
       <span className="text-sm text-neutral-300 group-hover:text-white transition">
         {name}
