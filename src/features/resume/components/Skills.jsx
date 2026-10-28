@@ -23,7 +23,9 @@ export default function Skills() {
             key={skill.name}
             className="flex items-center gap-3 text-neutral-300"
           >
-            <img src={skill.icon} alt={skill.name} className="w-6 h-6" />
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-neutral-100">
+              <img src={skill.icon} alt="" className="h-5 w-5 object-contain" />
+            </span>
             <span>{skill.name}</span>
           </li>
         ))}

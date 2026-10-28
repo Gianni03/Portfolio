@@ -13,11 +13,13 @@ export default function SkillCard({ name, logo }) {
         hover:shadow-[0_0_30px_-10px_rgba(122,67,193,0.6)]
       "
     >
-      <img
-        src={logo}
-        alt={name}
-        className="h-10 w-10 mb-4 object-contain opacity-80 group-hover:opacity-100 transition"
-      />
+      <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-neutral-100 ring-1 ring-black/5 mb-4">
+        <img
+          src={logo}
+          alt=""
+          className="h-9 w-9 object-contain opacity-90 group-hover:opacity-100 transition"
+        />
+      </div>
       <span className="text-sm text-neutral-300 group-hover:text-white transition">
         {name}
       </span>
