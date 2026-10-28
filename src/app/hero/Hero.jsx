@@ -36,12 +36,21 @@ export default function Hero() {
             prioritizing clarity, performance and detail.
           </p>
 
-          <a
-            href="#projects"
-            className="z-10 inline-block mt-8 px-6 py-3 rounded-full bg-[#7a43c1] text-[#fbfffe] font-medium hover:bg-[#FF9FFC] transition-colors"
-          >
-            View projects
-          </a>
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-8">
+            <a
+              href="#projects"
+              className="z-10 inline-block px-6 py-3 rounded-full bg-[#7a43c1] text-[#fbfffe] font-medium hover:bg-[#FF9FFC] transition-colors"
+            >
+              View projects
+            </a>
+            <a
+              href="/cv/gianni-pasquinelli-cv.pdf"
+              download="Gianni-Pasquinelli-CV.pdf"
+              className="z-10 inline-block px-6 py-3 rounded-full border border-white/20 text-[#fbfffe] font-medium hover:border-[#7a43c1] hover:text-[#FF9FFC] transition-colors"
+            >
+              Download CV
+            </a>
+          </div>
         </div>
         <div
           style={{
