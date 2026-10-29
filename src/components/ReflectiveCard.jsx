@@ -16,6 +16,7 @@ const ReflectiveCard = ({
   className = '',
   style = {},
   videoSrc = null,
+  videoPoster = null,
 }) => {
   const videoRef = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -125,11 +126,12 @@ const ReflectiveCard = ({
         key={videoSrc}
         ref={videoRef}
         src={videoSrc}
+        poster={videoPoster}
         autoPlay={!prefersReducedMotion}
         loop
         muted
         playsInline
-        preload={prefersReducedMotion ? 'metadata' : 'auto'}
+        preload={prefersReducedMotion ? 'none' : 'metadata'}
         className="absolute top-0 left-0 w-full h-full object-cover scale-[1.2] -scale-x-100 z-0 opacity-90 transition-[filter] duration-300"
         style={{
           filter:

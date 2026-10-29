@@ -15,6 +15,7 @@ export default function HeroCard() {
         grayscale={0.8}
         color="#fbfffe"
         videoSrc="/videos/hero-vid.mp4"
+        videoPoster="/videos/hero-poster.webp"
       />
     </div>
   );
