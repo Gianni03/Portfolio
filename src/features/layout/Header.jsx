@@ -40,8 +40,8 @@ export default function Header() {
 
   const homeNavItems = [
     { id: 'projects', label: 'Projects' },
-    { id: 'skills', label: 'Skills' },
     { id: 'studies', label: 'Studies' },
+    { id: 'skills', label: 'Skills' },
     { id: 'contact', label: 'Contact' },
     { id: 'resume', label: 'Resume Web', path: '/resume' },
   ];
