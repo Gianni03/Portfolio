@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState, useMemo, useId } from 'react';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const CurvedLoop = ({
   marqueeText = '',
@@ -24,6 +25,7 @@ const CurvedLoop = ({
 
   const dragRef = useRef(false);
   const [isDragging, setIsDragging] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
   const lastXRef = useRef(0);
   const dirRef = useRef(direction);
   const velRef = useRef(0);
@@ -53,7 +55,7 @@ const CurvedLoop = ({
   }, [spacing]);
 
   useEffect(() => {
-    if (!spacing || !ready) return;
+    if (!spacing || !ready || prefersReducedMotion) return;
     let frame = 0;
     const step = () => {
       if (!dragRef.current && textPathRef.current) {
@@ -70,7 +72,7 @@ const CurvedLoop = ({
     };
     frame = requestAnimationFrame(step);
     return () => cancelAnimationFrame(frame);
-  }, [spacing, speed, ready]);
+  }, [spacing, speed, ready, prefersReducedMotion]);
 
   const onPointerDown = e => {
     if (!interactive) return;

@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, useCallback } from 'react';
 import Lenis from 'lenis';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 export const ScrollStackItem = ({ children, itemClassName = '' }) => (
   <div
@@ -29,6 +30,7 @@ const ScrollStack = ({
   useWindowScroll = false,
   onStackComplete,
 }) => {
+  const prefersReducedMotion = usePrefersReducedMotion();
   const scrollerRef = useRef(null);
   const stackCompletedRef = useRef(false);
   const animationFrameRef = useRef(null);
@@ -202,17 +204,25 @@ const ScrollStack = ({
   }, [updateCardTransforms]);
 
   const setupLenis = useCallback(() => {
+    // Reduced motion keeps Lenis alive for scroll events but removes the
+    // smoothing, so the stack still updates while scrolling natively.
+    const motionOptions = prefersReducedMotion
+      ? { smoothWheel: false, syncTouch: false, duration: 0, lerp: 1 }
+      : {
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          touchMultiplier: 2,
+          wheelMultiplier: 1,
+          lerp: 0.1,
+          syncTouch: true,
+          syncTouchLerp: 0.075,
+        };
+
     if (useWindowScroll) {
       const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-        touchMultiplier: 2,
         infinite: false,
-        wheelMultiplier: 1,
-        lerp: 0.1,
-        syncTouch: true,
-        syncTouchLerp: 0.075,
+        ...motionOptions,
       });
 
       lenis.on('scroll', handleScroll);
@@ -232,15 +242,8 @@ const ScrollStack = ({
       const lenis = new Lenis({
         wrapper: scroller,
         content: scroller.querySelector('.scroll-stack-inner'),
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-        touchMultiplier: 2,
         infinite: false,
-        wheelMultiplier: 1,
-        lerp: 0.1,
-        syncTouch: true,
-        syncTouchLerp: 0.075,
+        ...motionOptions,
       });
 
       lenis.on('scroll', handleScroll);
@@ -254,7 +257,7 @@ const ScrollStack = ({
       lenisRef.current = lenis;
       return lenis;
     }
-  }, [handleScroll, useWindowScroll]);
+  }, [handleScroll, useWindowScroll, prefersReducedMotion]);
 
   useLayoutEffect(() => {
     const scroller = scrollerRef.current;

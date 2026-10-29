@@ -5,6 +5,7 @@ import {
   useAnimationFrame,
   useTransform,
 } from 'motion/react';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 export default function GradientText({
   children,
@@ -20,10 +21,13 @@ export default function GradientText({
   const progress = useMotionValue(0);
   const elapsedRef = useRef(0);
   const lastTimeRef = useRef(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   const animationDuration = animationSpeed * 1000;
 
   useAnimationFrame((time) => {
+    if (prefersReducedMotion) return;
+
     if (lastTimeRef.current === null) {
       lastTimeRef.current = time;
       return;

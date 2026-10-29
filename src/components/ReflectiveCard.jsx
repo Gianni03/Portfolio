@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { Fingerprint, Activity, Lock } from 'lucide-react';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const ReflectiveCard = ({
   blurStrength = 12,
@@ -17,6 +18,7 @@ const ReflectiveCard = ({
   videoSrc = null,
 }) => {
   const videoRef = useRef(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   const baseFrequency = 0.03 / Math.max(0.1, noiseScale);
   const saturation = 1 - Math.max(0, Math.min(1, grayscale));
@@ -123,11 +125,11 @@ const ReflectiveCard = ({
         key={videoSrc}
         ref={videoRef}
         src={videoSrc}
-        autoPlay
+        autoPlay={!prefersReducedMotion}
         loop
         muted
         playsInline
-        preload="auto"
+        preload={prefersReducedMotion ? 'metadata' : 'auto'}
         className="absolute top-0 left-0 w-full h-full object-cover scale-[1.2] -scale-x-100 z-0 opacity-90 transition-[filter] duration-300"
         style={{
           filter:

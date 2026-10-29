@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { Renderer, Program, Triangle, Mesh } from 'ogl';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const DEFAULT_COLOR = '#ffffff';
 
@@ -31,8 +32,7 @@ const getAnchorAndDir = (origin, w, h) => {
 };
 
 const LightRays = ({
-  raysOrigin = 'top-center',
-  raysColor = DEFAULT_COLOR,
+  raysOrigin = 'top-center',  raysColor = DEFAULT_COLOR,
   raysSpeed = 1,
   lightSpread = 1,
   rayLength = 2,
@@ -55,6 +55,7 @@ const LightRays = ({
   const cleanupFunctionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const observerRef = useRef(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -269,7 +270,9 @@ void main() {
 
         try {
           renderer.render({ scene: mesh });
-          animationIdRef.current = requestAnimationFrame(loop);
+          if (!prefersReducedMotion) {
+            animationIdRef.current = requestAnimationFrame(loop);
+          }
         } catch (error) {
           console.warn('WebGL rendering error:', error);
           return;
@@ -331,7 +334,8 @@ void main() {
     followMouse,
     mouseInfluence,
     noiseAmount,
-    distortion
+    distortion,
+    prefersReducedMotion
   ]);
 
   useEffect(() => {
