@@ -2,7 +2,6 @@ import useProjects from "../../features/projects/hooks/useProjects";
 import useIsDesktop from "../../hooks/useIsDesktop";
 import ProjectsGrid from "../../features/projects/components/ProjectsGrid";
 import PrimaryProjects from "../../features/projects/components/PrimaryProjects.jsx";
-import MobileProjectsStack from "../../features/projects/components/MobileProjectsStack";
 export default function Projects() {
   const { projects, loading } = useProjects();
   const isDesktop = useIsDesktop();
@@ -18,7 +17,12 @@ export default function Projects() {
     const secondaryProjects = visibleProjects.filter((p) => p.visibility !== 'primary');
     
     if (!isDesktop) {
-      return <MobileProjectsStack projects={[...primaryProjects, ...secondaryProjects]} />;
+      return (
+        <>
+          <ProjectsGrid projects={primaryProjects} title="Featured" />
+          <ProjectsGrid projects={secondaryProjects} title="Other Works" />
+        </>
+      );
     }
 
   
