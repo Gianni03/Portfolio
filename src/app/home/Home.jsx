@@ -17,7 +17,6 @@ export default function Home() {
       <Hero />
       <Suspense fallback={null}>
         <AboutMe />
-        <Skills />
 
         <Section title="Projects" id="projects">
           <CurvedSectionTitle
@@ -39,6 +38,7 @@ export default function Home() {
           />
           <Studies />
         </Section>
+        <Skills />
         <Contact />
       </Suspense>
     </>
