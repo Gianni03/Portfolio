@@ -17,6 +17,7 @@ export const es = {
   nav: {
     home: 'Inicio',
     services: 'Servicios',
+    about: 'Sobre mí',
     projects: 'Proyectos',
     studies: 'Formación',
     skills: 'Herramientas',
@@ -40,6 +41,7 @@ export const es = {
   services: {
     title: 'Servicios',
     intro: 'Según lo que tu negocio necesite.',
+    cta: 'Hablemos de tu proyecto',
     items: [
       {
         title: 'Sitios web',

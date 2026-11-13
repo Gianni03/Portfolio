@@ -29,6 +29,14 @@ Test runner: **ninguno configurado**. Excepción documentada en `## Checks`.
   Evidence: L6 — "nunca hice un e-commerce es mi gran falta".
 - **S11** — El CV se mantiene como página propia y la descarga del PDF vive dentro de esa página, no en el hero.
   Evidence: L6 — "el download cv puede ir dentro de la pagina cv web, que se mantiene".
+- **S12** — El home sigue el orden de una página de venta: Hero → Servicios → Proyectos → Sobre mí → Contacto.
+  Evidence: L7 + confirmación de estructura.
+- **S13** — Formación sale del home (sigue existiendo en `/resume`). Herramientas sale del home en español y se conserva en `/en/`, donde aporta señal técnica a un recruiter.
+  Evidence: L7 — "la seccion de estudios creo que la vamos a tener que sacar, no es relevante al cliente".
+- **S14** — El scroll narrativo de proyectos primarios deja de renderizarse. `PrimaryProjectsSection` medía `h-[180vh]` por proyecto: 540vh con tres primarios.
+  Evidence: L7 — "puede que tambien haya que quitar los proyectos destacados con el scroll". Requiere confirmación explícita porque el AGENTS.md lo fija como decisión bloqueada.
+- **S15** — Las cards de proyecto son clickeables y navegan al demo o al repo.
+  Evidence: L7 — "no son clickeables".
 
 ## Assumptions
 
@@ -41,13 +49,16 @@ Test runner: **ninguno configurado**. Excepción documentada en `## Checks`.
 | ID | Task | Specs | Route | Status |
 |---|---|---|---|---|
 | T1 | Copy español PyME-first (hero, servicios, por qué yo, proceso, CTA) | S3, S4, S5 | inline | done — `src/content/es.js` |
-| T2 | Scaffolding i18n: es-AR en `/`, en en `/en/` | S1, S8 | inline | pending |
+| T2 | Scaffolding i18n: es-AR en `/`, en en `/en/` | S1, S8 | inline | done — `src/i18n/` |
 | T3 | Head SEO por ruta + check estructural post-build | S6 | inline (dep. A1) | pending |
 | T4 | Páginas `/servicios` y `/desarrollo-web-rosario` | S5, S7 | inline | pending |
 | T5 | Schema `areaServed`/`ProfessionalService`, sitemap por locale, robots, `sameAs` unificado | S7, S9 | inline | pending |
 | T6 | Versión inglesa condensada en `/en/` | S1, S8 | inline | pending |
 | T7 | Checklist sin código: dominio propio, Google Business Profile | S7 | inline | pending |
 | T8 | Descarga de CV dentro de `/resume` | S11 | inline | done |
+| T9 | Reestructurar el home como página de venta (Servicios + grilla de proyectos) | S3, S12, S13, S14, S15 | inline | done |
+| T10 | Eliminar componentes muertos: `PrimaryProjects`, `PrimaryProjectsSection`, `ProjectsGrid` | S14 | inline | pending |
+| T11 | Decidir destino de la ruta `/studies` (huérfana tras sacar el nav) | — | inline | pending |
 
 ## Checks
 
@@ -70,3 +81,13 @@ T3 agrega un script de verificación estructural mínimo para no depender de ins
 - **D6** (2026-11-13) — E-commerce eliminado de servicios y del hero. Motivo: nunca construyó uno, y montar una tienda desde cero cuando Tiendanube/Shopify ya resuelven el caso no se justifica comercialmente. Ofrecerlo sin respaldo quema al primer cliente.
 - **D7** (2026-11-13) — Se elimina el párrafo de "cómo trabajo" (cantidad de proyectos, intermediarios). Reemplazado por una formulación directa problema → solución, sin explicar el proceso.
 - **L6** (2026-11-13) — "si cambiar cv por hablemos, el download cv puede ir dentro de la pagina cv web, que se mantiene, la bajada:sacaria la palabra tienda, nonca hice un e-commerce es mi gran falta, pero ya hay soluciones que no justificar crear una tienda de 0. el como trabajo no me gusta, sin tantas explicaciones si tomo muchos o pocos proyectos, o si hay intermediario o no, hay un problema, yo se lo resuelvo (espero)"
+- **D8** (2026-11-13) — T2 completado. `LocaleProvider` + `useCopy` cableados en Header, Footer, Hero, Home, AboutMe, Contact, Projects, Studies, Skills y ProjectsGrid. Español en `/` y `/en/*`; selector ES/EN en el header. Se separó `context.js` (funciones) de `LocaleProvider.jsx` (componente) porque la regla `react-refresh/only-export-components` rechazaba el archivo mixto.
+  Verificación observada con Chrome headless sobre el dev server: `/` renderiza "Productos digitales a medida", "Sin plantillas", "Sin intermediarios", "Vos planteás el problema", "Sobre mí", "Hablemos"; sin "Download CV" ni "View projects". `/en` renderiza el copy inglés con "Let's talk". `/resume` contiene "Download CV".
+  Residual conocido: el `<head>` estático de `index.html` sigue con "Product Engineer" en title/meta/OG para todas las rutas. Es exactamente T3.
+- **D9** (2026-11-13) — Commit `007aea1`: 15 archivos, +181/−88. Ningún componente visual, animación ni clase de Tailwind modificada.
+- **L7** (2026-11-13) — "bueno esta bien, todavia no vende, la seccion de estudios creo que la vamos a tener que sacar, no es relevante al cliente. no se si esas cards la podremos reutilizar para proyectos, creo que si pero no son clickeables... y puede que tambien haya que quitar los proyectos destacados con el scroll"
+- **D10** (2026-11-13) — Diagnóstico de "todavía no vende": la home conserva el orden de un portfolio (Hero → Sobre mí → Proyectos → Formación → Herramientas → Contacto). No existe sección de servicios, así que la página nunca responde "qué compro". T4 pasa a ser la tarea de mayor impacto, por encima de cualquier ajuste visual.
+- **D11** (2026-11-13) — `PrimaryProjectsSection` mide `h-[180vh]` por proyecto. Con 3 primarios son 540vh, unas 5,4 pantallas de scroll animado antes de que el cliente llegue al CTA. Es un problema de conversión, no solo de gusto. Además contradice el AGENTS.md, que fija el scroll narrativo como decisión bloqueada: el cambio requiere confirmación explícita.
+- **D12** (2026-11-13) — Confirmada la reestructuración (S12). T9 completado: `ServicesSection`, `ProjectCard` y `ProjectsShowcase` nuevos; `Home.jsx` reordenado; nav del Header actualizado a Servicios/Proyectos/Sobre mí/Contacto + CV; observer de scroll actualizado. `PrimaryProjects` y `ProjectsGrid` dejan de renderizarse.
+  Verificación observada con Chrome headless: `/` → home→services→projects→about→contact, "Formación" y "Herramientas" ausentes, 8 cards con 8 links externos. `/en` → misma estructura con "Skills" conservado antes de contacto.
+- **D13** (2026-11-13) — Hallazgo relevante: los proyectos cargados desde Supabase son sitios reales en producción (`plataforma1810.com.ar`, `kli.com.ar`, `elreydelchaja.com`, `holocruxe.com`) más demos en Vercel. La prueba de trabajo existe; el problema era de presentación, no de falta de casos. Refuerza que el siguiente salto de conversión está en contar esos proyectos como casos (problema → qué se hizo → resultado), no en conseguir el primero.

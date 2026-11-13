@@ -16,6 +16,7 @@ export const en = {
   nav: {
     home: 'Home',
     services: 'Services',
+    about: 'About',
     projects: 'Projects',
     studies: 'Studies',
     skills: 'Skills',
@@ -39,6 +40,7 @@ export const en = {
   services: {
     title: 'Services',
     intro: 'Based on what your business needs.',
+    cta: "Let's talk about your project",
     items: [
       {
         title: 'Websites',

@@ -24,7 +24,7 @@ export default function Header() {
   useEffect(() => {
     if (isResume) return;
 
-    const sections = ['projects', 'skills', 'studies', 'contact'];
+    const sections = ['services', 'projects', 'about', 'contact'];
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -46,9 +46,9 @@ export default function Header() {
   }, [isResume]);
 
   const homeNavItems = [
+    { id: 'services', label: copy.nav.services },
     { id: 'projects', label: copy.nav.projects },
-    { id: 'studies', label: copy.nav.studies },
-    { id: 'skills', label: copy.nav.skills },
+    { id: 'about', label: copy.nav.about },
     { id: 'contact', label: copy.nav.contact },
     { id: 'resume', label: copy.nav.resume, path: english ? '/en/resume' : '/resume' },
   ];
