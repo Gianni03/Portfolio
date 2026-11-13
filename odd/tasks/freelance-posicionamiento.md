@@ -46,7 +46,10 @@ Test runner: **ninguno configurado**. Excepción documentada en `## Checks`.
 
 ## Assumptions
 
-- **A1 — Arquitectura.** RESUELTO: **Astro**. El usuario ya construyó y mantiene El Rey del Chajá en Astro, en producción, con panel de administración. La migración deja de ser territorio desconocido y pasa a ser su stack. Consecuencia de secuencia: la migración del shell va **antes** de Fase 1, para no construir las mismas páginas dos veces.
+- **A1 — Arquitectura.** RESUELTO: **se mantiene Vite + React**. El contenido vive en Supabase y se edita desde un admin que el usuario sigue manteniendo; eso anula la ventaja principal de Astro (contenido estático en markdown con content collections) y agregaría el costo de re-hospedar el admin como isla o app aparte. El requisito real es HTML con `<head>` propio por ruta pública, y eso se resuelve con generación estática en build sobre React. Astro queda descartado por costo/beneficio.
+  - Las páginas que necesitan SEO (servicios, Rosario, casos) son simples y sin animación: se pueden generar estáticas sin fricción.
+  - El home con hero WebGL es el único componente difícil de prerenderar. Puede quedarse en render de cliente o usar un esqueleto estático.
+  - Fase 2 evalúa en este orden: `vite-react-ssg`; si rompe por WebGL/motion, prerender de solo las rutas de contenido; último recurso, inyección de `<head>` en build.
 - **A2 — Dominio.** Un solo dominio propio, un solo repo. `giannipasquinelli.com.ar` si el foco es Argentina; `.com` si se quiere conservar opción internacional.
 - **A3 — Hero copy.** CONFIRMADO. Opción "Contraste". Forma final: h1 "Productos digitales a medida" + "Sin plantillas." / "Sin intermediarios."
 
@@ -164,9 +167,8 @@ Open question: whether 1810 and Kli are client work or own products. The case fr
 - Sitemap per locale, `sameAs` unified (S9).
 
 ### Phasing
-- **Phase 0 — Shell in Astro.** Port the current site to Astro with `es`/`en` routing before building more sections. Doing it after Phase 1 would mean building the same pages twice. The user already ships Astro in production, so this is their own stack, not a new one.
-- **Phase 1 — Conversion.** Structure, copy, cases, process, FAQ, WhatsApp. No SEO infrastructure beyond what Astro gives for free.
-- **Phase 2 — SEO.** Service pages, local page, `ProfessionalService` schema, sitemap, Google Business Profile, own domain.
+- **Phase 1 — Conversion.** Structure, copy, cases, process, FAQ, WhatsApp. This is what turns the portfolio into a sales site, and it does not depend on the SEO mechanism.
+- **Phase 2 — SEO.** Static HTML per public route, service pages, local page, `ProfessionalService` schema, sitemap, Google Business Profile, own domain.
 - **Phase 3 — Content.** More cases, niche pages, one keyword each.
 
 ### Differentiation
@@ -272,3 +274,5 @@ T3 agrega un script de verificación estructural mínimo para no depender de ins
 - **D20** (2026-11-13) — El Rey del Chajá pasa a ser el caso flagship y el diseño de caso queda completo con hechos aportados por el usuario: problema (template de Framer, sin SEO, dependencia del dev), alcance (sitio en Astro + admin de precios + generador de imágenes para 3 TVs de 55") y resultado (autonomía del negocio).
 - **D21** (2026-11-13) — A1 resuelto: Astro. El usuario ya construyó y mantiene Chajá en Astro en producción, así que la migración es su propio stack. Consecuencia de secuencia: se agrega **Fase 0** (portar el shell a Astro) antes de Fase 1, para no construir las mismas páginas dos veces.
 - **D22** (2026-11-13) — Diferenciación detectada: un negocio no compra "una web", compra no depender de un dev para cada cambio de precio. Hook de venta: "no dependés de mí para cambiar un precio". Servicio candidato a confirmar: pantallas / señalización digital para locales físicos, administradas desde el mismo panel.
+- **L13** (2026-11-13) — "porque pasar la web a astro??? si ademas tenemos el admin que voy a mantener para seguir agregando o modificando contenido... es necesario ese cambio, que valor le agrega por sobre react?"
+- **D23** (2026-11-13) — Se revierte la recomendación de Astro. El argumento anterior ("ya lo usás en Chajá, el riesgo es bajo") respondía a la pregunta equivocada. Con contenido en Supabase y un admin que se mantiene, la ventaja de Astro (content collections en markdown) no aplica, y el costo de re-hospedar el admin y rehacer la capa i18n no se justifica. Se vuelve a Vite + React con generación estática en build, que satisface el requisito real (HTML con `<head>` por ruta) sin cambiar de stack. Fase 0 eliminada.
