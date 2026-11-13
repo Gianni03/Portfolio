@@ -34,6 +34,14 @@ export default function Profile() {
           </li>
         </ul>
 
+        <a
+          href="/cv/gianni-pasquinelli-cv.pdf"
+          download="Gianni-Pasquinelli-CV.pdf"
+          className="inline-block rounded-full border border-white/20 px-5 py-2 text-sm font-medium text-white transition-colors hover:border-[#7a43c1] hover:text-[#FF9FFC]"
+        >
+          Download CV
+        </a>
+
       <h2 className="text-3xl font-bold">Profile</h2>
         <p className="max-w-2xl text-neutral-300 leading-relaxed whitespace-pre-line">
           {profile.summary}
