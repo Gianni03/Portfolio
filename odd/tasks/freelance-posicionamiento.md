@@ -37,12 +37,167 @@ Test runner: **ninguno configurado**. Excepción documentada en `## Checks`.
   Evidence: L7 — "puede que tambien haya que quitar los proyectos destacados con el scroll". Requiere confirmación explícita porque el AGENTS.md lo fija como decisión bloqueada.
 - **S15** — Las cards de proyecto son clickeables y navegan al demo o al repo.
   Evidence: L7 — "no son clickeables".
+- **S16** — Cada proyecto relevante se cuenta como caso: rubro, problema, qué se construyó, resultado, link. Y tiene su propia página en `/casos/<slug>`.
+  Evidence: L8 — "la web esta bien, pero no es la web de venta que busco".
+- **S17** — El home incluye una sección de proceso con pasos y expectativa de tiempo.
+- **S18** — El home incluye una sección de preguntas frecuentes que responde precio, plazos y soporte.
+- **S19** — WhatsApp es el CTA primario del sitio.
+  Origin: audit — no existe ningún canal de WhatsApp y el formulario público de contacto tampoco.
 
 ## Assumptions
 
 - **A1 — Arquitectura.** Se mantiene Vite SPA y se genera HTML estático por ruta en build. **No** se migra a Astro. Confirmar antes de T3.
 - **A2 — Dominio.** Un solo dominio propio, un solo repo. `giannipasquinelli.com.ar` si el foco es Argentina; `.com` si se quiere conservar opción internacional.
 - **A3 — Hero copy.** CONFIRMADO. Opción "Contraste". Forma final: h1 "Productos digitales a medida" + "Sin plantillas." / "Sin intermediarios."
+
+## Design — the sales site
+
+### Principle
+The current site proves craft. The sales site must prove competence and remove friction. Same visual identity, but restrained: **the hero is the only spectacle**; everything below it is quiet, scannable and conversion-first. A PyME owner is reading on a mid-range phone, in a hurry, deciding whether this person can be trusted with their business.
+
+The portfolio was the proof. The sales site has to be proof *by being fast, clear and easy to contact*, not by being impressive.
+
+### Home structure
+
+| # | Section | Job | Content |
+|---|---|---|---|
+| 1 | Hero | Stop the scroll, state the offer | H1 promise, one line of who it is for, primary CTA, one line of proof |
+| 2 | Servicios | Answer "what can I buy" | 2 cards: what it solves, for whom, CTA |
+| 3 | Casos | Prove it | 3 cards: problem → what was built → result → live link |
+| 4 | Proceso | Remove the black-box fear | 4 steps with a time expectation |
+| 5 | Sobre mí | Credibility | 3 short paragraphs max |
+| 6 | Preguntas | Handle objections | 6 questions, including price and timing |
+| 7 | Contacto | Convert | WhatsApp primary, email secondary |
+| 8 | Footer | Local signal | Rosario, Santa Fe, Argentina |
+
+### Copy rules
+- Client language everywhere: "página web", "sistema", "presupuesto", "turnos". Never "producto digital" in a heading a client reads first.
+- Every section answers one question and ends with one action.
+- Never claim a capability without a project that backs it. E-commerce stays out until one exists.
+
+### Case card format
+
+Two formats, never mixed. The difference is factual, not cosmetic: one had a client, the other did not.
+
+**Client case**
+```
+Rubro          → "Pastelería, Rosario"
+Problema       → one or two lines, the client's own words if possible
+Qué construí   → one or two lines, plain language
+Resultado      → one concrete line (orders, bookings, time saved)
+Link           → live site
+```
+
+**Product case** (own products: Plataforma 1810, Kli)
+```
+Qué es         → one line, what the product does and for whom
+Qué construí   → scope: auth, panel, plans, themes, payments, whatever applies
+Estado         → live, in production, what it runs today
+Link           → live site
+```
+
+Rules:
+- Never present an own product as client work: no invented client, no invented metric, no invented testimonial.
+- Own products are framed as evidence of end-to-end ownership, which is a stronger signal for a client than an outsourced build.
+- Results only appear when they are real and measurable. Otherwise the "Resultado" line is omitted, not softened.
+
+Each case is also a **page** (`/casos/<slug>`), not only a card. That page targets one niche keyword and is the highest-leverage SEO asset a freelancer has: proof and search intent in the same URL.
+
+**Worked example — El Rey del Chajá (client case, verifiable facts only)**
+```
+Rubro        → Pastelería artesanal, Rosario. Desde 1960, tercera generación.
+Problema     → [pendiente: qué necesitaba el cliente antes del sitio]
+Qué construí → Catálogo completo con precios, tamaños e ingredientes de cada torta,
+               promo, horarios, ubicación y cómo comprar.
+Resultado    → [pendiente: solo si existe un dato real]
+Link         → elreydelchaja.com
+```
+The address (Blvd. Oroño 2955), the 232 Google reviews and the business history are public and verifiable. The problem and the result are not, so they stay as placeholders until the user supplies them.
+
+### Case slate (read from production, 2026-11-13)
+
+| Project | Type | What is actually live | Case angle |
+|---|---|---|---|
+| El Rey del Chajá | Client work | Catálogo de tortas con precios, promo, horarios, dirección, reseñas 4.4★ (232), y el crédito "Desarrollado con ❤️ por Gianni Pasquinelli" en el footer | **Local SEO.** Comercio real de Rosario, verificable, con dirección física. Es la prueba que un cliente de la ciudad puede comprobar caminando. |
+| Plataforma 1810 | Own product | Onboarding en 5 pasos, temas, planes, acceso premium, login sin contraseña, panel de edición | **Sistemas.** No es una landing: es un producto con panel, planes y cuentas. |
+| Kli | Own product | Seis etapas de precio, cobro integrado, eventos, contenido y memoria | **Sistemas.** Prueba de pagos, suscripciones y lógica de negocio. |
+
+Relationship (L11): 1810 and Kli are **own products**. They are framed as product cases, never as client work, and never with invented metrics or testimonials. For a buyer, "built this alone, end to end, still live" is stronger evidence than an outsourced build.
+
+`holocruxe.com` no devolvió contenido (probablemente app JS o bloqueo). Confirmar qué es o descartarlo del slate.
+
+Strategic read: the two strongest builds are **products**, not websites. The positioning "hago páginas web" undersells the evidence. The honest structure is two offers on one site:
+- **Sitios** → probado por El Rey del Chajá. Entrada para PyMEs de Rosario.
+- **Sistemas a medida** → probado por Plataforma 1810 y Kli. Ticket alto.
+
+Open question: whether 1810 and Kli are client work or own products. The case framing changes radically:
+- Client work → "problema del cliente → solución → resultado".
+- Own product → "producto propio, de cero a producción", which is strong but is not client proof and must not be presented as such.
+
+### Visual rules
+- Hero keeps `ReflectiveCard`, `LightRays` and the gradient title. Untouched.
+- Below the hero: no continuous motion, no new animation libraries, no parallax.
+- One accent (`#7a43c1`) per section, never two.
+- `CurvedSectionTitle` keeps brand continuity but appears once per section.
+- Text sections cap at `max-w-3xl`. Cards in a 2-column grid on desktop, 1 on mobile.
+- Minimum body size 15px on mobile; contrast `text-neutral-300` or lighter on `neutral-950`.
+- Every interactive element gets a visible focus state.
+
+### Conversion rules
+- **WhatsApp is the primary CTA.** A Rosario PyME will not fill a form. It gets a persistent, obvious button in the header and in contact.
+- Email and LinkedIn stay as secondary options for people who prefer them.
+- One primary action per screen. The hero CTA and the contact section are the same action.
+- The `AGENTS.md` contact-form spec (submit/reset/loading/success/error) is currently unimplemented. Recommendation: WhatsApp first, and keep a 3-field form as fallback, not as the main path.
+- `public/_redirects` contains `/success.html` and `/success` rules pointing to a file that does not exist. Remove them or restore the page.
+
+### SEO architecture
+- Spanish `es-AR` at `/`, English at `/en/*`.
+- Routes: `/`, `/servicios/desarrollo-web`, `/servicios/sistemas-a-medida`, `/desarrollo-web-rosario`, `/casos/<slug>`, `/contacto`.
+- Each route ships its own static HTML with `lang`, `title`, `description`, `canonical`, OG and `hreflang`.
+- `ProfessionalService` schema with `areaServed`: Rosario, Funes, Roldán, Granadero Baigorria, Villa Gobernador Gálvez, Pérez, San Lorenzo.
+- One strong local page beats five thin city pages. No doorway pages.
+- Google Business Profile as a service-area business. Highest local lever, zero code.
+- Sitemap per locale, `sameAs` unified (S9).
+
+### Phasing
+- **Phase 1 — Conversion.** Structure, copy, cases, process, FAQ, WhatsApp. No SEO infrastructure. This is what turns the portfolio into a sales site.
+- **Phase 2 — SEO.** Static HTML per route (A1), local page, service pages, schema, sitemap, GBP, own domain.
+- **Phase 3 — Content.** More cases, niche pages, one keyword each.
+
+### Pricing
+Show a floor, never a fixed price. "Desde $X" plus the factors that move it, published where the client can read them.
+
+| Service | Display |
+|---|---|
+| Sitios web | "Desde $X" |
+| Sistemas a medida | "Presupuesto según alcance" |
+
+Published factors that move the price (one FAQ entry):
+- number of sections or screens
+- custom design vs adapted template
+- animation and interaction work
+- integrations (payments, WhatsApp, spreadsheets, an existing system)
+- content: written by the client or by me
+- ongoing maintenance
+
+Rules:
+- The "desde" is the floor of the cheapest project actually accepted, never an average.
+- **Never publish a number you would not accept.** The client reads "desde" as "the price".
+- Quote validity: 15 days. Argentine inflation makes open-ended quotes a loss.
+- If a project spans more than a month, quote in ARS with a USD reference.
+
+How to derive the numbers (the client fills them, not the site):
+1. Define a working-day rate: what you need to earn per working day.
+2. Estimate days per project type (simple landing 2–3, custom-designed site 5–8, custom system 15+).
+3. Price = days × day rate + costs (domain, hosting, licences) + a 20% risk margin.
+4. The published "desde" is the floor of the smallest project you would still accept.
+
+### Open decisions
+- WhatsApp number and whether the button is persistent in the header.
+- Contact form: restore per `AGENTS.md` or drop it in favour of WhatsApp.
+- Which of the 8 projects become written cases (recommend 3).
+- Own domain.
+- The actual price numbers for the "desde".
 
 ## Tasks
 
@@ -59,6 +214,10 @@ Test runner: **ninguno configurado**. Excepción documentada en `## Checks`.
 | T9 | Reestructurar el home como página de venta (Servicios + grilla de proyectos) | S3, S12, S13, S14, S15 | inline | done |
 | T10 | Eliminar componentes muertos: `PrimaryProjects`, `PrimaryProjectsSection`, `ProjectsGrid` | S14 | inline | pending |
 | T11 | Decidir destino de la ruta `/studies` (huérfana tras sacar el nav) | — | inline | pending |
+| T12 | Casos: estructura de card + 3 casos escritos + páginas `/casos/<slug>` | S16 | inline | pending |
+| T13 | Sección Proceso (4 pasos con expectativa de tiempo) | S17 | inline | pending |
+| T14 | Sección Preguntas (6 objeciones, incluido precio y plazos) | S18 | inline | pending |
+| T15 | WhatsApp como CTA primario + limpiar `_redirects` muerto | S19 | inline | pending |
 
 ## Checks
 
@@ -91,3 +250,13 @@ T3 agrega un script de verificación estructural mínimo para no depender de ins
 - **D12** (2026-11-13) — Confirmada la reestructuración (S12). T9 completado: `ServicesSection`, `ProjectCard` y `ProjectsShowcase` nuevos; `Home.jsx` reordenado; nav del Header actualizado a Servicios/Proyectos/Sobre mí/Contacto + CV; observer de scroll actualizado. `PrimaryProjects` y `ProjectsGrid` dejan de renderizarse.
   Verificación observada con Chrome headless: `/` → home→services→projects→about→contact, "Formación" y "Herramientas" ausentes, 8 cards con 8 links externos. `/en` → misma estructura con "Skills" conservado antes de contacto.
 - **D13** (2026-11-13) — Hallazgo relevante: los proyectos cargados desde Supabase son sitios reales en producción (`plataforma1810.com.ar`, `kli.com.ar`, `elreydelchaja.com`, `holocruxe.com`) más demos en Vercel. La prueba de trabajo existe; el problema era de presentación, no de falta de casos. Refuerza que el siguiente salto de conversión está en contar esos proyectos como casos (problema → qué se hizo → resultado), no en conseguir el primero.
+- **L8** (2026-11-13) — "ok, va queriendo.. creo que esto que empezo con una pequeña idea ahora es un cambio bastante grande, vamos a diseñar todo antes de seguir, porque la web esta bien, pero no es la web de venta que busco"
+- **D14** (2026-11-13) — Se detiene la implementación. Se escribe `## Design` con la estructura completa, reglas de copy, formato de caso, reglas visuales, reglas de conversión, arquitectura SEO y fases. El orden deja de ser incremental: Fase 1 conversión, Fase 2 SEO, Fase 3 contenido.
+- **D15** (2026-11-13) — Hallazgos del audit de contacto: no existe WhatsApp en el proyecto, no existe formulario público de contacto (los únicos `<form>` son del admin), y `public/_redirects` referencia `/success.html` y `/success` apuntando a un archivo inexistente.
+- **L9** (2026-11-13) — "mmm es que no tengo numero reales, y depende un poco de cada pedido, porque te piden una landin que ya le pongo precio y todo ok, pero despues me piden otra con muchas animaciones, y el precio es otro, el desde puede ser, pero tambien según alcance"
+- **D16** (2026-11-13) — Modelo de precios definido: piso publicado ("Desde $X") más los factores de alcance publicados. Sistemas a medida sin piso, con "presupuesto según alcance". Regla dura: nunca publicar un número que no se aceptaría. Validez de presupuesto 15 días por inflación. Los números los define el cliente; el sitio no los inventa.
+- **L10** (2026-11-13) — Lectura de los proyectos en producción: Plataforma 1810 (SaaS de campañas políticas con onboarding, planes y panel), Kli (plataforma de comunidades con membresías y cobro integrado), El Rey del Chajá (pastelería real en Blvd. Oroño 2955, Rosario, con catálogo, precios y crédito a Gianni en el footer). `holocruxe.com` no devolvió contenido.
+- **D17** (2026-11-13) — El slate de casos queda en tres: El Rey del Chajá (SEO local y prueba verificable en Rosario), Plataforma 1810 y Kli (prueba de sistemas, panel, planes y pagos). Los dos builds más fuertes son productos, no sitios: el posicionamiento "hago páginas web" subestima la evidencia disponible.
+- **L11** (2026-11-13) — "son productos propios, pero son desarrollos full, de producto, no se aclara nada, son trabajos hechos, de forma correcta y live, no son ejemplos de estudio... el cliente fui yo , me contarte"
+- **D18** (2026-11-13) — Se definen dos formatos de caso que nunca se mezclan: caso de cliente (rubro → problema → qué construí → resultado → link) y caso de producto (qué es → alcance → estado → link). Regla: un producto propio nunca se presenta como trabajo de cliente, y no se inventan métricas ni testimonios. Contrapeso argumentado: el producto propio se enmarca como prueba de ownership de punta a punta, que para un comprador pesa más que un build tercerizado.
+- **D19** (2026-11-13) — El caso de El Rey del Chajá se redacta solo con hechos verificables (dirección, reseñas, historia, contenido del sitio). Problema y resultado quedan como placeholders hasta que el usuario los aporte.
