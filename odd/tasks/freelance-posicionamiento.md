@@ -46,7 +46,7 @@ Test runner: **ninguno configurado**. Excepción documentada en `## Checks`.
 
 ## Assumptions
 
-- **A1 — Arquitectura.** Se mantiene Vite SPA y se genera HTML estático por ruta en build. **No** se migra a Astro. Confirmar antes de T3.
+- **A1 — Arquitectura.** RESUELTO: **Astro**. El usuario ya construyó y mantiene El Rey del Chajá en Astro, en producción, con panel de administración. La migración deja de ser territorio desconocido y pasa a ser su stack. Consecuencia de secuencia: la migración del shell va **antes** de Fase 1, para no construir las mismas páginas dos veces.
 - **A2 — Dominio.** Un solo dominio propio, un solo repo. `giannipasquinelli.com.ar` si el foco es Argentina; `.com` si se quiere conservar opción internacional.
 - **A3 — Hero copy.** CONFIRMADO. Opción "Contraste". Forma final: h1 "Productos digitales a medida" + "Sin plantillas." / "Sin intermediarios."
 
@@ -106,19 +106,23 @@ Each case is also a **page** (`/casos/<slug>`), not only a card. That page targe
 **Worked example — El Rey del Chajá (client case, verifiable facts only)**
 ```
 Rubro        → Pastelería artesanal, Rosario. Desde 1960, tercera generación.
-Problema     → [pendiente: qué necesitaba el cliente antes del sitio]
-Qué construí → Catálogo completo con precios, tamaños e ingredientes de cada torta,
-               promo, horarios, ubicación y cómo comprar.
-Resultado    → [pendiente: solo si existe un dato real]
+Problema     → Tenía un sitio sobre un template de Framer: poco claro, sin SEO,
+               y cada cambio de precio obligaba a llamar al desarrollador.
+Qué construí → Sitio nuevo de cero en Astro, con panel de administración para
+               editar precios y contenido, y un generador de imágenes para las
+               3 pantallas de 55" del local, manejado desde el mismo panel.
+Resultado    → El negocio actualiza precios y pantallas sin depender de un tercero.
 Link         → elreydelchaja.com
 ```
-The address (Blvd. Oroño 2955), the 232 Google reviews and the business history are public and verifiable. The problem and the result are not, so they stay as placeholders until the user supplies them.
+The address (Blvd. Oroño 2955), the 232 Google reviews and the business history are public and verifiable. The problem, the scope and the autonomy outcome come from the user's own account of the build.
+
+This case is the flagship. It proves the whole offer at once: frontend, SEO, backoffice, and integration with the physical store. It is also the clearest sales hook available: **"no dependés de mí para cambiar un precio"**.
 
 ### Case slate (read from production, 2026-11-13)
 
 | Project | Type | What is actually live | Case angle |
 |---|---|---|---|
-| El Rey del Chajá | Client work | Catálogo de tortas con precios, promo, horarios, dirección, reseñas 4.4★ (232), y el crédito "Desarrollado con ❤️ por Gianni Pasquinelli" en el footer | **Local SEO.** Comercio real de Rosario, verificable, con dirección física. Es la prueba que un cliente de la ciudad puede comprobar caminando. |
+| El Rey del Chajá | Client work | Sitio en Astro, panel de administración para precios y contenido, y generador de imágenes para 3 pantallas de 55" del local, todo desde el mismo panel | **Flagship.** Prueba frontend + SEO + backoffice + integración con el local físico. Hook: "no dependés de mí para cambiar un precio". |
 | Plataforma 1810 | Own product | Onboarding en 5 pasos, temas, planes, acceso premium, login sin contraseña, panel de edición | **Sistemas.** No es una landing: es un producto con panel, planes y cuentas. |
 | Kli | Own product | Seis etapas de precio, cobro integrado, eventos, contenido y memoria | **Sistemas.** Prueba de pagos, suscripciones y lógica de negocio. |
 
@@ -160,9 +164,13 @@ Open question: whether 1810 and Kli are client work or own products. The case fr
 - Sitemap per locale, `sameAs` unified (S9).
 
 ### Phasing
-- **Phase 1 — Conversion.** Structure, copy, cases, process, FAQ, WhatsApp. No SEO infrastructure. This is what turns the portfolio into a sales site.
-- **Phase 2 — SEO.** Static HTML per route (A1), local page, service pages, schema, sitemap, GBP, own domain.
+- **Phase 0 — Shell in Astro.** Port the current site to Astro with `es`/`en` routing before building more sections. Doing it after Phase 1 would mean building the same pages twice. The user already ships Astro in production, so this is their own stack, not a new one.
+- **Phase 1 — Conversion.** Structure, copy, cases, process, FAQ, WhatsApp. No SEO infrastructure beyond what Astro gives for free.
+- **Phase 2 — SEO.** Service pages, local page, `ProfessionalService` schema, sitemap, Google Business Profile, own domain.
 - **Phase 3 — Content.** More cases, niche pages, one keyword each.
+
+### Differentiation
+The Chajá build exposes the real offer: a business does not buy "a website", it buys **not depending on a developer for every price change**. That is the hook. Candidate third service, to confirm: **pantallas / señalización digital** for physical stores, managed from the same admin panel.
 
 ### Pricing
 Show a floor, never a fixed price. "Desde $X" plus the factors that move it, published where the client can read them.
@@ -260,3 +268,7 @@ T3 agrega un script de verificación estructural mínimo para no depender de ins
 - **L11** (2026-11-13) — "son productos propios, pero son desarrollos full, de producto, no se aclara nada, son trabajos hechos, de forma correcta y live, no son ejemplos de estudio... el cliente fui yo , me contarte"
 - **D18** (2026-11-13) — Se definen dos formatos de caso que nunca se mezclan: caso de cliente (rubro → problema → qué construí → resultado → link) y caso de producto (qué es → alcance → estado → link). Regla: un producto propio nunca se presenta como trabajo de cliente, y no se inventan métricas ni testimonios. Contrapeso argumentado: el producto propio se enmarca como prueba de ownership de punta a punta, que para un comprador pesa más que un build tercerizado.
 - **D19** (2026-11-13) — El caso de El Rey del Chajá se redacta solo con hechos verificables (dirección, reseñas, historia, contenido del sitio). Problema y resultado quedan como placeholders hasta que el usuario los aporte.
+- **L12** (2026-11-13) — "tenia una web, no my clara, sin seo correcto, de un template de framer, y requeria llamar al dev para cada cambio, le hice una web de 0 en astro, con un admin para modificacion de precios, ademas de un generador de imagenes para 3 tv de 55' dentro del local, tambien desde el admin"
+- **D20** (2026-11-13) — El Rey del Chajá pasa a ser el caso flagship y el diseño de caso queda completo con hechos aportados por el usuario: problema (template de Framer, sin SEO, dependencia del dev), alcance (sitio en Astro + admin de precios + generador de imágenes para 3 TVs de 55") y resultado (autonomía del negocio).
+- **D21** (2026-11-13) — A1 resuelto: Astro. El usuario ya construyó y mantiene Chajá en Astro en producción, así que la migración es su propio stack. Consecuencia de secuencia: se agrega **Fase 0** (portar el shell a Astro) antes de Fase 1, para no construir las mismas páginas dos veces.
+- **D22** (2026-11-13) — Diferenciación detectada: un negocio no compra "una web", compra no depender de un dev para cada cambio de precio. Hook de venta: "no dependés de mí para cambiar un precio". Servicio candidato a confirmar: pantallas / señalización digital para locales físicos, administradas desde el mismo panel.
