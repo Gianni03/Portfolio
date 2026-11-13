@@ -69,6 +69,11 @@ export const es = {
     other: 'Otros trabajos',
     loading: 'Cargando proyectos…',
     error: 'No pudimos cargar los proyectos.',
+    demo: 'Ver demo',
+    code: 'Ver código',
+    previous: 'Proyecto anterior',
+    next: 'Proyecto siguiente',
+    show: 'Mostrar',
   },
 
   studies: {

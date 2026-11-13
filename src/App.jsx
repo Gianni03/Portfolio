@@ -1,7 +1,8 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './features/layout/Layout';
 import Home from './app/home/Home';
+import LocaleProvider from './i18n/LocaleProvider';
 
 // Everything except the landing page is split, so a visitor who only reads the
 // home does not download the admin panel or the resume.
@@ -21,9 +22,16 @@ const ResumeStudiesAdmin = lazy(
   () => import('./app/admin/resume/StudiesAdmin'),
 );
 
-function App() {
+function useLocale() {
+  const { pathname } = useLocation();
+  return pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'es';
+}
+
+function AppRoutes() {
+  const locale = useLocale();
+
   return (
-    <BrowserRouter>
+    <LocaleProvider locale={locale}>
       <Suspense fallback={<p className="p-8 text-neutral-500">Loading…</p>}>
         <Routes>
           <Route element={<Layout />}>
@@ -31,6 +39,10 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/studies" element={<Studies />} />
             <Route path="/resume" element={<Resume />} />
+            <Route path="/en" element={<Home />} />
+            <Route path="/en/projects" element={<Projects />} />
+            <Route path="/en/studies" element={<Studies />} />
+            <Route path="/en/resume" element={<Resume />} />
             <Route path="/login" element={<Login />} />
           </Route>
           <Route path="/admin" element={<Admin />}>
@@ -44,8 +56,14 @@ function App() {
           </Route>
         </Routes>
       </Suspense>
-    </BrowserRouter>
+    </LocaleProvider>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
+}

@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import Section from '../../ui/Section';
 import Hero from '../hero/Hero';
 import CurvedSectionTitle from '../../ui/section-titles/CurvedLoopSectionTitle';
+import { useCopy } from '../../i18n/context';
 
 // Only the hero ships with the first paint. Everything below the fold loads
 // while the visitor is still reading the top of the page.
@@ -12,6 +13,8 @@ const Studies = lazy(() => import('../studies/Studies'));
 const Contact = lazy(() => import('../contact/Contact'));
 
 export default function Home() {
+  const copy = useCopy();
+
   return (
     <>
       <Hero />
@@ -20,7 +23,7 @@ export default function Home() {
 
         <Section title="Projects" id="projects">
           <CurvedSectionTitle
-            text="Projects"
+            text={copy.projects.title}
             curve={120}
             className="fill-[#fbfffe] transition-colors duration-1000 hover:fill-[#7A43C1]"
           />
@@ -32,7 +35,7 @@ export default function Home() {
         </Section>
         <Section title="Studies" id="studies">
           <CurvedSectionTitle
-            text="Studies"
+            text={copy.studies.title}
             curve={-60}
             className="fill-[#7A43C1] transition-colors duration-1000 hover:fill-[#fbfffe]"
           />

@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { useCopy, isEnglish, localeSwitchPath } from '../../i18n/context';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState(null);
   const location = useLocation();
-  const isResume = location.pathname === '/resume';
+  const copy = useCopy();
+  const english = isEnglish(copy);
+  const isResume = location.pathname.endsWith('/resume');
+  const switchTo = localeSwitchPath(location.pathname, english);
+  const switchable = ['/', '/projects', '/studies', '/resume'].includes(
+    location.pathname.replace(/^\/en(?=\/|$)/, '') || '/'
+  );
 
   const scrollToId = (id) => {
     const el = document.getElementById(id);
@@ -39,11 +46,11 @@ export default function Header() {
   }, [isResume]);
 
   const homeNavItems = [
-    { id: 'projects', label: 'Projects' },
-    { id: 'studies', label: 'Studies' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'contact', label: 'Contact' },
-    { id: 'resume', label: 'Resume Web', path: '/resume' },
+    { id: 'projects', label: copy.nav.projects },
+    { id: 'studies', label: copy.nav.studies },
+    { id: 'skills', label: copy.nav.skills },
+    { id: 'contact', label: copy.nav.contact },
+    { id: 'resume', label: copy.nav.resume, path: english ? '/en/resume' : '/resume' },
   ];
 
   return (
@@ -54,7 +61,7 @@ export default function Header() {
         <button
           onClick={() => {
             if (isResume) {
-              window.location.href = '/';
+              window.location.href = english ? '/en' : '/';
             } else {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }
@@ -65,7 +72,7 @@ export default function Header() {
         </button>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-6 text-neutral-300">
+        <nav className="hidden md:flex items-center gap-6 text-neutral-300">
           {!isResume ? (
             homeNavItems.map((item) => {
               if (item.path) {
@@ -95,17 +102,29 @@ export default function Header() {
               );
             })
           ) : (
-            <NavLink to="/" className="hover:text-white transition">
-              Portfolio
+            <NavLink to={english ? '/en' : '/'} className="hover:text-white transition">
+              {copy.nav.portfolio}
             </NavLink>
           )}
+
+          <Link
+            to={switchTo}
+            aria-label={english ? 'Ver en español' : 'View in English'}
+            className={
+              switchable
+                ? 'text-xs uppercase tracking-wider text-neutral-400 hover:text-white transition'
+                : 'hidden'
+            }
+          >
+            {english ? 'ES' : 'EN'}
+          </Link>
         </nav>
 
         {/* Mobile toggle */}
         <button
           className="md:hidden text-neutral-300"
           onClick={() => setOpen(!open)}
-          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-label={open ? copy.nav.closeMenu : copy.nav.openMenu}
           aria-expanded={open}
         >
           {open ? <X size={26} /> : <Menu size={26} />}
@@ -145,13 +164,25 @@ export default function Header() {
             })
           ) : (
             <NavLink
-              to="/"
+              to={english ? '/en' : '/'}
               onClick={() => setOpen(false)}
               className="py-2 border-b border-neutral-800 hover:text-white"
             >
-              Portfolio
+              {copy.nav.portfolio}
             </NavLink>
           )}
+
+          <Link
+            to={switchTo}
+            onClick={() => setOpen(false)}
+            className={
+              switchable
+                ? 'py-2 border-b border-neutral-800 text-xs uppercase tracking-wider text-neutral-400 hover:text-white'
+                : 'hidden'
+            }
+          >
+            {english ? 'Ver en español' : 'View in English'}
+          </Link>
         </nav>
       )}
     </header>

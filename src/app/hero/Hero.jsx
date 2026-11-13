@@ -2,8 +2,11 @@ import Section from '../../ui/Section';
 import HeroCard from '@/features/hero/components/HeroCard';
 import GradientText from '@/components/GradientText';
 import LightRays from '@/components/LightRays';
+import { useCopy } from '../../i18n/context';
 
 export default function Hero() {
+  const copy = useCopy();
+
   return (
     <Section id="home" fullWidth={false} className="relative">
        <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 mt-6 lg:grid lg:grid-cols-[420px_1fr] lg:items-start lg:gap-12">
@@ -21,19 +24,18 @@ export default function Hero() {
             yoyo={false}
             className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-semibold leading-tight tracking-normal"
           >
-            Product Engineer
+            {copy.hero.title}
           </GradientText>
           <div className="mt-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/15 p-6 md:p-8">
             <span className="block text-3xl font-medium tracking-tight text-[#fbfffe]/90">
-              focused on clean UI
+              {copy.hero.line1}
             </span>
             <span className="block text-3xl font-medium tracking-tight text-[#fbfffe]/75">
-              & real-world products
+              {copy.hero.line2}
             </span>
           </div>
           <p className="mt-6 max-w-sm mx-auto lg:mx-0 text-sm leading-relaxed text-[#fbfffe]/70">
-            I build thoughtful interfaces with React, CSS and motion,
-            prioritizing clarity, performance and detail.
+            {copy.hero.intro}
           </p>
 
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-8">
@@ -41,14 +43,13 @@ export default function Hero() {
               href="#projects"
               className="z-10 inline-block px-6 py-3 rounded-full bg-[#7a43c1] text-[#fbfffe] font-medium hover:bg-[#FF9FFC] transition-colors"
             >
-              View projects
+              {copy.hero.primaryCta}
             </a>
             <a
-              href="/cv/gianni-pasquinelli-cv.pdf"
-              download="Gianni-Pasquinelli-CV.pdf"
+              href="#contact"
               className="z-10 inline-block px-6 py-3 rounded-full border border-white/20 text-[#fbfffe] font-medium hover:border-[#7a43c1] hover:text-[#FF9FFC] transition-colors"
             >
-              Download CV
+              {copy.hero.secondaryCta}
             </a>
           </div>
         </div>

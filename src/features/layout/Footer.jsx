@@ -1,13 +1,16 @@
 import { Mail, Github, Linkedin } from 'lucide-react';
+import { useCopy } from '../../i18n/context';
 
 export default function Footer() {
+  const copy = useCopy();
+
   return (
     <footer className="w-full border-t border-white/10 mt-24">
       <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
 
         {/* Left */}
         <div className="text-sm text-white/70 text-center md:text-left">
-          <p className="font-medium text-white">Gianni — Frontend Developer</p>
+          <p className="font-medium text-white">Gianni — {copy.footer.role}</p>
           <p className="text-xs mt-1">© {new Date().getFullYear()}</p>
         </div>
 

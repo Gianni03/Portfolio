@@ -1,12 +1,15 @@
 // features/projects/components/ProjectsGrid.jsx
 import { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, Github, ExternalLink } from 'lucide-react';
+import { useCopy } from '../../../i18n/context';
 
 const CARD_WIDTH = 300;
 const GAP = 24;
 const VISIBLE_RANGE = 2;
 
-export default function ProjectsGrid({ projects, title = 'Other Works' }) {
+export default function ProjectsGrid({ projects, title }) {
+  const copy = useCopy();
+  const heading = title ?? copy.projects.other;
   const [activeIndex, setActiveIndex] = useState(0);
   const touchStartX = useRef(null);
 
@@ -33,7 +36,7 @@ export default function ProjectsGrid({ projects, title = 'Other Works' }) {
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-12">
           <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tighter uppercase">
-            {title}
+            {heading}
           </h3>
         </div>
 
@@ -45,7 +48,7 @@ export default function ProjectsGrid({ projects, title = 'Other Works' }) {
           <button
             type="button"
             onClick={() => go(-1)}
-            aria-label="Previous project"
+            aria-label={copy.projects.previous}
             className="absolute left-2 top-4 z-30 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-neutral-950/80 text-neutral-300 backdrop-blur transition-colors hover:border-purple-500/50 hover:text-white md:top-1/2 md:h-11 md:w-11 md:-translate-y-1/2"
           >
             <ChevronLeft size={20} />
@@ -53,7 +56,7 @@ export default function ProjectsGrid({ projects, title = 'Other Works' }) {
           <button
             type="button"
             onClick={() => go(1)}
-            aria-label="Next project"
+            aria-label={copy.projects.next}
             className="absolute right-2 top-4 z-30 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-neutral-950/80 text-neutral-300 backdrop-blur transition-colors hover:border-purple-500/50 hover:text-white md:top-1/2 md:h-11 md:w-11 md:-translate-y-1/2"
           >
             <ChevronRight size={20} />
@@ -74,7 +77,7 @@ export default function ProjectsGrid({ projects, title = 'Other Works' }) {
                 type="button"
                 onClick={() => setActiveIndex(index)}
                 aria-pressed={isActive}
-                aria-label={`Show ${project.title}`}
+                aria-label={`${copy.projects.show} ${project.title}`}
                 style={{
                   width: CARD_WIDTH,
                   transform: `translateX(calc(-50% + ${
@@ -188,7 +191,7 @@ export default function ProjectsGrid({ projects, title = 'Other Works' }) {
                     className="inline-flex items-center gap-2 rounded-full bg-[#7a43c1] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#FF9FFC]"
                   >
                     <ExternalLink size={16} />
-                    Live demo
+                    {copy.projects.demo}
                   </a>
                 )}
                 {active.repo_url && (
@@ -199,7 +202,7 @@ export default function ProjectsGrid({ projects, title = 'Other Works' }) {
                     className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:border-[#7a43c1]"
                   >
                     <Github size={16} />
-                    View code
+                    {copy.projects.code}
                   </a>
                 )}
               </div>

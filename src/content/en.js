@@ -69,6 +69,11 @@ export const en = {
     other: 'Other Works',
     loading: 'Loading projects…',
     error: 'Error loading projects.',
+    demo: 'Live demo',
+    code: 'View code',
+    previous: 'Previous project',
+    next: 'Next project',
+    show: 'Show',
   },
 
   studies: {

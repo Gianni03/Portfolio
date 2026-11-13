@@ -1,13 +1,16 @@
 import Section from '../../ui/Section';
 import CurvedSectionTitle from '../../ui/section-titles/CurvedLoopSectionTitle';
 import GradientText from '@/components/GradientText';
+import { useCopy } from '../../i18n/context';
 
 export default function Contact() {
+  const copy = useCopy();
+
   return (
     <Section title="Contact Me" id="contact">
       <div>
         <CurvedSectionTitle
-          text="Get in Touch"
+          text={copy.contact.title}
           curve={60}
           className="fill-[#fbfffe] transition-colors duration-1000 hover:fill-[#7A43C1]"
           direction="right"
@@ -20,12 +23,10 @@ export default function Contact() {
           colors={['#7a43c1', '#FF9FFC', '#fbfffe']}
           className="text-5xl md:text-7xl font-bold tracking-tight mb-10"
         >
-          Contact
+          {copy.contact.heading}
         </GradientText>
 
-        <p className="mt-6 text-sm text-[#fbfffe]">
-          Open to frontend roles, freelance work and collaborations.
-        </p>
+        <p className="mt-6 text-sm text-[#fbfffe]">{copy.contact.intro}</p>
 
         <div className="mt-10 space-y-4 text-base">
           <a
@@ -50,12 +51,12 @@ export default function Contact() {
         group-hover:translate-x-1
       "
             >
-              → Send me an email
+              → {copy.contact.email}
             </span>
           </a>
 
           <a
-            href="https://www.linkedin.com/in/giannipasquinelli/"
+            href="https://www.linkedin.com/in/gianni-pasquinelli/"
             target="_blank"
             rel="noopener noreferrer"
             className="
@@ -78,7 +79,7 @@ export default function Contact() {
         group-hover:translate-x-1
       "
             >
-              → Connect on LinkedIn
+              → {copy.contact.linkedin}
             </span>
           </a>
         </div>
