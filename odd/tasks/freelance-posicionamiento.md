@@ -43,6 +43,10 @@ Test runner: **ninguno configurado**. Excepción documentada en `## Checks`.
 - **S18** — El home incluye una sección de preguntas frecuentes que responde precio, plazos y soporte.
 - **S19** — WhatsApp es el CTA primario del sitio.
   Origin: audit — no existe ningún canal de WhatsApp y el formulario público de contacto tampoco.
+- **S20** — Los casos son **visuales primero**: imagen grande, rubro, título, resultado en una línea y link. El detalle (problema / qué construí) queda en los datos para las páginas `/casos/<slug>`, no en la card.
+  Evidence: L15 — "esa card de solo texto no dice nada, no vende nada, hay que mostrar las imagenes... importa mas una buena imagen que todo el detalle del trabajo realizado".
+- **S21** — El About es una bio breve de tres párrafos, sin jerga de desarrollo.
+  Evidence: L15 — "el about es plano y muy corto, una pequeña bio estaria ien" y "el que contrate no tiene ni idea de que es un ticket".
 
 ## Assumptions
 
@@ -279,3 +283,7 @@ T3 agrega un script de verificación estructural mínimo para no depender de ins
 - **D23** (2026-11-13) — Se revierte la recomendación de Astro. El argumento anterior ("ya lo usás en Chajá, el riesgo es bajo") respondía a la pregunta equivocada. Con contenido en Supabase y un admin que se mantiene, la ventaja de Astro (content collections en markdown) no aplica, y el costo de re-hospedar el admin y rehacer la capa i18n no se justifica. Se vuelve a Vite + React con generación estática en build, que satisface el requisito real (HTML con `<head>` por ruta) sin cambiar de stack. Fase 0 eliminada.
 - **L14** (2026-11-13) — "y para cualquier animacion nueva que se pueda llegar a agregar hay que utilizar esto https://reactbits.dev/get-started/index que es de donde venia sacando las animaciones"
 - **D24** (2026-11-13) — Regla de proyecto: toda animación nueva sale de React Bits. Verificado que `ReflectiveCard`, `LightRays`, `CurvedLoop`, `GradientText` y `ScrollStack` provienen de ahí. Escrito en `AGENTS.md` y en las reglas visuales del diseño. No se escriben animaciones a mano ni se agregan otras librerías.
+- **L15** (2026-11-13) — "el numero es +54 9 3413704638 hay cosas que no estan bien, el about es plano y muy corto, una pequeña bio estaria ien, y la parte de me escribis a mi no a un ticket, el que contrate no tiene ni idea de que es un ticket, asi que eso no va ni a palos, y despues los proyectos, es creo una de las secciones principales,,, esa card de solo texto no dice nada, no vende nada, hay que mostrar las imagenes... esto es todo visual, importa mas una buena imagen que todo el detalle del trabajo realizado"
+- **D25** (2026-11-13) — About reescrito a tres párrafos con bio real (Rosario, música y docencia, qué construye, trato directo) y sin la metáfora del ticket.
+- **D26** (2026-11-13) — La card de caso se rehace visual-first: imagen `aspect-video` arriba, rubro, título, resultado y link. `problem` y `built` se conservan en los diccionarios para las páginas de caso, pero no se renderizan en la card. Las imágenes se toman de los proyectos de Supabase, emparejadas por `demo_url`, así que se cambian desde el admin sin tocar código.
+- **D27** (2026-11-13) — Incidencia y corrección: no existía `.env`; las credenciales de Supabase venían del entorno del shell, así que reiniciar el dev server desde otro shell dejaba el root vacío porque `createClient(undefined, undefined)` revienta al evaluar el módulo. Se restauraron las tres variables en `.env` (gitignoreado, valores recuperados del bundle ya construido) y se endureció `supabaseClient.js` para fallar en tiempo de llamada con un error legible en vez de en blanco total.

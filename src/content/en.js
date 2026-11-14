@@ -162,8 +162,9 @@ export const en = {
   about: {
     title: 'About',
     paragraphs: [
-      'I am Gianni. I build sites and systems your customers use and you can maintain.',
-      'I work from Rosario with businesses across the country. If something breaks, you message me, not a ticket.',
+      'I am Gianni Pasquinelli, a web developer in Rosario. I come from music and teaching, and it shows in how I work: order, rhythm and attention to detail.',
+      'I build sites and systems for businesses: catalogues, bookings, admin panels, in-store screens. I write the code myself, no templates.',
+      'I work from Rosario with businesses across the country. When you need something, I am the one on the other side.',
     ],
     tags: 'Sites · Systems · Admin panel · In-store screens',
   },
