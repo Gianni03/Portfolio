@@ -78,7 +78,7 @@ Each project must have a `visibility` field with one of the following values:
 - UI components live in `src/ui`
 - Feature components live in `src/features`
 - Use Tailwind only (no inline styles unless required)
-- Avoid introducing new animation libraries unless justified
+- Animations come from React Bits (https://reactbits.dev). It is the approved source for any new animated component. Do not hand-roll a new animation, and do not add a different animation library; React Bits dependencies (motion, ogl, gsap, three) are the justified exception.
 - Animations allowed: entrance, subtle hover, background motion
 - Avoid continuous motion in multiple sections at once
 

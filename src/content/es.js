@@ -1,9 +1,8 @@
 /**
  * Spanish (es-AR) copy.
  *
- * This is the primary locale: it is written for PyMEs and emprendedores who
- * need a website or a system built, not for recruiters evaluating a CV.
- * The English copy in `en.js` mirrors this shape one-to-one.
+ * Primary locale, written for comercios, negocios y PyMEs that need a site
+ * built. Short lines: the visitor is deciding, not reading.
  */
 export const es = {
   locale: 'es-AR',
@@ -11,12 +10,15 @@ export const es = {
   meta: {
     title: 'Gianni Pasquinelli | Desarrollo web a medida en Rosario',
     description:
-      'Sitios web, tiendas online y sistemas a medida para PyMEs y emprendedores. Desarrollo desde Rosario para todo el país.',
+      'Sitios y sistemas a medida para negocios. Panel propio para actualizar precios sin depender de un desarrollador. Rosario, Argentina.',
   },
 
   nav: {
     home: 'Inicio',
     services: 'Servicios',
+    cases: 'Casos',
+    process: 'Proceso',
+    faq: 'Preguntas',
     about: 'Sobre mí',
     projects: 'Proyectos',
     studies: 'Formación',
@@ -33,8 +35,8 @@ export const es = {
     line1: 'Sin plantillas.',
     line2: 'Sin intermediarios.',
     intro:
-      'Diseño y construyo sitios y sistemas para negocios que necesitan algo bien hecho. Trabajo desde Rosario con clientes de todo el país.',
-    primaryCta: 'Ver proyectos',
+      'Sitios y sistemas para negocios que necesitan algo bien hecho. Desde Rosario, para todo el país.',
+    primaryCta: 'Ver casos',
     secondaryCta: 'Hablemos',
   },
 
@@ -49,7 +51,110 @@ export const es = {
       },
       {
         title: 'Sistemas a medida',
-        description: 'Turnos, stock, presupuestos y clientes, sin hacerlo a mano.',
+        description:
+          'Precios, stock, turnos o pantallas del local: lo actualizás vos.',
+      },
+    ],
+  },
+
+  cases: {
+    title: 'Casos',
+    intro: 'Trabajo real, online ahora mismo.',
+    liveLabel: 'Ver sitio',
+    viewAll: 'Ver todos los proyectos',
+    labels: {
+      problem: 'El problema',
+      built: 'Qué hice',
+      result: 'Resultado',
+    },
+    items: [
+      {
+        rubro: 'Pastelería · Rosario',
+        title: 'El Rey del Chajá',
+        problem:
+          'Sitio de plantilla, sin SEO, y cada cambio de precio dependía del desarrollador.',
+        built:
+          'Sitio nuevo, panel para editar precios y las 3 pantallas del local, todo desde el mismo panel.',
+        result: 'Actualizan precios y pantallas solos.',
+        link: 'https://www.elreydelchaja.com/',
+      },
+      {
+        rubro: 'Producto propio · SaaS',
+        title: 'Plataforma 1810',
+        problem:
+          'Un candidato necesitaba su sitio de campaña sin depender de un equipo técnico.',
+        built:
+          'Producto completo: alta en 5 pasos, panel, temas, planes y acceso premium.',
+        result: 'Online y en producción.',
+        link: 'https://www.plataforma1810.com.ar/',
+      },
+      {
+        rubro: 'Producto propio · Plataforma',
+        title: 'Kli',
+        problem:
+          'Las comunidades viven dispersas entre chats, archivos y links de pago.',
+        built:
+          'Contenido, encuentros, memoria y membresías con cobro integrado en un solo lugar.',
+        result: 'Online y en producción.',
+        link: 'https://kli.com.ar/',
+      },
+    ],
+  },
+
+  process: {
+    title: 'Cómo trabajo',
+    intro: 'Cuatro pasos. Sin sorpresas.',
+    steps: [
+      {
+        title: 'Charla',
+        description: 'Me contás qué necesitás. Veinte minutos, sin compromiso.',
+      },
+      {
+        title: 'Propuesta',
+        description: 'Alcance, precio y fecha, por escrito.',
+      },
+      {
+        title: 'Desarrollo',
+        description: 'Avances cada semana. Ves el progreso en vivo.',
+      },
+      {
+        title: 'Entrega',
+        description: 'Online y funcionando. Te enseño a manejarlo.',
+      },
+    ],
+  },
+
+  faq: {
+    title: 'Preguntas',
+    items: [
+      {
+        question: '¿Cuánto sale?',
+        answer:
+          'Depende del alcance. Te paso un presupuesto cerrado por escrito antes de empezar. Lo que más lo mueve: cantidad de pantallas, diseño a medida, animaciones e integraciones.',
+      },
+      {
+        question: '¿Cuánto tarda?',
+        answer:
+          'Un sitio simple, dos a tres semanas. Un sistema, entre uno y tres meses. La fecha queda en la propuesta.',
+      },
+      {
+        question: '¿Qué necesito tener listo?',
+        answer:
+          'La información de tu negocio: qué vendés, precios y fotos. Si no tenés fotos, lo resolvemos.',
+      },
+      {
+        question: '¿Y si después necesito un cambio?',
+        answer:
+          'Si es un precio o un texto, lo cambiás vos desde el panel. Si es algo nuevo, me escribís.',
+      },
+      {
+        question: '¿Trabajás fuera de Rosario?',
+        answer:
+          'Sí. Trabajo desde Rosario con negocios de todo el país, todo remoto.',
+      },
+      {
+        question: '¿Dominio y hosting a nombre de quién?',
+        answer: 'Tuyo. Vos sos dueño de todo, siempre.',
       },
     ],
   },
@@ -57,12 +162,10 @@ export const es = {
   about: {
     title: 'Sobre mí',
     paragraphs: [
-      'Soy Gianni, desarrollador web. Vengo de la composición musical y la estética visual, y ese recorrido es lo que hoy define cómo construyo: interfaces limpias, intencionales y expresivas.',
-      'Trabajo en el cruce entre lógica y creatividad. Cada layout, animación e interacción es una oportunidad para aportar claridad y ritmo a un producto. Me importa la consistencia visual, los componentes mantenibles y los detalles chicos que elevan la experiencia.',
-      'Vengo de la música y la docencia, así que pienso en sistemas, patrones y flujo. Me gusta refinar interfaces y asegurarme de que cada elemento tenga un propósito en lugar de ser decoración.',
-      'Vos planteás el problema. Yo me encargo de la solución: del diseño al código, y de ahí a producción.',
+      'Soy Gianni. Construyo sitios y sistemas que tus clientes usan y vos podés mantener.',
+      'Trabajo desde Rosario con negocios de todo el país. Si algo se rompe, me escribís a mí, no a un ticket.',
     ],
-    tags: 'Desarrollo web · Producto digital · Interfaces · Motion',
+    tags: 'Sitios · Sistemas · Panel de administración · Pantallas',
   },
 
   projects: {
@@ -91,9 +194,22 @@ export const es = {
   contact: {
     title: 'Contacto',
     heading: 'Hablemos',
-    intro: 'Contame qué necesitás. Respondo yo, no un bot.',
+    intro: 'Contame qué necesitás. Respondo yo.',
+    whatsapp: 'Escribime por WhatsApp',
+    whatsappMessage: 'Hola Gianni, quiero consultarte por un proyecto.',
     email: 'Escribime',
     linkedin: 'LinkedIn',
+    divider: 'O dejame tu mensaje',
+    form: {
+      name: 'Tu nombre',
+      email: 'Tu email',
+      message: 'Qué necesitás',
+      submit: 'Enviar',
+      sending: 'Enviando…',
+      success: 'Listo. Te respondo hoy o mañana.',
+      error: 'No salió. Probá por WhatsApp o email.',
+      reset: 'Limpiar',
+    },
   },
 
   footer: {

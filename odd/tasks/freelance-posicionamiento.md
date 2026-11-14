@@ -143,7 +143,8 @@ Open question: whether 1810 and Kli are client work or own products. The case fr
 
 ### Visual rules
 - Hero keeps `ReflectiveCard`, `LightRays` and the gradient title. Untouched.
-- Below the hero: no continuous motion, no new animation libraries, no parallax.
+- **Animation source: React Bits only** (https://reactbits.dev). Every existing animated component in the repo already comes from there (`ReflectiveCard`, `LightRays`, `CurvedLoop`, `GradientText`, `ScrollStack`). No hand-rolled animations and no other animation library. Rule recorded in `AGENTS.md`.
+- Below the hero: no continuous motion, no parallax.
 - One accent (`#7a43c1`) per section, never two.
 - `CurvedSectionTitle` keeps brand continuity but appears once per section.
 - Text sections cap at `max-w-3xl`. Cards in a 2-column grid on desktop, 1 on mobile.
@@ -224,10 +225,10 @@ How to derive the numbers (the client fills them, not the site):
 | T9 | Reestructurar el home como página de venta (Servicios + grilla de proyectos) | S3, S12, S13, S14, S15 | inline | done |
 | T10 | Eliminar componentes muertos: `PrimaryProjects`, `PrimaryProjectsSection`, `ProjectsGrid` | S14 | inline | pending |
 | T11 | Decidir destino de la ruta `/studies` (huérfana tras sacar el nav) | — | inline | pending |
-| T12 | Casos: estructura de card + 3 casos escritos + páginas `/casos/<slug>` | S16 | inline | pending |
-| T13 | Sección Proceso (4 pasos con expectativa de tiempo) | S17 | inline | pending |
-| T14 | Sección Preguntas (6 objeciones, incluido precio y plazos) | S18 | inline | pending |
-| T15 | WhatsApp como CTA primario + limpiar `_redirects` muerto | S19 | inline | pending |
+| T12 | Casos: estructura de card + 3 casos escritos | S16 | inline | done — cards; páginas `/casos/<slug>` pending |
+| T13 | Sección Proceso (4 pasos con expectativa de tiempo) | S17 | inline | done |
+| T14 | Sección Preguntas (6 objeciones, incluido precio y plazos) | S18 | inline | done |
+| T15 | WhatsApp como CTA primario + formulario + limpiar `_redirects` muerto | S19 | inline | done — número pendiente en `.env` |
 
 ## Checks
 
@@ -276,3 +277,5 @@ T3 agrega un script de verificación estructural mínimo para no depender de ins
 - **D22** (2026-11-13) — Diferenciación detectada: un negocio no compra "una web", compra no depender de un dev para cada cambio de precio. Hook de venta: "no dependés de mí para cambiar un precio". Servicio candidato a confirmar: pantallas / señalización digital para locales físicos, administradas desde el mismo panel.
 - **L13** (2026-11-13) — "porque pasar la web a astro??? si ademas tenemos el admin que voy a mantener para seguir agregando o modificando contenido... es necesario ese cambio, que valor le agrega por sobre react?"
 - **D23** (2026-11-13) — Se revierte la recomendación de Astro. El argumento anterior ("ya lo usás en Chajá, el riesgo es bajo") respondía a la pregunta equivocada. Con contenido en Supabase y un admin que se mantiene, la ventaja de Astro (content collections en markdown) no aplica, y el costo de re-hospedar el admin y rehacer la capa i18n no se justifica. Se vuelve a Vite + React con generación estática en build, que satisface el requisito real (HTML con `<head>` por ruta) sin cambiar de stack. Fase 0 eliminada.
+- **L14** (2026-11-13) — "y para cualquier animacion nueva que se pueda llegar a agregar hay que utilizar esto https://reactbits.dev/get-started/index que es de donde venia sacando las animaciones"
+- **D24** (2026-11-13) — Regla de proyecto: toda animación nueva sale de React Bits. Verificado que `ReflectiveCard`, `LightRays`, `CurvedLoop`, `GradientText` y `ScrollStack` provienen de ahí. Escrito en `AGENTS.md` y en las reglas visuales del diseño. No se escriben animaciones a mano ni se agregan otras librerías.

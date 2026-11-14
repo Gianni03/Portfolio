@@ -1,21 +1,24 @@
 /**
  * English copy.
  *
- * This locale keeps the original recruiter-facing voice. It mirrors the shape
- * of `es.js` one-to-one so components can render either without branching.
+ * Mirrors the shape of `es.js` one-to-one. Same business audience, not
+ * recruiters: the site sells work, it does not present a CV.
  */
 export const en = {
   locale: 'en',
 
   meta: {
-    title: 'Gianni Pasquinelli | Product Engineer',
+    title: 'Gianni Pasquinelli | Custom web development in Rosario',
     description:
-      'Product Engineer focused on frontend engineering, UI quality, interactive experiences and building digital products.',
+      'Custom sites and systems for businesses. Your own panel to update prices without depending on a developer. Rosario, Argentina.',
   },
 
   nav: {
     home: 'Home',
     services: 'Services',
+    cases: 'Work',
+    process: 'Process',
+    faq: 'FAQ',
     about: 'About',
     projects: 'Projects',
     studies: 'Studies',
@@ -28,12 +31,12 @@ export const en = {
   },
 
   hero: {
-    title: 'Product Engineer',
-    line1: 'focused on clean UI',
-    line2: '& real-world products',
+    title: 'Custom digital products',
+    line1: 'No templates.',
+    line2: 'No middlemen.',
     intro:
-      'I build thoughtful interfaces with React, CSS and motion, prioritizing clarity, performance and detail.',
-    primaryCta: 'View projects',
+      'Sites and systems for businesses that need something built properly. From Rosario, for the whole country.',
+    primaryCta: 'See the work',
     secondaryCta: "Let's talk",
   },
 
@@ -49,20 +52,120 @@ export const en = {
       {
         title: 'Custom systems',
         description:
-          'Scheduling, inventory, quotes and clients, without doing it by hand.',
+          'Prices, stock, bookings or in-store screens: you keep them updated.',
+      },
+    ],
+  },
+
+  cases: {
+    title: 'Work',
+    intro: 'Real work, live right now.',
+    liveLabel: 'View site',
+    viewAll: 'See all projects',
+    labels: {
+      problem: 'The problem',
+      built: 'What I built',
+      result: 'Result',
+    },
+    items: [
+      {
+        rubro: 'Bakery · Rosario',
+        title: 'El Rey del Chajá',
+        problem:
+          'A template site, no SEO, and every price change depended on the developer.',
+        built:
+          'A new site, a panel to edit prices, and the three in-store screens, all from the same panel.',
+        result: 'They update prices and screens themselves.',
+        link: 'https://www.elreydelchaja.com/',
+      },
+      {
+        rubro: 'Own product · SaaS',
+        title: 'Plataforma 1810',
+        problem:
+          'A candidate needed a campaign site without depending on a technical team.',
+        built:
+          'Full product: five-step signup, panel, themes, plans and premium access.',
+        result: 'Live and in production.',
+        link: 'https://www.plataforma1810.com.ar/',
+      },
+      {
+        rubro: 'Own product · Platform',
+        title: 'Kli',
+        problem:
+          'Communities live scattered across chats, files and payment links.',
+        built:
+          'Content, meetings, memory and memberships with built-in payments in one place.',
+        result: 'Live and in production.',
+        link: 'https://kli.com.ar/',
+      },
+    ],
+  },
+
+  process: {
+    title: 'How I work',
+    intro: 'Four steps. No surprises.',
+    steps: [
+      {
+        title: 'Call',
+        description: 'You tell me what you need. Twenty minutes, no strings.',
+      },
+      {
+        title: 'Proposal',
+        description: 'Scope, price and date, in writing.',
+      },
+      {
+        title: 'Build',
+        description: 'Weekly progress. You see it moving, not a black box.',
+      },
+      {
+        title: 'Delivery',
+        description: 'Live and working. I show you how to run it.',
+      },
+    ],
+  },
+
+  faq: {
+    title: 'FAQ',
+    items: [
+      {
+        question: 'How much does it cost?',
+        answer:
+          'It depends on scope. You get a fixed quote in writing before we start. What moves it most: number of screens, custom design, animation and integrations.',
+      },
+      {
+        question: 'How long does it take?',
+        answer:
+          'A simple site, two to three weeks. A system, one to three months. The date is in the proposal.',
+      },
+      {
+        question: 'What do I need to have ready?',
+        answer:
+          'Your business information: what you sell, prices and photos. If you have no photos, we sort it out.',
+      },
+      {
+        question: 'What if I need a change later?',
+        answer:
+          'If it is a price or a line of text, you change it yourself from the panel. If it is something new, you message me.',
+      },
+      {
+        question: 'Do you work outside Rosario?',
+        answer:
+          'Yes. I work from Rosario with businesses across the country, fully remote.',
+      },
+      {
+        question: 'Who owns the domain and hosting?',
+        answer: 'You do. It is all in your name, always.',
       },
     ],
   },
 
   about: {
-    title: 'About Me',
+    title: 'About',
     paragraphs: [
-      'My name is Gianni, I’m a frontend developer from Argentina with a background in music composition and visual aesthetics. My path into web development wasn’t linear, it grew from a creative foundation and evolved into a strong focus on building clean, intentional, and expressive user interfaces.',
-      'I work at the intersection of logic and creativity. Every layout, animation, and interaction is a chance to bring clarity and rhythm into a product. I care deeply about visual consistency, maintainable components, and micro-details that subtly elevate the user experience.',
-      'Coming from music and teaching, I naturally think in systems, patterns, and flow. I enjoy refining UI, translating designs into polished interfaces, and making sure that every element feels purposeful rather than decorative.',
-      'I’m especially motivated by environments where quality matters, where attention to detail is valued, and where the user experience is treated as a core part of the product. Always learning, always building.',
+      'I am Gianni. I build sites and systems your customers use and you can maintain.',
+      'I work from Rosario with businesses across the country. If something breaks, you message me, not a ticket.',
     ],
-    tags: 'Frontend · UI Engineering · Visual Polish · Motion & Interaction',
+    tags: 'Sites · Systems · Admin panel · In-store screens',
   },
 
   projects: {
@@ -89,14 +192,27 @@ export const en = {
   },
 
   contact: {
-    title: 'Contact Me',
-    heading: 'Contact',
-    intro: 'Open to frontend roles, freelance work and collaborations.',
+    title: 'Contact',
+    heading: "Let's talk",
+    intro: 'Tell me what you need. You get me.',
+    whatsapp: 'Message me on WhatsApp',
+    whatsappMessage: 'Hi Gianni, I would like to ask about a project.',
     email: 'Send me an email',
-    linkedin: 'Connect on LinkedIn',
+    linkedin: 'LinkedIn',
+    divider: 'Or leave me a message',
+    form: {
+      name: 'Your name',
+      email: 'Your email',
+      message: 'What you need',
+      submit: 'Send',
+      sending: 'Sending…',
+      success: 'Done. I will reply today or tomorrow.',
+      error: 'It did not go through. Try WhatsApp or email.',
+      reset: 'Clear',
+    },
   },
 
   footer: {
-    role: 'Frontend Developer',
+    role: 'Custom web development · Rosario, Argentina',
   },
 };

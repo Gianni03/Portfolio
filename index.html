@@ -66,6 +66,14 @@
 </head>
 
 <body>
+  <!-- Netlify form detection: the React contact form posts to this name. -->
+  <form name="contacto" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="text" name="bot-field" />
+    <input type="text" name="nombre" />
+    <input type="email" name="email" />
+    <textarea name="mensaje"></textarea>
+  </form>
+
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
