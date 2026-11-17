@@ -12,7 +12,6 @@ import { useCopy } from '../../i18n/context';
 
 // Only the hero ships with the first paint. Everything below the fold loads
 // while the visitor is still reading the top of the page.
-const AboutMe = lazy(() => import('../about/AboutMe'));
 const Contact = lazy(() => import('../contact/Contact'));
 
 const TITLE_CLASS =
@@ -20,7 +19,7 @@ const TITLE_CLASS =
 
 /**
  * Sales page order: promise -> what you can buy -> proof -> process ->
- * who -> objections -> call to action.
+ * call to action -> objections.
  */
 export default function Home() {
   const copy = useCopy();
@@ -77,7 +76,9 @@ export default function Home() {
           </div>
         </Section>
 
-        <AboutMe />
+        <Contact />
+
+        <ShowreelSection />
 
         <Section id="faq">
           <CurvedSectionTitle
@@ -89,10 +90,6 @@ export default function Home() {
             <FaqSection />
           </div>
         </Section>
-
-        <Contact />
-
-        <ShowreelSection />
       </Suspense>
     </>
   );
