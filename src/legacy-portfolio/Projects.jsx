@@ -1,0 +1,36 @@
+import useProjects from "../features/projects/hooks/useProjects";
+import useIsDesktop from "../hooks/useIsDesktop";
+import ProjectsGrid from "../features/projects/components/ProjectsGrid";
+import PrimaryProjects from "../features/projects/components/PrimaryProjects.jsx";
+export default function Projects() {
+  const { projects, loading } = useProjects();
+  const isDesktop = useIsDesktop();
+    
+    if (loading) return <p className="opacity-50">Loading projects...</p>;
+    if (!Array.isArray(projects)) return <p>Error loading projects</p>;
+
+    const visibleProjects = projects.filter((p) => p.visibility !== 'hidden');
+
+    const primaryProjects = visibleProjects
+    .filter((p) => p.visibility === 'primary')
+    .sort((a, b) => a.order - b.order);
+    const secondaryProjects = visibleProjects.filter((p) => p.visibility !== 'primary');
+    
+    if (!isDesktop) {
+      return (
+        <>
+          <ProjectsGrid projects={primaryProjects} title="Featured" />
+          <ProjectsGrid projects={secondaryProjects} title="Other Works" />
+        </>
+      );
+    }
+
+  
+    return (
+      <>
+      <PrimaryProjects projects={primaryProjects} />
+      <ProjectsGrid projects={secondaryProjects} />
+      </>
+    );  
+
+}

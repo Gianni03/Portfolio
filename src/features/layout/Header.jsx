@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useCopy, isEnglish, localeSwitchPath } from '../../i18n/context';
 
@@ -7,6 +7,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const copy = useCopy();
   const english = isEnglish(copy);
   const isResume = location.pathname.endsWith('/resume');
@@ -17,7 +18,12 @@ export default function Header() {
 
   const scrollToId = (id) => {
     const el = document.getElementById(id);
-    if (!el) return;
+    // On routes without the sales sections (e.g. /portfolio) the anchor has
+    // nothing to scroll to, so send the visitor back to the page that has it.
+    if (!el) {
+      navigate(english ? '/en' : '/');
+      return;
+    }
     el.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -74,33 +80,42 @@ export default function Header() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6 text-neutral-300">
           {!isResume ? (
-            homeNavItems.map((item) => {
-              if (item.path) {
+            <>
+              {homeNavItems.map((item) => {
+                if (item.path) {
+                  return (
+                    <NavLink
+                      key={item.id}
+                      to={item.path}
+                      className="hover:text-white transition"
+                    >
+                      {item.label}
+                    </NavLink>
+                  );
+                }
+
                 return (
-                  <NavLink
+                  <button
                     key={item.id}
-                    to={item.path}
-                    className="hover:text-white transition"
+                    onClick={() => scrollToId(item.id)}
+                    className={`hover:text-white transition ${
+                      activeSection === item.id
+                        ? 'text-white font-semibold'
+                        : ''
+                    }`}
                   >
                     {item.label}
-                  </NavLink>
+                  </button>
                 );
-              }
+              })}
 
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToId(item.id)}
-                  className={`hover:text-white transition ${
-                    activeSection === item.id
-                      ? 'text-white font-semibold'
-                      : ''
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })
+              <NavLink
+                to="/portfolio"
+                className="hover:text-white transition"
+              >
+                {copy.nav.portfolio}
+              </NavLink>
+            </>
           ) : (
             <NavLink to={english ? '/en' : '/'} className="hover:text-white transition">
               {copy.nav.portfolio}
@@ -135,33 +150,43 @@ export default function Header() {
       {open && (
         <nav className="md:hidden px-4 pb-4 flex flex-col gap-4 text-neutral-300">
           {!isResume ? (
-            homeNavItems.map((item) => {
-              if (item.path) {
+            <>
+              {homeNavItems.map((item) => {
+                if (item.path) {
+                  return (
+                    <NavLink
+                      key={item.id}
+                      to={item.path}
+                      onClick={() => setOpen(false)}
+                      className="py-2 border-b border-neutral-800 hover:text-white"
+                    >
+                      {item.label}
+                    </NavLink>
+                  );
+                }
+
                 return (
-                  <NavLink
+                  <button
                     key={item.id}
-                    to={item.path}
-                    onClick={() => setOpen(false)}
-                    className="py-2 border-b border-neutral-800 hover:text-white"
+                    onClick={() => {
+                      scrollToId(item.id);
+                      setOpen(false);
+                    }}
+                    className="py-2 border-b border-neutral-800 hover:text-white text-left"
                   >
                     {item.label}
-                  </NavLink>
+                  </button>
                 );
-              }
+              })}
 
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    scrollToId(item.id);
-                    setOpen(false);
-                  }}
-                  className="py-2 border-b border-neutral-800 hover:text-white text-left"
-                >
-                  {item.label}
-                </button>
-              );
-            })
+              <NavLink
+                to="/portfolio"
+                onClick={() => setOpen(false)}
+                className="py-2 border-b border-neutral-800 hover:text-white"
+              >
+                {copy.nav.portfolio}
+              </NavLink>
+            </>
           ) : (
             <NavLink
               to={english ? '/en' : '/'}

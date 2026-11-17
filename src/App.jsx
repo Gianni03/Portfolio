@@ -9,6 +9,9 @@ import LocaleProvider from './i18n/LocaleProvider';
 const Projects = lazy(() => import('./app/projects/Projects'));
 const Studies = lazy(() => import('./app/studies/Studies'));
 const Resume = lazy(() => import('./app/resume/Resume'));
+const LegacyPortfolio = lazy(
+  () => import('./legacy-portfolio/LegacyPortfolio'),
+);
 const Login = lazy(() => import('./app/admin/Login'));
 const Admin = lazy(() => import('./app/admin/Admin'));
 const ProjectsAdmin = lazy(() => import('./app/admin/ProjectsAdmin'));
@@ -39,6 +42,7 @@ function AppRoutes() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/studies" element={<Studies />} />
             <Route path="/resume" element={<Resume />} />
+            <Route path="/portfolio" element={<LegacyPortfolio />} />
             <Route path="/en" element={<Home />} />
             <Route path="/en/projects" element={<Projects />} />
             <Route path="/en/studies" element={<Studies />} />
