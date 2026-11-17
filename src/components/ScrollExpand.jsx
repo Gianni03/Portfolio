@@ -68,7 +68,9 @@ const ScrollExpand = ({
     if (!frame || !media) return;
     const c = propsRef.current;
 
-    const e = smoothstep(0, 1, p);
+    // The frame reaches full bleed at half the timeline, so the content
+    // never appears while the image is still a small card.
+    const e = smoothstep(0, 0.5, p);
 
     const w = c.startWidth + (100 - c.startWidth) * e;
     const h = c.startHeight + (100 - c.startHeight) * e;
@@ -82,7 +84,7 @@ const ScrollExpand = ({
     if (scrimRef.current) scrimRef.current.style.opacity = `${c.overlayScrim * e}`;
 
     if (titleRef.current) {
-      const out = smoothstep(0.4, 0.88, p);
+      const out = smoothstep(0.22, 0.45, p);
       titleRef.current.style.opacity = `${1 - out}`;
       titleRef.current.style.transform = `translate3d(0, ${-28 * out}px, 0) scale(${
         1 + 0.06 * out
@@ -96,7 +98,7 @@ const ScrollExpand = ({
     }
 
     if (overlayRef.current) {
-      const inn = smoothstep(0.85, 1, p);
+      const inn = smoothstep(0.5, 0.7, p);
       overlayRef.current.style.opacity = `${inn}`;
       overlayRef.current.style.transform = `translate3d(0, ${18 * (1 - inn)}px, 0)`;
     }

@@ -35,7 +35,7 @@ export default function ShowreelSection() {
         endRadius={0}
         mediaZoom={1.05}
         scrollDistance={0.55}
-        holdDistance={0.15}
+        holdDistance={0.5}
         smoothing={0.12}
         overlayScrim={0.72}
         useWindowScroll
