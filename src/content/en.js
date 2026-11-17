@@ -48,6 +48,7 @@ export const en = {
     resultLabel: 'Result',
     items: [
       {
+        key: 'websites',
         title: 'Custom websites',
         tag: 'Core service',
         summary: 'For businesses and professionals who need a digital presence.',
@@ -64,6 +65,7 @@ export const en = {
           'A professional site, built for your business and ready to grow.',
       },
       {
+        key: 'landing',
         title: 'Landing pages',
         tag: 'Core service',
         summary: 'To present a product, service, campaign or launch.',
@@ -80,6 +82,7 @@ export const en = {
           'A page built to turn visits into enquiries and opportunities.',
       },
       {
+        key: 'systems',
         title: 'Systems and admin panels',
         tag: 'Complementary development',
         summary:

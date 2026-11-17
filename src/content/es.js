@@ -48,6 +48,7 @@ export const es = {
     resultLabel: 'Resultado',
     items: [
       {
+        key: 'websites',
         title: 'Sitios web a medida',
         tag: 'Servicio principal',
         summary:
@@ -65,6 +66,7 @@ export const es = {
           'Un sitio profesional, pensado para tu negocio y preparado para crecer.',
       },
       {
+        key: 'landing',
         title: 'Landing pages',
         tag: 'Servicio principal',
         summary: 'Para presentar un producto, servicio, campaña o lanzamiento.',
@@ -81,6 +83,7 @@ export const es = {
           'Una página enfocada en transformar visitas en consultas y oportunidades.',
       },
       {
+        key: 'systems',
         title: 'Sistemas y paneles web',
         tag: 'Desarrollo complementario',
         summary:

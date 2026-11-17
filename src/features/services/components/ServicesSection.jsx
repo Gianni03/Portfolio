@@ -1,6 +1,36 @@
+import { useState } from 'react';
 import FlipCard from '../../../components/FlipCard';
+import { SERVICE_IMAGES } from '../data/serviceImages';
 import { useCopy } from '../../../i18n/context';
 import './ServicesSection.css';
+
+/**
+ * Decorative image for the card front. If the file is missing or fails to
+ * load, it disappears and the card keeps its plain background. The text
+ * already names the service, so an empty alt avoids repeating it.
+ */
+function ServiceImage({ src }) {
+  const [failed, setFailed] = useState(false);
+
+  if (!src || failed) return null;
+
+  return (
+    <>
+      <img
+        src={src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        onError={() => setFailed(true)}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 bg-linear-to-t from-[#0b0b0c] via-[#0b0b0c]/80 to-[#0b0b0c]/10"
+      />
+    </>
+  );
+}
 
 export default function ServicesSection() {
   const copy = useCopy();
@@ -23,28 +53,32 @@ export default function ServicesSection() {
             shadow={false}
             glareOpacity={0.14}
             front={
-              <div className="flex h-full flex-col justify-between p-7">
-                <div className="flex items-baseline justify-between gap-3">
-                  <span className="font-mono text-xs text-[#FF9FFC]">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span className="text-[10px] uppercase tracking-wider text-neutral-500">
-                    {service.tag}
+              <div className="relative h-full">
+                <ServiceImage src={SERVICE_IMAGES[service.key]} />
+
+                <div className="relative flex h-full flex-col justify-between p-7">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <span className="font-mono text-xs text-[#FF9FFC]">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-wider text-neutral-400">
+                      {service.tag}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl font-semibold tracking-tight text-white">
+                      {service.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-neutral-300">
+                      {service.summary}
+                    </p>
+                  </div>
+
+                  <span className="text-[11px] uppercase tracking-wider text-neutral-400">
+                    {copy.services.cardHint}
                   </span>
                 </div>
-
-                <div>
-                  <h3 className="text-2xl font-semibold tracking-tight text-white">
-                    {service.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-neutral-400">
-                    {service.summary}
-                  </p>
-                </div>
-
-                <span className="text-[11px] uppercase tracking-wider text-neutral-500">
-                  {copy.services.cardHint}
-                </span>
               </div>
             }
             back={
