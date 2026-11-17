@@ -245,6 +245,11 @@ export const en = {
     tags: 'Sites · Systems · Admin panel · In-store screens',
   },
 
+  showreel: {
+    title: 'Real work.',
+    hint: 'Keep scrolling',
+  },
+
   closing: {
     title: 'An idea, a design and a build made to measure.',
     body: 'You do not need to arrive with everything figured out. You tell me what you need and we turn it into a concrete web solution together.',

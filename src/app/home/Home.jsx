@@ -8,6 +8,7 @@ import CasesSection from '../../features/cases/components/CasesSection';
 import ProcessSection from '../../features/process/components/ProcessSection';
 import FaqSection from '../../features/faq/components/FaqSection';
 import ClosingSection from '../../features/closing/components/ClosingSection';
+import ShowreelSection from '../../features/showreel/components/ShowreelSection';
 import { useCopy } from '../../i18n/context';
 
 // Only the hero ships with the first paint. Everything below the fold loads
@@ -29,6 +30,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <ShowreelSection />
       <Suspense fallback={null}>
         <Section id="services">
           <CurvedSectionTitle

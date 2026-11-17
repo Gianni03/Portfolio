@@ -1,0 +1,48 @@
+import { useMemo } from 'react';
+import ScrollExpand from '../../../components/ScrollExpand';
+import useProjects from '../../projects/hooks/useProjects';
+import { useCopy } from '../../../i18n/context';
+
+// Shown while the project images are still loading, or if none is available.
+const FALLBACK_MEDIA = '/img/services/sitios-web.webp';
+
+/**
+ * Full-bleed scroll reward between the hero and the services. The frame grows
+ * from a rounded card to the whole viewport as you scroll, so the first thing
+ * a visitor sees has a reason to keep moving.
+ */
+export default function ShowreelSection() {
+  const copy = useCopy();
+  const { projects } = useProjects();
+
+  const src = useMemo(() => {
+    const list = Array.isArray(projects) ? projects : [];
+    const featured = list
+      .filter((project) => project.visibility === 'primary' && project.image)
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))[0];
+
+    return featured?.image ?? FALLBACK_MEDIA;
+  }, [projects]);
+
+  return (
+    <div className="relative left-1/2 w-screen -translate-x-1/2">
+      <ScrollExpand
+        src={src}
+        mediaType="image"
+        alt=""
+        title={copy.showreel.title}
+        scrollHint={copy.showreel.hint}
+        startWidth={60}
+        startHeight={84}
+        startRadius={24}
+        endRadius={0}
+        mediaZoom={1.16}
+        scrollDistance={0.55}
+        holdDistance={0.15}
+        smoothing={0.12}
+        overlayScrim={0.35}
+        useWindowScroll
+      />
+    </div>
+  );
+}
