@@ -42,17 +42,75 @@ export const en = {
 
   services: {
     title: 'Services',
-    intro: 'Based on what your business needs.',
+    intro: 'Pick a card to see what is included.',
     cta: "Let's talk about your project",
+    cardHint: 'See what is included',
     items: [
       {
         title: 'Websites',
-        description: 'Get found, get trusted, get contacted.',
+        summary: 'Your business, complete and well presented.',
+        points: [
+          'Custom design, no template',
+          'Built for phone and tablet',
+          'Base SEO and fast loads',
+          'Panel to edit text and prices',
+          'Domain and hosting in your name',
+        ],
       },
       {
-        title: 'Custom systems',
-        description:
-          'Prices, stock, bookings or in-store screens: you keep them updated.',
+        title: 'Landing pages',
+        summary: 'One page, one goal.',
+        points: [
+          'Focused on a single action',
+          'Form or WhatsApp',
+          'Loads in under two seconds',
+          'Copy that leads to the enquiry',
+          'Visit tracking',
+        ],
+      },
+      {
+        title: 'Web apps and systems',
+        summary: 'Tools your team uses every day.',
+        points: [
+          'Users and permissions',
+          'Your own database',
+          'Bookings, stock or quotes',
+          'Works from the phone',
+          'Deploy and backup',
+        ],
+      },
+      {
+        title: 'Redesign and migration',
+        summary: 'Your current site, without losing what works.',
+        points: [
+          'Audit of the current site',
+          'Redesign without breaking SEO',
+          'Content migration',
+          'Speed improvements',
+          'You stop depending on the developer',
+        ],
+      },
+      {
+        title: 'Digital catalogues',
+        summary: 'Products and prices, always current.',
+        points: [
+          'Managed from a panel',
+          'Photos, prices and categories',
+          'Search and filters',
+          'Shareable on WhatsApp',
+          'Instant updates',
+        ],
+      },
+      {
+        title: 'In-store screens',
+        summary: 'Menus and promos on the TVs.',
+        points: [
+          'Content from the same panel',
+          'Automatic rotation',
+          'One screen or many',
+          'No dedicated PC',
+          'Updates itself',
+        ],
       },
     ],
   },

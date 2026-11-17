@@ -42,17 +42,75 @@ export const es = {
 
   services: {
     title: 'Servicios',
-    intro: 'Según lo que tu negocio necesite.',
+    intro: 'Elegí una tarjeta para ver qué incluye.',
     cta: 'Hablemos de tu proyecto',
+    cardHint: 'Ver qué incluye',
     items: [
       {
         title: 'Sitios web',
-        description: 'Que te encuentren, que confíen y que te escriban.',
+        summary: 'Tu negocio, completo y bien parado.',
+        points: [
+          'Diseño a medida, no plantilla',
+          'Adaptado a celular y tablet',
+          'SEO base y carga rápida',
+          'Panel para editar textos y precios',
+          'Dominio y hosting a tu nombre',
+        ],
       },
       {
-        title: 'Sistemas a medida',
-        description:
-          'Precios, stock, turnos o pantallas del local: lo actualizás vos.',
+        title: 'Landing pages',
+        summary: 'Una página, un objetivo.',
+        points: [
+          'Foco en una sola acción',
+          'Formulario o WhatsApp',
+          'Carga en menos de dos segundos',
+          'Textos que llevan a la consulta',
+          'Medición de visitas',
+        ],
+      },
+      {
+        title: 'Web apps y sistemas',
+        summary: 'Herramientas que tu equipo usa todos los días.',
+        points: [
+          'Usuarios y permisos',
+          'Base de datos propia',
+          'Turnos, stock o presupuestos',
+          'Funciona desde el celular',
+          'Despliegue y respaldo',
+        ],
+      },
+      {
+        title: 'Rediseño y migración',
+        summary: 'Tu sitio actual, sin perder lo que funciona.',
+        points: [
+          'Auditoría del sitio actual',
+          'Rediseño sin romper el SEO',
+          'Migración de contenido',
+          'Mejora de velocidad',
+          'Dejás de depender del dev',
+        ],
+      },
+      {
+        title: 'Catálogos digitales',
+        summary: 'Productos y precios, siempre al día.',
+        points: [
+          'Carga desde un panel',
+          'Fotos, precios y categorías',
+          'Búsqueda y filtros',
+          'Se comparte por WhatsApp',
+          'Actualización inmediata',
+        ],
+      },
+      {
+        title: 'Pantallas para el local',
+        summary: 'Menús y promos en las TVs.',
+        points: [
+          'Contenido desde el mismo panel',
+          'Rotación automática',
+          'De una a varias pantallas',
+          'Sin PC dedicada',
+          'Se actualiza solo',
+        ],
       },
     ],
   },
