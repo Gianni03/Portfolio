@@ -1,15 +1,18 @@
+import useCases from '../hooks/useCases';
 import useProjects from '../../projects/hooks/useProjects';
 import { useCopy } from '../../../i18n/context';
 
-const normalize = (url) => String(url ?? '').trim().replace(/\/+$/, '').toLowerCase();
+const normalize = (url) =>
+  String(url ?? '').trim().replace(/\/+$/, '').toLowerCase();
 
 /**
  * Image-led case cards. The picture is the proof; the text is a caption.
- * Images come from the projects already managed in the admin, matched by
- * live URL, so the client can change a screenshot without touching code.
+ * The image comes from the case itself. While the table is empty and the copy
+ * dictionary is used, it falls back to the matching project screenshot.
  */
 export default function CasesSection() {
   const copy = useCopy();
+  const { items } = useCases();
   const { projects } = useProjects();
 
   const imageByUrl = new Map(
@@ -20,8 +23,8 @@ export default function CasesSection() {
 
   return (
     <div className="grid gap-6 md:grid-cols-3">
-      {copy.cases.items.map((item) => {
-        const image = imageByUrl.get(normalize(item.link));
+      {items.map((item) => {
+        const image = item.image || imageByUrl.get(normalize(item.link));
 
         return (
           <a
