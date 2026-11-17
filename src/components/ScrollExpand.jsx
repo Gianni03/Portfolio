@@ -96,7 +96,7 @@ const ScrollExpand = ({
     }
 
     if (overlayRef.current) {
-      const inn = smoothstep(0.68, 1, p);
+      const inn = smoothstep(0.85, 1, p);
       overlayRef.current.style.opacity = `${inn}`;
       overlayRef.current.style.transform = `translate3d(0, ${18 * (1 - inn)}px, 0)`;
     }
@@ -128,7 +128,7 @@ const ScrollExpand = ({
       const w = root.clientWidth || stageH;
       stage.style.setProperty(
         '--se-title-size',
-        `${clamp(w * 0.075, 20, 84)}px`,
+        `${clamp(w * 0.033, 16, 44)}px`,
       );
     };
 

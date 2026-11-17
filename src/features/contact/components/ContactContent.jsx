@@ -43,7 +43,7 @@ export default function ContactContent() {
 
   return (
     <div id="contact" className="w-full">
-      <div className="relative mb-5 w-full overflow-x-clip">
+      <div className="relative mx-auto mb-3 w-full max-w-5xl overflow-x-clip">
         <h2 className="sr-only">{copy.contact.title}</h2>
         <CurvedLoop
           marqueeText={Array(4).fill(copy.contact.title).join(' · ')}

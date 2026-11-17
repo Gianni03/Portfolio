@@ -248,7 +248,7 @@ export const es = {
   },
 
   showreel: {
-    title: 'Trabajo real.',
+    title: 'TRABAJEMOS JUNTOS',
     hint: 'Seguí bajando',
   },
 

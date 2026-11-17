@@ -246,7 +246,7 @@ export const en = {
   },
 
   showreel: {
-    title: 'Real work.',
+    title: "LET'S WORK TOGETHER",
     hint: 'Keep scrolling',
   },
 
