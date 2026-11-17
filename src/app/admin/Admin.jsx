@@ -33,6 +33,7 @@ export default function Admin() {
         <nav className="flex flex-wrap gap-2 mb-12">
           <NavLink to="/admin/projects">Projects</NavLink>
           <NavLink to="/admin/studies">Studies</NavLink>
+          <NavLink to="/admin/faqs">FAQs</NavLink>
           <NavLink to="/admin/resume">Resume</NavLink>
         </nav>
 

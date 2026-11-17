@@ -1,11 +1,11 @@
-import { useCopy } from '../../../i18n/context';
+import useFaqs from '../hooks/useFaqs';
 
 export default function FaqSection() {
-  const copy = useCopy();
+  const { items } = useFaqs();
 
   return (
     <div className="mx-auto max-w-3xl divide-y divide-white/10 border-y border-white/10">
-      {copy.faq.items.map((item) => (
+      {items.map((item) => (
         <details key={item.question} className="group py-5">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-medium text-white [&::-webkit-details-marker]:hidden">
             {item.question}

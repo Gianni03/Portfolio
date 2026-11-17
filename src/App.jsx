@@ -15,6 +15,7 @@ const LegacyPortfolio = lazy(
 const Login = lazy(() => import('./app/admin/Login'));
 const Admin = lazy(() => import('./app/admin/Admin'));
 const ProjectsAdmin = lazy(() => import('./app/admin/ProjectsAdmin'));
+const FaqsAdmin = lazy(() => import('./app/admin/FaqsAdmin'));
 const StudiesAdmin = lazy(() => import('./app/admin/StudiesAdmin'));
 const ResumeAdmin = lazy(() => import('./app/admin/ResumeAdmin'));
 const ProfileAdmin = lazy(() => import('./app/admin/resume/ProfileAdmin'));
@@ -52,6 +53,7 @@ function AppRoutes() {
           <Route path="/admin" element={<Admin />}>
             <Route path="projects" element={<ProjectsAdmin />} />
             <Route path="studies" element={<StudiesAdmin />} />
+            <Route path="faqs" element={<FaqsAdmin />} />
             <Route path="resume" element={<ResumeAdmin />}>
               <Route path="profile" element={<ProfileAdmin />} />
               <Route path="work-experience" element={<WorkExperienceAdmin />} />
