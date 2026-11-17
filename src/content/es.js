@@ -160,18 +160,38 @@ export const es = {
       {
         title: 'Charla',
         description: 'Me contás qué necesitás. Veinte minutos, sin compromiso.',
+        points: [
+          'Qué hacés y qué querés lograr',
+          'Qué tenés hoy: web, redes o nada',
+          'Sin costo y sin compromiso',
+        ],
       },
       {
         title: 'Propuesta',
         description: 'Alcance, precio y fecha, por escrito.',
+        points: [
+          'Qué incluye y qué no',
+          'Precio cerrado y forma de pago',
+          'Fecha de entrega estimada',
+        ],
       },
       {
         title: 'Desarrollo',
         description: 'Avances cada semana. Ves el progreso en vivo.',
+        points: [
+          'Acceso a un entorno de prueba',
+          'Ajustes sobre la marcha',
+          'Sin sorpresas al final',
+        ],
       },
       {
         title: 'Entrega',
         description: 'Online y funcionando. Te enseño a manejarlo.',
+        points: [
+          'Publicado en tu dominio',
+          'Te muestro cómo actualizarlo',
+          'Soporte después de la entrega',
+        ],
       },
     ],
   },

@@ -1,24 +1,31 @@
+import ProcessCard from './ProcessCard';
 import { useCopy } from '../../../i18n/context';
 
+/**
+ * Cards pin and stack as you scroll, the same mechanism the old Studies
+ * section used: plain `position: sticky` per item with an increasing
+ * z-index. No scroll hijacking and no global side effects.
+ */
 export default function ProcessSection() {
   const copy = useCopy();
+  const total = copy.process.steps.length;
 
   return (
-    <ol className="grid gap-6 md:grid-cols-4">
+    <div className="relative">
       {copy.process.steps.map((step, index) => (
-        <li
+        <div
           key={step.title}
-          className="rounded-2xl border border-white/10 bg-white/5 p-6"
+          className="sticky top-28"
+          style={{ zIndex: index + 1 }}
         >
-          <span className="font-mono text-sm text-[#FF9FFC]">
-            {String(index + 1).padStart(2, '0')}
-          </span>
-          <h3 className="mt-3 text-lg font-semibold text-white">{step.title}</h3>
-          <p className="mt-2 text-sm leading-relaxed text-neutral-400">
-            {step.description}
-          </p>
-        </li>
+          <div className="pb-6">
+            <ProcessCard step={step} index={index} total={total} />
+          </div>
+        </div>
       ))}
-    </ol>
+
+      {/* Room for the last card to release before the next section. */}
+      <div className="h-[18vh]" aria-hidden="true" />
+    </div>
   );
 }

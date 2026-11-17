@@ -158,18 +158,38 @@ export const en = {
       {
         title: 'Call',
         description: 'You tell me what you need. Twenty minutes, no strings.',
+        points: [
+          'What you do and what you want to achieve',
+          'What you have today: site, social or nothing',
+          'No cost and no commitment',
+        ],
       },
       {
         title: 'Proposal',
         description: 'Scope, price and date, in writing.',
+        points: [
+          'What is included and what is not',
+          'Fixed price and payment terms',
+          'Estimated delivery date',
+        ],
       },
       {
         title: 'Build',
         description: 'Weekly progress. You see it moving, not a black box.',
+        points: [
+          'Access to a staging environment',
+          'Adjustments along the way',
+          'No surprises at the end',
+        ],
       },
       {
         title: 'Delivery',
         description: 'Live and working. I show you how to run it.',
+        points: [
+          'Published on your domain',
+          'I show you how to update it',
+          'Support after delivery',
+        ],
       },
     ],
   },
