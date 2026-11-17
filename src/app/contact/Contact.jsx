@@ -4,11 +4,6 @@ import CurvedSectionTitle from '../../ui/section-titles/CurvedLoopSectionTitle';
 import GradientText from '@/components/GradientText';
 import { useCopy } from '../../i18n/context';
 
-// Digits only. Set VITE_WHATSAPP_NUMBER in .env to enable the WhatsApp CTA.
-const WHATSAPP_NUMBER = String(
-  import.meta.env.VITE_WHATSAPP_NUMBER ?? '',
-).replace(/\D/g, '');
-
 const LINK_CLASS =
   'group flex items-center gap-3 rounded-xl border border-white/10 px-6 py-4 text-white transition-all duration-300 ease-out hover:border-[#7a43c1]/50 hover:bg-linear-to-r hover:from-[#7a43c1]/10 hover:to-transparent hover:shadow-[0_0_30px_-10px_#7a43c1]';
 
@@ -18,12 +13,6 @@ const FIELD_CLASS =
 export default function Contact() {
   const copy = useCopy();
   const [status, setStatus] = useState('idle');
-
-  const whatsappHref = WHATSAPP_NUMBER
-    ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-        copy.contact.whatsappMessage,
-      )}`
-    : null;
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -74,19 +63,6 @@ export default function Contact() {
         <p className="mt-6 text-sm text-[#fbfffe]">{copy.contact.intro}</p>
 
         <div className="mt-10 space-y-4 text-base">
-          {whatsappHref && (
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={LINK_CLASS}
-            >
-              <span className="inline-block transition-transform duration-300 ease-out group-hover:translate-x-1">
-                → {copy.contact.whatsapp}
-              </span>
-            </a>
-          )}
-
           <a href="mailto:giannipasquinelli@gmail.com" className={LINK_CLASS}>
             <span className="inline-block transition-transform duration-300 ease-out group-hover:translate-x-1">
               → {copy.contact.email}

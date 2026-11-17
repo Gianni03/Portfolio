@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import WhatsAppFab from './WhatsAppFab';
 import Container from '../../ui/Container';
 
 export default function Layout() {
@@ -15,6 +16,8 @@ export default function Layout() {
       </main>
 
       <Footer />
+
+      <WhatsAppFab />
     </div>
   );
 }

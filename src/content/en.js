@@ -197,6 +197,7 @@ export const en = {
     heading: "Let's talk",
     intro: 'Tell me what you need. You get me.',
     whatsapp: 'Message me on WhatsApp',
+    whatsappShort: 'Message me',
     whatsappMessage: 'Hi Gianni, I would like to ask about a project.',
     email: 'Send me an email',
     linkedin: 'LinkedIn',

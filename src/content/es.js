@@ -197,6 +197,7 @@ export const es = {
     heading: 'Hablemos',
     intro: 'Contame qué necesitás. Respondo yo.',
     whatsapp: 'Escribime por WhatsApp',
+    whatsappShort: 'Escribime',
     whatsappMessage: 'Hola Gianni, quiero consultarte por un proyecto.',
     email: 'Escribime',
     linkedin: 'LinkedIn',
