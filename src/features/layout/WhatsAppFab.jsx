@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import CircularText from '../../components/CircularText';
 import { useCopy } from '../../i18n/context';
@@ -12,8 +13,24 @@ const HIDDEN_PREFIXES = ['/admin', '/login'];
 export default function WhatsAppFab() {
   const copy = useCopy();
   const { pathname } = useLocation();
+  const [onShowreel, setOnShowreel] = useState(false);
+
+  // The contact block inside the showreel already offers WhatsApp, and the
+  // floating button would sit on top of those channel buttons.
+  useEffect(() => {
+    const target = document.getElementById('showreel');
+    if (!target) return undefined;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setOnShowreel(entry.isIntersecting);
+    });
+    observer.observe(target);
+
+    return () => observer.disconnect();
+  }, [pathname]);
 
   if (!WHATSAPP_NUMBER) return null;
+  if (onShowreel) return null;
   if (HIDDEN_PREFIXES.some((prefix) => pathname.startsWith(prefix))) return null;
 
   const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(

@@ -290,6 +290,9 @@ export const en = {
     email: 'Send me an email',
     linkedin: 'LinkedIn',
     divider: 'Or leave me a message',
+    alsoReach: 'Or reach me on',
+    emailLabel: 'Email',
+    whatsappLabel: 'WhatsApp',
     form: {
       name: 'Your name',
       email: 'Your email',

@@ -22,7 +22,7 @@ export default function ShowreelSection() {
   const copy = useCopy();
 
   return (
-    <div className="relative left-1/2 w-screen -translate-x-1/2">
+    <div id="showreel" className="relative left-1/2 w-screen -translate-x-1/2">
       <ScrollExpand
         src={PICKED_MEDIA}
         mediaType="image"

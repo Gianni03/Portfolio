@@ -292,6 +292,9 @@ export const es = {
     email: 'Escribime',
     linkedin: 'LinkedIn',
     divider: 'O dejame tu mensaje',
+    alsoReach: 'O también podés contactarme por',
+    emailLabel: 'Email',
+    whatsappLabel: 'WhatsApp',
     form: {
       name: 'Tu nombre',
       email: 'Tu email',
