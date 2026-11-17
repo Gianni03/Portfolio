@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import ScrollExpand from '../../../components/ScrollExpand';
+import ContactContent from '../../contact/components/ContactContent';
 import useProjects from '../../projects/hooks/useProjects';
 import { useCopy } from '../../../i18n/context';
 
@@ -43,19 +44,7 @@ export default function ShowreelSection() {
         overlayScrim={0.72}
         useWindowScroll
       >
-        <div className="mx-auto max-w-2xl">
-          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-white md:text-4xl">
-            {copy.closing.title}
-          </h2>
-
-          <p className="mt-6 text-base leading-relaxed text-neutral-200">
-            {copy.closing.body}
-          </p>
-
-          <p className="mt-4 text-sm leading-relaxed text-neutral-400">
-            {copy.closing.footer}
-          </p>
-        </div>
+        <ContactContent />
       </ScrollExpand>
     </div>
   );

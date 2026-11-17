@@ -13,7 +13,6 @@ import { useCopy } from '../../i18n/context';
 // Only the hero ships with the first paint. Everything below the fold loads
 // while the visitor is still reading the top of the page.
 const AboutMe = lazy(() => import('../about/AboutMe'));
-const Contact = lazy(() => import('../contact/Contact'));
 
 const TITLE_CLASS =
   'fill-[#fbfffe] transition-colors duration-1000 hover:fill-[#7A43C1]';
@@ -91,8 +90,6 @@ export default function Home() {
         </Section>
 
         <ShowreelSection />
-
-        <Contact />
       </Suspense>
     </>
   );
