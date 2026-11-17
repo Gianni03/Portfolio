@@ -306,6 +306,7 @@ export const en = {
   },
 
   footer: {
+    rosario: 'Web development in Rosario',
     role: 'Custom web development · Rosario, Argentina',
   },
 };
