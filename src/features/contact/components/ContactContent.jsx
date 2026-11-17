@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import CurvedLoop from '@/components/CurvedLoop';
 import { useCopy } from '../../../i18n/context';
 
 const FIELD_CLASS =
@@ -41,10 +42,23 @@ export default function ContactContent() {
   const sending = status === 'sending';
 
   return (
-    <div id="contact" className="mx-auto w-full max-w-lg text-left">
-      <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
-        {copy.contact.heading}
-      </h2>
+    <div id="contact" className="w-full">
+      <div className="relative mb-5 w-full overflow-x-clip">
+        <h2 className="sr-only">{copy.contact.title}</h2>
+        <CurvedLoop
+          marqueeText={Array(4).fill(copy.contact.title).join(' · ')}
+          curveAmount={60}
+          speed={1.5}
+          interactive={false}
+          direction="right"
+          className="fill-[#fbfffe]"
+        />
+      </div>
+
+      <div className="mx-auto w-full max-w-lg text-left">
+        <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
+          {copy.contact.heading}
+        </h2>
 
       <p className="mt-3 text-sm text-neutral-200">{copy.contact.intro}</p>
 
@@ -153,6 +167,7 @@ export default function ContactContent() {
           {copy.contact.linkedin}
         </a>
       </p>
+      </div>
     </div>
   );
 }

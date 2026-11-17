@@ -1,34 +1,20 @@
-import { useMemo } from 'react';
 import ScrollExpand from '../../../components/ScrollExpand';
 import ContactContent from '../../contact/components/ContactContent';
-import useProjects from '../../projects/hooks/useProjects';
 import { useCopy } from '../../../i18n/context';
 
-// Shown while the project images are still loading, or if none is available.
-const FALLBACK_MEDIA = '/img/services/sitios-web.webp';
+const SHOWREEL_MEDIA = '/img/obsidian.webp';
 
 /**
  * Closing showreel. The frame grows from a rounded card to the full viewport
- * and the closing statement fades in over it, handing the visitor straight to
- * the contact form.
+ * and the contact section fades in over it.
  */
 export default function ShowreelSection() {
   const copy = useCopy();
-  const { projects } = useProjects();
-
-  const src = useMemo(() => {
-    const list = Array.isArray(projects) ? projects : [];
-    const featured = list
-      .filter((project) => project.visibility === 'primary' && project.image)
-      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))[0];
-
-    return featured?.image ?? FALLBACK_MEDIA;
-  }, [projects]);
 
   return (
     <div className="relative left-1/2 w-screen -translate-x-1/2">
       <ScrollExpand
-        src={src}
+        src={SHOWREEL_MEDIA}
         mediaType="image"
         alt=""
         title={copy.showreel.title}
