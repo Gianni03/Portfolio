@@ -7,9 +7,9 @@ import { useCopy } from '../../../i18n/context';
 const FALLBACK_MEDIA = '/img/services/sitios-web.webp';
 
 /**
- * Full-bleed scroll reward between the hero and the services. The frame grows
- * from a rounded card to the whole viewport as you scroll, so the first thing
- * a visitor sees has a reason to keep moving.
+ * Closing showreel. The frame grows from a rounded card to the full viewport
+ * and the closing statement fades in over it, handing the visitor straight to
+ * the contact form.
  */
 export default function ShowreelSection() {
   const copy = useCopy();
@@ -40,9 +40,23 @@ export default function ShowreelSection() {
         scrollDistance={0.55}
         holdDistance={0.15}
         smoothing={0.12}
-        overlayScrim={0.35}
+        overlayScrim={0.72}
         useWindowScroll
-      />
+      >
+        <div className="mx-auto max-w-2xl">
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-white md:text-4xl">
+            {copy.closing.title}
+          </h2>
+
+          <p className="mt-6 text-base leading-relaxed text-neutral-200">
+            {copy.closing.body}
+          </p>
+
+          <p className="mt-4 text-sm leading-relaxed text-neutral-400">
+            {copy.closing.footer}
+          </p>
+        </div>
+      </ScrollExpand>
     </div>
   );
 }

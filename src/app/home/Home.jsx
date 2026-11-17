@@ -7,7 +7,6 @@ import ServicesSection from '../../features/services/components/ServicesSection'
 import CasesSection from '../../features/cases/components/CasesSection';
 import ProcessSection from '../../features/process/components/ProcessSection';
 import FaqSection from '../../features/faq/components/FaqSection';
-import ClosingSection from '../../features/closing/components/ClosingSection';
 import ShowreelSection from '../../features/showreel/components/ShowreelSection';
 import { useCopy } from '../../i18n/context';
 
@@ -30,7 +29,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <ShowreelSection />
       <Suspense fallback={null}>
         <Section id="services">
           <CurvedSectionTitle
@@ -92,7 +90,7 @@ export default function Home() {
           </div>
         </Section>
 
-        <ClosingSection />
+        <ShowreelSection />
 
         <Contact />
       </Suspense>
