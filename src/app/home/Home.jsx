@@ -90,9 +90,9 @@ export default function Home() {
           </div>
         </Section>
 
-        <ShowreelSection />
-
         <Contact />
+
+        <ShowreelSection />
       </Suspense>
     </>
   );

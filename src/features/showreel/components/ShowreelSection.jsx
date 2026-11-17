@@ -1,4 +1,5 @@
 import ScrollExpand from '../../../components/ScrollExpand';
+import ContactContent from '../../contact/components/ContactContent';
 import { useCopy } from '../../../i18n/context';
 
 /**
@@ -35,10 +36,12 @@ export default function ShowreelSection() {
         mediaZoom={1.05}
         scrollDistance={0.55}
         holdDistance={0.5}
-        smoothing={0.12}
+        smoothing={0.06}
         overlayScrim={0.72}
         useWindowScroll
-      />
+      >
+        <ContactContent />
+      </ScrollExpand>
     </div>
   );
 }
