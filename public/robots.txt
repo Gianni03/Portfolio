@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://giannipasquinelli-webdev.netlify.app/sitemap.xml
+
+# Guía para motores de respuesta con IA
+# https://llmstxt.org

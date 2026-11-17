@@ -1,0 +1,54 @@
+# Gianni Pasquinelli
+
+> Desarrollo web a medida en Rosario, Argentina. Diseño y construyo sitios,
+> landing pages y sistemas con panel de administración para negocios y PyMEs.
+
+## Qué hago
+
+- **Sitios web a medida** — diseño y desarrollo personalizado, adaptado a
+  celulares y computadoras, con SEO técnico, formularios de contacto y dominio
+  y hosting configurados a nombre del cliente.
+- **Landing pages** — páginas enfocadas en un objetivo concreto, con formulario
+  o contacto por WhatsApp y medición de visitas y conversiones.
+- **Sistemas y paneles web** — herramientas a medida para administrar contenido,
+  precios, stock, turnos o procesos internos, con acceso desde computadora o
+  celular.
+- **Mantenimiento y evolución** — servicio opcional después de la publicación.
+
+## Cómo trabajo
+
+1. Charla: se define qué necesita el negocio.
+2. Propuesta: alcance, precio y fecha por escrito.
+3. Desarrollo: avances cada semana sobre un entorno de prueba.
+4. Entrega: publicado en el dominio del cliente, con una demostración de uso.
+
+## Diferencial
+
+El negocio actualiza precios, textos y pantallas sin depender de un
+desarrollador. El código lo escribo yo: no hay plantillas ni intermediarios.
+
+## Trabajo publicado
+
+- El Rey del Chajá — pastelería artesanal en Rosario. Sitio, panel de precios y
+  pantallas del local: https://www.elreydelchaja.com/
+- Plataforma 1810 — producto propio para campañas políticas:
+  https://www.plataforma1810.com.ar/
+- Kli — producto propio, plataforma de comunidades con membresías y cobro
+  integrado: https://kli.com.ar/
+
+## Alcance
+
+Trabajo desde Rosario con clientes de todo el país, de forma remota. Zona de
+referencia: Rosario, Funes, Roldán, Granadero Baigorria, Villa Gobernador
+Gálvez, Pérez, San Lorenzo y Argentina en general.
+
+## Contacto
+
+- Formulario: https://giannipasquinelli-webdev.netlify.app/#contact
+- Email: giannipasquinelli@gmail.com
+- LinkedIn: https://www.linkedin.com/in/gianni-pasquinelli/
+- GitHub: https://github.com/Gianni03
+
+## Idiomas
+
+El sitio está disponible en español (principal) e inglés.
