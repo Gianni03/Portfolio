@@ -112,6 +112,7 @@ export const es = {
   cases: {
     title: 'Casos',
     intro: 'Trabajo real, online ahora mismo.',
+    caseLabel: 'Ver caso',
     liveLabel: 'Ver sitio',
     viewAll: 'Ver todos los proyectos',
     labels: {
@@ -121,6 +122,7 @@ export const es = {
     },
     items: [
       {
+        slug: 'el-rey-del-chaja',
         rubro: 'Pastelería · Rosario',
         title: 'El Rey del Chajá',
         problem:
@@ -131,6 +133,7 @@ export const es = {
         link: 'https://www.elreydelchaja.com/',
       },
       {
+        slug: 'plataforma-1810',
         rubro: 'Producto propio · SaaS',
         title: 'Plataforma 1810',
         problem:
@@ -141,6 +144,7 @@ export const es = {
         link: 'https://www.plataforma1810.com.ar/',
       },
       {
+        slug: 'kli',
         rubro: 'Producto propio · Plataforma',
         title: 'Kli',
         problem:

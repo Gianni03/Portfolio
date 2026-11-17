@@ -37,6 +37,7 @@ export default function useCases() {
     ? rows
         .filter((row) => row.visible !== false)
         .map((row) => ({
+          slug: row.slug,
           rubro: english ? row.rubro_en : row.rubro_es,
           title: row.title,
           problem: english ? row.problem_en : row.problem_es,

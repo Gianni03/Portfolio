@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/build-seo-pages.mjs",
+    "build": "vite build && node --env-file-if-exists=.env scripts/build-seo-pages.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

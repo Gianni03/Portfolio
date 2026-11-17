@@ -110,6 +110,7 @@ export const en = {
   cases: {
     title: 'Work',
     intro: 'Real work, live right now.',
+    caseLabel: 'Read case',
     liveLabel: 'View site',
     viewAll: 'See all projects',
     labels: {
@@ -119,6 +120,7 @@ export const en = {
     },
     items: [
       {
+        slug: 'el-rey-del-chaja',
         rubro: 'Bakery · Rosario',
         title: 'El Rey del Chajá',
         problem:
@@ -129,6 +131,7 @@ export const en = {
         link: 'https://www.elreydelchaja.com/',
       },
       {
+        slug: 'plataforma-1810',
         rubro: 'Own product · SaaS',
         title: 'Plataforma 1810',
         problem:
@@ -139,6 +142,7 @@ export const en = {
         link: 'https://www.plataforma1810.com.ar/',
       },
       {
+        slug: 'kli',
         rubro: 'Own product · Platform',
         title: 'Kli',
         problem:

@@ -19,7 +19,7 @@ const DIST = path.join(ROOT, 'dist');
 const TMP = path.join(ROOT, 'node_modules', '.seo-build');
 const ORIGIN = 'https://giannipasquinelli-webdev.netlify.app';
 
-const PAGES = [
+const STATIC_PAGES = [
   {
     entry: 'src/seo/pages/rosario.jsx',
     data: 'src/seo/pages/rosario.data.js',
@@ -35,9 +35,9 @@ async function findStylesheet() {
   return `/assets/${css}`;
 }
 
-async function loadPage(entry) {
+async function loadModule(entry) {
   await mkdir(TMP, { recursive: true });
-  const outfile = path.join(TMP, `${path.basename(entry, '.jsx')}.mjs`);
+  const outfile = path.join(TMP, `${entry.replace(/[\\/]/g, '_')}.mjs`);
 
   await build({
     entryPoints: [entry],
@@ -51,6 +51,33 @@ async function loadPage(entry) {
   });
 
   return import(pathToFileURL(outfile).href);
+}
+
+function serviceSchema(meta) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: 'Gianni Pasquinelli',
+    description: meta.description,
+    url: `${ORIGIN}${meta.path}`,
+    email: 'mailto:giannipasquinelli@gmail.com',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Rosario',
+      addressRegion: 'Santa Fe',
+      addressCountry: 'AR',
+    },
+    areaServed: [
+      'Rosario',
+      'Funes',
+      'Roldán',
+      'Granadero Baigorria',
+      'Villa Gobernador Gálvez',
+      'Pérez',
+      'San Lorenzo',
+      'Argentina',
+    ].map((name) => ({ '@type': 'City', name })),
+  };
 }
 
 function documentShell({ meta, body, css, structuredData }) {
@@ -70,7 +97,7 @@ function documentShell({ meta, body, css, structuredData }) {
   <meta property="og:site_name" content="Gianni Pasquinelli" />
   <meta property="og:title" content="${meta.title}" />
   <meta property="og:description" content="${meta.description}" />
-  <meta property="og:image" content="${ORIGIN}/og-image.jpg" />
+  <meta property="og:image" content="${meta.image ?? `${ORIGIN}/og-image.jpg`}" />
   <meta property="og:locale" content="es_AR" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="${css}" />
@@ -91,24 +118,105 @@ ${body}
 `;
 }
 
-function sitemap() {
+async function fetchCases() {
+  const url = process.env.VITE_SUPABASE_URL;
+  const key = process.env.VITE_SUPABASE_ANON_KEY;
+  if (!url || !key) return null;
+
+  try {
+    const response = await fetch(
+      `${url}/rest/v1/cases?select=*&visible=eq.true&order=position.asc`,
+      { headers: { apikey: key, Authorization: `Bearer ${key}` } },
+    );
+    if (!response.ok) return null;
+
+    const rows = await response.json();
+    if (!Array.isArray(rows) || rows.length === 0) return null;
+
+    return rows.map((row) => ({
+      slug: row.slug,
+      title: row.title,
+      rubro: row.rubro_es,
+      problem: row.problem_es,
+      built: row.built_es,
+      result: row.result_es,
+      link: row.link,
+      image: row.image,
+      position: row.position,
+    }));
+  } catch {
+    return null;
+  }
+}
+
+async function fallbackCases() {
+  const { es } = await import(
+    pathToFileURL(path.join(ROOT, 'src/content/es.js')).href
+  );
+
+  return es.cases.items.map((item, index) => ({
+    slug: item.slug,
+    title: item.title,
+    rubro: item.rubro,
+    problem: item.problem,
+    built: item.built,
+    result: item.result,
+    link: item.link,
+    image: null,
+    position: index + 1,
+  }));
+}
+
+async function casePages() {
+  const CasePage = (await loadModule('src/seo/pages/case.jsx')).default;
+  const cases = (await fetchCases()) ?? (await fallbackCases());
+  const pages = [];
+
+  for (const item of cases) {
+    const slug = item.slug ?? `caso-${item.position}`;
+    const meta = {
+      path: `/casos/${slug}`,
+      title: `${item.title} | Caso — Gianni Pasquinelli`,
+      description: `${item.rubro}: ${item.problem} ${item.result}`.trim(),
+      image: item.image ?? undefined,
+    };
+
+    const structuredData = [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: item.title,
+        description: meta.description,
+        image: item.image ?? `${ORIGIN}/og-image.jpg`,
+        url: `${ORIGIN}${meta.path}`,
+        author: { '@type': 'Person', name: 'Gianni Pasquinelli' },
+        publisher: { '@type': 'Person', name: 'Gianni Pasquinelli' },
+      },
+      serviceSchema(meta),
+    ];
+
+    pages.push({
+      meta,
+      html: renderToString(createElement(CasePage, { item })),
+      structuredData,
+    });
+  }
+
+  return pages;
+}
+
+function sitemap(extraPaths) {
   const now = new Date().toISOString().slice(0, 10);
+
+  const homeAlternates = [
+    ['es-AR', `${ORIGIN}/`],
+    ['en', `${ORIGIN}/en`],
+  ];
+
   const entries = [
-    {
-      loc: `${ORIGIN}/`,
-      alternates: [
-        ['es-AR', `${ORIGIN}/`],
-        ['en', `${ORIGIN}/en`],
-      ],
-    },
-    {
-      loc: `${ORIGIN}/en`,
-      alternates: [
-        ['es-AR', `${ORIGIN}/`],
-        ['en', `${ORIGIN}/en`],
-      ],
-    },
-    { loc: `${ORIGIN}/desarrollo-web-rosario`, alternates: [] },
+    { loc: `${ORIGIN}/`, alternates: homeAlternates },
+    { loc: `${ORIGIN}/en`, alternates: homeAlternates },
+    ...extraPaths.map((p) => ({ loc: `${ORIGIN}${p}`, alternates: [] })),
   ];
 
   const urls = entries
@@ -135,40 +243,14 @@ ${urls}
 
 async function main() {
   const css = await findStylesheet();
-  const generated = [];
+  const pages = [];
 
-  for (const page of PAGES) {
-    const mod = await loadPage(page.entry);
-    const data = page.data ? await loadPage(page.data) : {};
+  for (const page of STATIC_PAGES) {
+    const mod = await loadModule(page.entry);
+    const data = page.data ? await loadModule(page.data) : {};
     const meta = data.meta;
-    const body = renderToString(createElement(mod.default));
 
-    const service = {
-      '@context': 'https://schema.org',
-      '@type': 'ProfessionalService',
-      name: 'Gianni Pasquinelli',
-      description: meta.description,
-      url: `${ORIGIN}${meta.path}`,
-      email: 'mailto:giannipasquinelli@gmail.com',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Rosario',
-        addressRegion: 'Santa Fe',
-        addressCountry: 'AR',
-      },
-      areaServed: [
-        'Rosario',
-        'Funes',
-        'Roldán',
-        'Granadero Baigorria',
-        'Villa Gobernador Gálvez',
-        'Pérez',
-        'San Lorenzo',
-        'Argentina',
-      ].map((name) => ({ '@type': 'City', name })),
-    };
-
-    const structuredData = [service];
+    const structuredData = [serviceSchema(meta)];
 
     if (Array.isArray(data.faqs) && data.faqs.length > 0) {
       structuredData.push({
@@ -182,17 +264,25 @@ async function main() {
       });
     }
 
-    const html = documentShell({ meta, body, css, structuredData });
-    const outDir = path.join(DIST, meta.path.replace(/^\//, ''));
-    await mkdir(outDir, { recursive: true });
-    await writeFile(path.join(outDir, 'index.html'), html);
-    generated.push(meta.path);
-    console.log(`  ✓ ${meta.path}`);
+    pages.push({
+      meta,
+      html: renderToString(createElement(mod.default)),
+      structuredData,
+    });
   }
 
-  await writeFile(path.join(DIST, 'sitemap.xml'), sitemap());
-  console.log(`  ✓ sitemap.xml (${PAGES.length + 2} URLs)`);
-  console.log(`SEO pages: ${generated.join(', ')}`);
+  pages.push(...(await casePages()));
+
+  for (const page of pages) {
+    const html = documentShell({ meta: page.meta, body: page.html, css, structuredData: page.structuredData });
+    const outDir = path.join(DIST, page.meta.path.replace(/^\//, ''));
+    await mkdir(outDir, { recursive: true });
+    await writeFile(path.join(outDir, 'index.html'), html);
+    console.log(`  ✓ ${page.meta.path}`);
+  }
+
+  await writeFile(path.join(DIST, 'sitemap.xml'), sitemap(pages.map((p) => p.meta.path)));
+  console.log(`  ✓ sitemap.xml (${pages.length + 2} URLs)`);
 }
 
 main().catch((error) => {

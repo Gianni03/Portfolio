@@ -29,9 +29,7 @@ export default function CasesSection() {
         return (
           <a
             key={item.title}
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`/casos/${item.slug}`}
             className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-colors hover:border-[#7a43c1]/60"
           >
             <div className="relative aspect-video overflow-hidden bg-white/5">
@@ -60,7 +58,7 @@ export default function CasesSection() {
               </p>
 
               <span className="mt-auto pt-5 text-sm font-medium text-[#FF9FFC] transition-colors group-hover:text-white">
-                {copy.cases.liveLabel} →
+                {copy.cases.caseLabel} →
               </span>
             </div>
           </a>
