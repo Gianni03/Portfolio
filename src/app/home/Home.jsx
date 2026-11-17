@@ -7,6 +7,7 @@ import ServicesSection from '../../features/services/components/ServicesSection'
 import CasesSection from '../../features/cases/components/CasesSection';
 import ProcessSection from '../../features/process/components/ProcessSection';
 import FaqSection from '../../features/faq/components/FaqSection';
+import ClosingSection from '../../features/closing/components/ClosingSection';
 import { useCopy } from '../../i18n/context';
 
 // Only the hero ships with the first paint. Everything below the fold loads
@@ -88,6 +89,8 @@ export default function Home() {
             <FaqSection />
           </div>
         </Section>
+
+        <ClosingSection />
 
         <Contact />
       </Suspense>

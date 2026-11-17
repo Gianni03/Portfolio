@@ -11,7 +11,7 @@ export default function ServicesSection() {
         {copy.services.intro}
       </p>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-3">
         {copy.services.items.map((service, index) => (
           <FlipCard
             key={service.title}
@@ -24,9 +24,14 @@ export default function ServicesSection() {
             glareOpacity={0.14}
             front={
               <div className="flex h-full flex-col justify-between p-7">
-                <span className="font-mono text-xs text-[#FF9FFC]">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="font-mono text-xs text-[#FF9FFC]">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span className="text-[10px] uppercase tracking-wider text-neutral-500">
+                    {service.tag}
+                  </span>
+                </div>
 
                 <div>
                   <h3 className="text-2xl font-semibold tracking-tight text-white">
@@ -44,15 +49,19 @@ export default function ServicesSection() {
             }
             back={
               <div className="flex h-full flex-col p-7">
-                <h3 className="text-[11px] uppercase tracking-wider text-[#FF9FFC]">
-                  {service.title}
-                </h3>
+                <p className="text-[10px] uppercase tracking-wider text-[#FF9FFC]">
+                  {service.tag}
+                </p>
 
-                <ul className="mt-4 space-y-2.5">
+                <p className="mt-2 text-sm leading-snug text-neutral-300">
+                  {service.lead}
+                </p>
+
+                <ul className="mt-4 space-y-2">
                   {service.points.map((point) => (
                     <li
                       key={point}
-                      className="flex gap-2.5 text-sm leading-snug text-neutral-300"
+                      className="flex gap-2 text-[13px] leading-snug text-neutral-400"
                     >
                       <span
                         aria-hidden="true"
@@ -62,16 +71,35 @@ export default function ServicesSection() {
                     </li>
                   ))}
                 </ul>
+
+                <p className="mt-auto pt-4 text-[12px] leading-snug text-neutral-400">
+                  <span className="text-white">
+                    {copy.services.resultLabel}:
+                  </span>{' '}
+                  {service.result}
+                </p>
               </div>
             }
           />
         ))}
       </div>
 
-      <div className="mt-10 text-center">
+      <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6 md:flex md:items-center md:justify-between md:gap-8">
+        <div>
+          <p className="text-[10px] uppercase tracking-wider text-neutral-500">
+            {copy.services.extra.title}
+          </p>
+          <h3 className="mt-1 text-lg font-semibold text-white">
+            {copy.services.extra.name}
+          </h3>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-400">
+            {copy.services.extra.description}
+          </p>
+        </div>
+
         <a
           href="#contact"
-          className="text-sm font-medium text-[#FF9FFC] transition-colors hover:text-white"
+          className="mt-4 inline-block shrink-0 text-sm font-medium text-[#FF9FFC] transition-colors hover:text-white md:mt-0"
         >
           {copy.services.cta} →
         </a>

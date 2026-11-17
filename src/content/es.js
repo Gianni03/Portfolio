@@ -10,7 +10,7 @@ export const es = {
   meta: {
     title: 'Gianni Pasquinelli | Desarrollo web a medida en Rosario',
     description:
-      'Sitios y sistemas a medida para negocios. Panel propio para actualizar precios sin depender de un desarrollador. Rosario, Argentina.',
+      'Sitios web, landing pages y sistemas a medida para negocios. Diseño y desarrollo propios, desde los wireframes hasta la publicación. Rosario, Argentina.',
   },
 
   nav: {
@@ -45,74 +45,65 @@ export const es = {
     intro: 'Elegí una tarjeta para ver qué incluye.',
     cta: 'Hablemos de tu proyecto',
     cardHint: 'Ver qué incluye',
+    resultLabel: 'Resultado',
     items: [
       {
-        title: 'Sitios web',
-        summary: 'Tu negocio, completo y bien parado.',
+        title: 'Sitios web a medida',
+        tag: 'Servicio principal',
+        summary:
+          'Para negocios y profesionales que necesitan presencia digital.',
+        lead: 'Diseño y desarrollo para negocios, profesionales y empresas.',
         points: [
-          'Diseño a medida, no plantilla',
-          'Adaptado a celular y tablet',
-          'SEO base y carga rápida',
-          'Panel para editar textos y precios',
-          'Dominio y hosting a tu nombre',
+          'Diseño personalizado desde cero',
+          'Wireframes y estructura de contenidos',
+          'Adaptado a celulares y computadoras',
+          'SEO técnico y optimización de velocidad',
+          'Formularios y canales de contacto',
+          'Dominio y hosting configurados',
         ],
+        result:
+          'Un sitio profesional, pensado para tu negocio y preparado para crecer.',
       },
       {
         title: 'Landing pages',
-        summary: 'Una página, un objetivo.',
+        tag: 'Servicio principal',
+        summary: 'Para presentar un producto, servicio, campaña o lanzamiento.',
+        lead: 'Páginas enfocadas en presentar una propuesta y generar consultas.',
         points: [
-          'Foco en una sola acción',
-          'Formulario o WhatsApp',
-          'Carga en menos de dos segundos',
-          'Textos que llevan a la consulta',
-          'Medición de visitas',
+          'Diseño orientado a un objetivo concreto',
+          'Estructura y contenido estratégico',
+          'Interfaz visual personalizada',
+          'Formularios o contacto por WhatsApp',
+          'Adaptación a todos los dispositivos',
+          'Medición de visitas y conversiones',
         ],
+        result:
+          'Una página enfocada en transformar visitas en consultas y oportunidades.',
       },
       {
-        title: 'Web apps y sistemas',
-        summary: 'Herramientas que tu equipo usa todos los días.',
+        title: 'Sistemas y paneles web',
+        tag: 'Desarrollo complementario',
+        summary:
+          'Para negocios que necesitan administrar información y resolver procesos.',
+        lead: 'Herramientas personalizadas para administrar información y resolver procesos.',
         points: [
-          'Usuarios y permisos',
-          'Base de datos propia',
-          'Turnos, stock o presupuestos',
-          'Funciona desde el celular',
-          'Despliegue y respaldo',
+          'Diseño de interfaces y flujos de trabajo',
+          'Paneles de administración',
+          'Gestión de contenido y datos',
+          'Bases de datos propias',
+          'Funcionalidades según cada necesidad',
+          'Acceso desde computadora y celular',
         ],
-      },
-      {
-        title: 'Rediseño y migración',
-        summary: 'Tu sitio actual, sin perder lo que funciona.',
-        points: [
-          'Auditoría del sitio actual',
-          'Rediseño sin romper el SEO',
-          'Migración de contenido',
-          'Mejora de velocidad',
-          'Dejás de depender del dev',
-        ],
-      },
-      {
-        title: 'Catálogos digitales',
-        summary: 'Productos y precios, siempre al día.',
-        points: [
-          'Carga desde un panel',
-          'Fotos, precios y categorías',
-          'Búsqueda y filtros',
-          'Se comparte por WhatsApp',
-          'Actualización inmediata',
-        ],
-      },
-      {
-        title: 'Pantallas para el local',
-        summary: 'Menús y promos en las TVs.',
-        points: [
-          'Contenido desde el mismo panel',
-          'Rotación automática',
-          'De una a varias pantallas',
-          'Sin PC dedicada',
-          'Se actualiza solo',
-        ],
+        result:
+          'Una herramienta web adaptada a la forma en que funciona tu negocio.',
       },
     ],
+    extra: {
+      title: 'Servicios adicionales',
+      name: 'Mantenimiento y evolución',
+      description:
+        'Una vez publicado el proyecto, podés contratar mantenimiento y mejoras para mantenerlo actualizado, corregir problemas o incorporar nuevas funcionalidades.',
+    },
   },
 
   cases: {
@@ -186,33 +177,39 @@ export const es = {
     title: 'Preguntas',
     items: [
       {
-        question: '¿Cuánto sale?',
+        question: '¿Cuánto cuesta desarrollar un sitio web?',
         answer:
-          'Depende del alcance. Te paso un presupuesto cerrado por escrito antes de empezar. Lo que más lo mueve: cantidad de pantallas, diseño a medida, animaciones e integraciones.',
+          'Cada proyecto tiene un presupuesto según su alcance, diseño y funcionalidades. Después de conocer qué necesitás, preparo una propuesta con precio y plazos definidos.',
       },
       {
-        question: '¿Cuánto tarda?',
+        question: '¿Tengo que tener el diseño preparado?',
         answer:
-          'Un sitio simple, dos a tres semanas. Un sistema, entre uno y tres meses. La fecha queda en la propuesta.',
+          'No. Puedo encargarme de todo el proceso, desde organizar la estructura y los contenidos hasta diseñar la interfaz y desarrollar el sitio.',
       },
       {
-        question: '¿Qué necesito tener listo?',
+        question: '¿Cuánto tarda un proyecto?',
         answer:
-          'La información de tu negocio: qué vendés, precios y fotos. Si no tenés fotos, lo resolvemos.',
+          'Depende de su complejidad y del alcance acordado. Los plazos quedan establecidos en la propuesta antes de comenzar.',
       },
       {
-        question: '¿Y si después necesito un cambio?',
+        question: '¿Quién se encarga del dominio y el hosting?',
         answer:
-          'Si es un precio o un texto, lo cambiás vos desde el panel. Si es algo nuevo, me escribís.',
+          'Te ayudo a configurar y publicar el proyecto. Las cuentas y servicios quedan a tu nombre para que tengas el control.',
       },
       {
-        question: '¿Trabajás fuera de Rosario?',
+        question: '¿Puedo modificar el contenido después?',
         answer:
-          'Sí. Trabajo desde Rosario con negocios de todo el país, todo remoto.',
+          'Depende del proyecto. Podemos incorporar un panel de administración para que puedas actualizar textos, imágenes, precios u otros datos sin depender de un desarrollador.',
       },
       {
-        question: '¿Dominio y hosting a nombre de quién?',
-        answer: 'Tuyo. Vos sos dueño de todo, siempre.',
+        question: '¿Ofrecés mantenimiento?',
+        answer:
+          'Sí, de manera opcional. Una vez publicado el proyecto, podemos acordar un servicio de mantenimiento o presupuestar mejoras puntuales.',
+      },
+      {
+        question: '¿Trabajás con clientes de otras ciudades?',
+        answer:
+          'Sí. Trabajo desde Rosario y desarrollo proyectos para clientes de todo el país de manera remota.',
       },
     ],
   },
@@ -225,6 +222,13 @@ export const es = {
       'Trabajo desde Rosario con negocios de todo el país. Cuando necesitás algo, del otro lado estoy yo.',
     ],
     tags: 'Sitios · Sistemas · Panel de administración · Pantallas',
+  },
+
+  closing: {
+    title: 'Una idea, un diseño y un desarrollo hecho a medida.',
+    body: 'No necesitás llegar con todo resuelto. Me contás qué necesitás y trabajamos juntos para convertirlo en una solución web concreta.',
+    footer:
+      'Diseño y desarrollo personalmente cada proyecto, desde los primeros wireframes hasta su publicación.',
   },
 
   projects: {

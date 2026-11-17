@@ -10,7 +10,7 @@ export const en = {
   meta: {
     title: 'Gianni Pasquinelli | Custom web development in Rosario',
     description:
-      'Custom sites and systems for businesses. Your own panel to update prices without depending on a developer. Rosario, Argentina.',
+      'Websites, landing pages and custom systems for businesses. Design and development in-house, from wireframes to launch. Rosario, Argentina.',
   },
 
   nav: {
@@ -45,74 +45,63 @@ export const en = {
     intro: 'Pick a card to see what is included.',
     cta: "Let's talk about your project",
     cardHint: 'See what is included',
+    resultLabel: 'Result',
     items: [
       {
-        title: 'Websites',
-        summary: 'Your business, complete and well presented.',
+        title: 'Custom websites',
+        tag: 'Core service',
+        summary: 'For businesses and professionals who need a digital presence.',
+        lead: 'Design and development for businesses, professionals and companies.',
         points: [
-          'Custom design, no template',
-          'Built for phone and tablet',
-          'Base SEO and fast loads',
-          'Panel to edit text and prices',
-          'Domain and hosting in your name',
+          'Custom design from scratch',
+          'Wireframes and content structure',
+          'Built for phones and computers',
+          'Technical SEO and speed optimisation',
+          'Forms and contact channels',
+          'Domain and hosting configured',
         ],
+        result:
+          'A professional site, built for your business and ready to grow.',
       },
       {
         title: 'Landing pages',
-        summary: 'One page, one goal.',
+        tag: 'Core service',
+        summary: 'To present a product, service, campaign or launch.',
+        lead: 'Pages built to present an offer and generate enquiries.',
         points: [
-          'Focused on a single action',
-          'Form or WhatsApp',
-          'Loads in under two seconds',
-          'Copy that leads to the enquiry',
-          'Visit tracking',
+          'Design aimed at one concrete goal',
+          'Strategic structure and content',
+          'Custom visual interface',
+          'Forms or WhatsApp contact',
+          'Adapted to every device',
+          'Visit and conversion tracking',
         ],
+        result:
+          'A page built to turn visits into enquiries and opportunities.',
       },
       {
-        title: 'Web apps and systems',
-        summary: 'Tools your team uses every day.',
+        title: 'Systems and admin panels',
+        tag: 'Complementary development',
+        summary:
+          'For businesses that need to manage information and resolve processes.',
+        lead: 'Custom tools to manage information and resolve processes.',
         points: [
-          'Users and permissions',
-          'Your own database',
-          'Bookings, stock or quotes',
-          'Works from the phone',
-          'Deploy and backup',
+          'Interface and workflow design',
+          'Admin panels',
+          'Content and data management',
+          'Your own databases',
+          'Features for each need',
+          'Access from computer and phone',
         ],
-      },
-      {
-        title: 'Redesign and migration',
-        summary: 'Your current site, without losing what works.',
-        points: [
-          'Audit of the current site',
-          'Redesign without breaking SEO',
-          'Content migration',
-          'Speed improvements',
-          'You stop depending on the developer',
-        ],
-      },
-      {
-        title: 'Digital catalogues',
-        summary: 'Products and prices, always current.',
-        points: [
-          'Managed from a panel',
-          'Photos, prices and categories',
-          'Search and filters',
-          'Shareable on WhatsApp',
-          'Instant updates',
-        ],
-      },
-      {
-        title: 'In-store screens',
-        summary: 'Menus and promos on the TVs.',
-        points: [
-          'Content from the same panel',
-          'Automatic rotation',
-          'One screen or many',
-          'No dedicated PC',
-          'Updates itself',
-        ],
+        result: 'A web tool adapted to the way your business works.',
       },
     ],
+    extra: {
+      title: 'Additional services',
+      name: 'Maintenance and evolution',
+      description:
+        'Once the project is live, you can hire maintenance and improvements to keep it current, fix issues or add new features.',
+    },
   },
 
   cases: {
@@ -186,33 +175,39 @@ export const en = {
     title: 'FAQ',
     items: [
       {
-        question: 'How much does it cost?',
+        question: 'How much does a website cost?',
         answer:
-          'It depends on scope. You get a fixed quote in writing before we start. What moves it most: number of screens, custom design, animation and integrations.',
+          'Every project is priced by its scope, design and features. Once I know what you need, I prepare a proposal with a defined price and timeline.',
       },
       {
-        question: 'How long does it take?',
+        question: 'Do I need to have the design ready?',
         answer:
-          'A simple site, two to three weeks. A system, one to three months. The date is in the proposal.',
+          'No. I can handle the whole process, from organising the structure and the content to designing the interface and building the site.',
       },
       {
-        question: 'What do I need to have ready?',
+        question: 'How long does a project take?',
         answer:
-          'Your business information: what you sell, prices and photos. If you have no photos, we sort it out.',
+          'It depends on its complexity and the agreed scope. Timelines are set in the proposal before we start.',
       },
       {
-        question: 'What if I need a change later?',
+        question: 'Who handles the domain and hosting?',
         answer:
-          'If it is a price or a line of text, you change it yourself from the panel. If it is something new, you message me.',
+          'I help you set up and publish the project. The accounts and services stay in your name so you stay in control.',
       },
       {
-        question: 'Do you work outside Rosario?',
+        question: 'Can I change the content later?',
         answer:
-          'Yes. I work from Rosario with businesses across the country, fully remote.',
+          'It depends on the project. We can add an admin panel so you can update text, images, prices or other data without depending on a developer.',
       },
       {
-        question: 'Who owns the domain and hosting?',
-        answer: 'You do. It is all in your name, always.',
+        question: 'Do you offer maintenance?',
+        answer:
+          'Yes, optionally. Once the project is live we can agree on a maintenance service or quote individual improvements.',
+      },
+      {
+        question: 'Do you work with clients in other cities?',
+        answer:
+          'Yes. I work from Rosario and build projects for clients across the country, fully remote.',
       },
     ],
   },
@@ -225,6 +220,13 @@ export const en = {
       'I work from Rosario with businesses across the country. When you need something, I am the one on the other side.',
     ],
     tags: 'Sites · Systems · Admin panel · In-store screens',
+  },
+
+  closing: {
+    title: 'An idea, a design and a build made to measure.',
+    body: 'You do not need to arrive with everything figured out. You tell me what you need and we turn it into a concrete web solution together.',
+    footer:
+      'I design and build every project myself, from the first wireframes to publication.',
   },
 
   projects: {
