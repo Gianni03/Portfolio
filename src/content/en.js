@@ -31,11 +31,11 @@ export const en = {
   },
 
   hero: {
-    title: 'Custom digital products',
-    line1: 'No templates.',
-    line2: 'No middlemen.',
+    title: 'Custom web development',
+    line1: 'Websites and landing pages',
+    line2: 'systems and admin panels',
     intro:
-      'Sites and systems for businesses that need something built properly. From Rosario, for the whole country.',
+      'You update prices, text and screens without calling anyone. I design and build every project end to end.',
     primaryCta: 'See the work',
     secondaryCta: "Let's talk",
   },

@@ -16,31 +16,33 @@ export default function Hero() {
         </div>
 
         {/* Right: Text */}
-        <div className="relative z-10 w-full max-w-xl text-center lg:text-left">
+        <div className="relative z-10 w-full text-center lg:text-left">
           <GradientText
             as="h1"
             colors={['#7a43c1', '#FF9FFC', '#fbfffe']}
             animationSpeed={10}
             yoyo={false}
-            className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-semibold leading-tight tracking-normal"
+            className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-tight"
           >
             {copy.hero.title}
           </GradientText>
+
           <div className="mt-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/15 p-6 md:p-8">
-            <span className="block text-3xl font-medium tracking-tight text-[#fbfffe]/90">
+            <span className="block text-2xl sm:text-3xl font-medium tracking-tight text-[#fbfffe]/90">
               {copy.hero.line1}
             </span>
-            <span className="block text-3xl font-medium tracking-tight text-[#fbfffe]/75">
+            <span className="block text-2xl sm:text-3xl font-medium tracking-tight text-[#fbfffe]/75">
               {copy.hero.line2}
             </span>
           </div>
-          <p className="mt-6 max-w-sm mx-auto lg:mx-0 text-sm leading-relaxed text-[#fbfffe]/70">
+
+          <p className="mt-6 max-w-md mx-auto lg:mx-0 text-sm leading-relaxed text-[#fbfffe]/70">
             {copy.hero.intro}
           </p>
 
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-8">
             <a
-              href="#projects"
+              href="#cases"
               className="z-10 inline-block px-6 py-3 rounded-full bg-[#7a43c1] text-[#fbfffe] font-medium hover:bg-[#FF9FFC] transition-colors"
             >
               {copy.hero.primaryCta}

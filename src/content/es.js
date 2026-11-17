@@ -31,11 +31,11 @@ export const es = {
   },
 
   hero: {
-    title: 'Productos digitales a medida',
-    line1: 'Sin plantillas.',
-    line2: 'Sin intermediarios.',
+    title: 'Desarrollo web a medida',
+    line1: 'Sitios y landing pages',
+    line2: 'sistemas y paneles a medida',
     intro:
-      'Sitios y sistemas para negocios que necesitan algo bien hecho. Desde Rosario, para todo el país.',
+      'Actualizás precios, textos y pantallas sin llamar a nadie. Diseño y construyo cada proyecto de principio a fin.',
     primaryCta: 'Ver casos',
     secondaryCta: 'Hablemos',
   },
