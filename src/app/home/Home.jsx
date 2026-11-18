@@ -4,7 +4,7 @@ import Section from '../../ui/Section';
 import Hero from '../hero/Hero';
 import CurvedSectionTitle from '../../ui/section-titles/CurvedLoopSectionTitle';
 import ServicesSection from '../../features/services/components/ServicesSection';
-import CasesSection from '../../features/cases/components/CasesSection';
+import ProjectsCarousel from '../../features/projects/components/ProjectsCarousel';
 import ProcessSection from '../../features/process/components/ProcessSection';
 import FaqSection from '../../features/faq/components/FaqSection';
 import ShowreelSection from '../../features/showreel/components/ShowreelSection';
@@ -52,7 +52,7 @@ export default function Home() {
             className={TITLE_CLASS}
           />
           <div className="pt-20">
-            <CasesSection />
+            <ProjectsCarousel />
             <div className="mt-10 text-center">
               <Link
                 to={projectsPath}

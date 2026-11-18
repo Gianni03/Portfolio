@@ -270,6 +270,7 @@ export const en = {
 
   projects: {
     title: 'Projects',
+    goto: 'Go to project',
     featured: 'Featured',
     other: 'Other Works',
     loading: 'Loading projects…',

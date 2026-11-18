@@ -1,7 +1,7 @@
 import { ExternalLink } from 'lucide-react';
 import { useCopy } from '../../../i18n/context';
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, to }) {
   const copy = useCopy();
   const english = copy.locale === 'en';
 
@@ -9,11 +9,13 @@ export default function ProjectCard({ project }) {
   const description = english
     ? project.description_en ?? project.description
     : project.description_es ?? project.description;
-  const href = project.demo_url || project.repo_url;
+  const href = to || project.demo_url || project.repo_url;
   const Element = href ? 'a' : 'div';
-  const linkProps = href
-    ? { href, target: '_blank', rel: 'noopener noreferrer' }
-    : {};
+  const linkProps = to
+    ? { href: to }
+    : href
+      ? { href, target: '_blank', rel: 'noopener noreferrer' }
+      : {};
 
   return (
     <Element
@@ -56,7 +58,11 @@ export default function ProjectCard({ project }) {
 
         {href && (
           <span className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-medium text-[#FF9FFC]">
-            {project.demo_url ? copy.projects.demo : copy.projects.code}
+            {to
+              ? copy.cases.caseLabel
+              : project.demo_url
+                ? copy.projects.demo
+                : copy.projects.code}
             <ExternalLink size={14} />
           </span>
         )}

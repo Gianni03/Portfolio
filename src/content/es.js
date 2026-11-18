@@ -272,6 +272,7 @@ export const es = {
 
   projects: {
     title: 'Proyectos',
+    goto: 'Ir al proyecto',
     featured: 'Destacados',
     other: 'Otros trabajos',
     loading: 'Cargando proyectos…',
