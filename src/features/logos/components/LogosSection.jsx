@@ -30,15 +30,16 @@ export default function LogosSection() {
         </GradientText>
       </div>
 
-      <div className="mt-10">
+      <div className="relative left-1/2 mt-10 w-screen -translate-x-1/2">
         <LogoLoop
           logos={logos}
           speed={70}
-          logoHeight={46}
-          gap={72}
+          logoHeight={64}
+          gap={96}
           fadeOut
-          fadeOutWidth={0.12}
+          fadeOutWidth={0.08}
           muted={0.15}
+          scaleOnHover
           draggable
           ariaLabel={copy.logos.title}
         />
