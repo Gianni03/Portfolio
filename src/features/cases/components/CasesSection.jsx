@@ -8,21 +8,31 @@ import { useCopy } from '../../../i18n/context';
 const normalize = (url) =>
   String(url ?? '').trim().replace(/\/+$/, '').toLowerCase();
 
+const GAP = 24;
+const AUTOPLAY_MS = 6000;
+
 const ARROW =
-  'absolute top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-neutral-950/80 text-neutral-200 backdrop-blur transition-colors hover:border-[#7a43c1] hover:text-white disabled:pointer-events-none disabled:opacity-30';
+  'flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-neutral-950/70 text-neutral-200 transition-colors hover:border-[#7a43c1] hover:text-white';
+
+const CARD =
+  'w-[85%] shrink-0 sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]';
 
 /**
- * Carrusel de casos. Tres cards por vista en desktop, flechas a los costados
- * y puntos abajo como contador de páginas. Scroll nativo con snap: touch,
- * teclado y botones funcionan igual.
+ * Carrusel de casos con loop infinito.
+ *
+ * Se duplica la lista para que el salto del final al principio no se vea: al
+ * terminar la transición se vuelve al índice 0 sin animación. Las cards se
+ * desplazan por transform, así el control es exacto y no depende del scroll.
  */
 export default function CasesSection() {
   const copy = useCopy();
   const { items } = useCases();
   const { projects } = useProjects();
-  const trackRef = useRef(null);
-  const [page, setPage] = useState(0);
-  const [pages, setPages] = useState(1);
+  const firstCardRef = useRef(null);
+  const [index, setIndex] = useState(0);
+  const [step, setStep] = useState(0);
+  const [animate, setAnimate] = useState(true);
+  const [paused, setPaused] = useState(false);
 
   const imageByUrl = new Map(
     (Array.isArray(projects) ? projects : [])
@@ -30,90 +40,129 @@ export default function CasesSection() {
       .map((project) => [normalize(project.demo_url), project.image]),
   );
 
-  const sync = useCallback(() => {
-    const track = trackRef.current;
-    if (!track || track.clientWidth === 0) return;
-
-    const total = Math.max(1, Math.round(track.scrollWidth / track.clientWidth));
-    setPages(total);
-    setPage(
-      Math.min(total - 1, Math.max(0, Math.round(track.scrollLeft / track.clientWidth))),
-    );
+  const measure = useCallback(() => {
+    const card = firstCardRef.current;
+    if (!card) return;
+    setStep(card.getBoundingClientRect().width + GAP);
   }, []);
 
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return undefined;
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [measure, items?.length]);
 
-    sync();
-    track.addEventListener('scroll', sync, { passive: true });
-    window.addEventListener('resize', sync);
+  const total = items?.length ?? 0;
 
-    return () => {
-      track.removeEventListener('scroll', sync);
-      window.removeEventListener('resize', sync);
-    };
-  }, [sync, items.length]);
+  const next = useCallback(() => {
+    setAnimate(true);
+    setIndex((current) => current + 1);
+  }, []);
 
-  const goTo = (index) => {
-    const track = trackRef.current;
-    if (!track) return;
-    track.scrollTo({ left: index * track.clientWidth, behavior: 'smooth' });
+  const previous = useCallback(() => {
+    // Desde la primera card se salta a la copia duplicada sin animación y
+    // desde ahí se retrocede una, así el retroceso también se ve continuo.
+    if (index === 0 && total > 1) {
+      setAnimate(false);
+      setIndex(total);
+      requestAnimationFrame(() => {
+        setAnimate(true);
+        setIndex(total - 1);
+      });
+      return;
+    }
+    setAnimate(true);
+    setIndex((current) => Math.max(0, current - 1));
+  }, [index, total]);
+
+  useEffect(() => {
+    if (paused || total <= 1) return undefined;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+
+    const id = setInterval(next, AUTOPLAY_MS);
+    return () => clearInterval(id);
+  }, [next, paused, total]);
+
+  if (!items || total === 0) return null;
+
+  const loop = total > 1 ? [...items, ...items] : items;
+  const active = index % total;
+
+  const handleTransitionEnd = () => {
+    if (index < total) return;
+    setAnimate(false);
+    setIndex(0);
+    requestAnimationFrame(() => requestAnimationFrame(() => setAnimate(true)));
   };
 
-  if (!items || items.length === 0) return null;
-
   return (
-    <div className="relative">
-      <button
-        type="button"
-        onClick={() => goTo(page - 1)}
-        aria-label={copy.cases.previous}
-        disabled={page === 0}
-        className={`${ARROW} -left-2 lg:-left-5`}
-      >
-        <ChevronLeft size={20} aria-hidden="true" />
-      </button>
-
-      <button
-        type="button"
-        onClick={() => goTo(page + 1)}
-        aria-label={copy.cases.next}
-        disabled={page >= pages - 1}
-        className={`${ARROW} -right-2 lg:-right-5`}
-      >
-        <ChevronRight size={20} aria-hidden="true" />
-      </button>
-
-      <div
-        ref={trackRef}
-        className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        {items.map((item) => (
-          <div
-            key={item.title}
-            className="w-[85%] shrink-0 snap-start sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+    <div
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={() => setPaused(false)}
+    >
+      <div className="flex items-center gap-4">
+        {total > 1 && (
+          <button
+            type="button"
+            onClick={previous}
+            aria-label={copy.cases.previous}
+            className={`${ARROW} hidden md:flex`}
           >
-            <CaseCard
-              item={{
-                ...item,
-                image: item.image || imageByUrl.get(normalize(item.link)),
-              }}
-            />
+            <ChevronLeft size={20} aria-hidden="true" />
+          </button>
+        )}
+
+        <div className="min-w-0 flex-1 overflow-hidden">
+          <div
+            className={`flex gap-6 ${animate ? 'transition-transform duration-700 ease-out' : ''}`}
+            style={{ transform: `translateX(-${index * step}px)` }}
+            onTransitionEnd={handleTransitionEnd}
+          >
+            {loop.map((item, position) => (
+              <div
+                key={`${item.slug ?? item.title}-${position}`}
+                ref={position === 0 ? firstCardRef : null}
+                className={CARD}
+              >
+                <CaseCard
+                  item={{
+                    ...item,
+                    image: item.image || imageByUrl.get(normalize(item.link)),
+                  }}
+                />
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+
+        {total > 1 && (
+          <button
+            type="button"
+            onClick={next}
+            aria-label={copy.cases.next}
+            className={`${ARROW} hidden md:flex`}
+          >
+            <ChevronRight size={20} aria-hidden="true" />
+          </button>
+        )}
       </div>
 
-      {pages > 1 && (
-        <div className="mt-2 flex justify-center gap-2">
-          {Array.from({ length: pages }).map((_, index) => (
+      {total > 1 && (
+        <div className="mt-6 flex justify-center gap-2">
+          {items.map((item, position) => (
             <button
-              key={index}
+              key={item.slug ?? item.title}
               type="button"
-              onClick={() => goTo(index)}
-              aria-label={`${copy.cases.next} ${index + 1}`}
+              onClick={() => {
+                setAnimate(true);
+                setIndex(position);
+              }}
+              aria-label={`${copy.cases.next} ${position + 1}`}
+              aria-current={position === active}
               className={`h-2 rounded-full transition-all ${
-                index === page
+                position === active
                   ? 'w-6 bg-[#FF9FFC]'
                   : 'w-2 bg-white/25 hover:bg-white/50'
               }`}
