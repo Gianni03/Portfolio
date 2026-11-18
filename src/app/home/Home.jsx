@@ -18,6 +18,9 @@ const Contact = lazy(() => import('../contact/Contact'));
 const TITLE_CLASS =
   'fill-[#fbfffe] transition-colors duration-1000 hover:fill-[#7A43C1]';
 
+const INTRO_CLASS =
+  'mb-10 bg-linear-to-r from-[#7a43c1] via-[#FF9FFC] to-[#fbfffe] bg-clip-text text-center text-sm font-medium text-transparent';
+
 /**
  * Sales page order: promise -> what you can buy -> proof -> process ->
  * call to action -> objections.
@@ -49,9 +52,6 @@ export default function Home() {
             className={TITLE_CLASS}
           />
           <div className="pt-20">
-            <p className="mb-10 text-center text-sm text-neutral-400">
-              {copy.cases.intro}
-            </p>
             <CasesSection />
             <div className="mt-10 text-center">
               <Link
@@ -74,9 +74,7 @@ export default function Home() {
             direction="right"
           />
           <div className="pt-20">
-            <p className="mb-10 text-center text-sm text-neutral-400">
-              {copy.process.intro}
-            </p>
+            <p className={INTRO_CLASS}>{copy.process.intro}</p>
             <ProcessSection />
           </div>
         </Section>

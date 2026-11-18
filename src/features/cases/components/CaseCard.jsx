@@ -24,11 +24,7 @@ export default function CaseCard({ item }) {
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <span className="text-xs font-medium uppercase tracking-wider text-[#FF9FFC]">
-          {item.rubro}
-        </span>
-
-        <h3 className="mt-2 text-2xl font-bold tracking-tight text-white">
+        <h3 className="text-2xl font-bold tracking-tight text-white">
           {item.title}
         </h3>
 

@@ -37,7 +37,7 @@ export default function ServicesSection() {
 
   return (
     <>
-      <p className="mb-10 text-center text-sm text-neutral-400">
+      <p className="mb-10 bg-linear-to-r from-[#7a43c1] via-[#FF9FFC] to-[#fbfffe] bg-clip-text text-center text-sm font-medium text-transparent">
         {copy.services.intro}
       </p>
 

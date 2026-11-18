@@ -11,6 +11,8 @@ export default function ProjectsAdmin() {
   const { projects, loading, refetch } = useProjects();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [descriptionEs, setDescriptionEs] = useState('');
+  const [descriptionEn, setDescriptionEn] = useState('');
   const [stack, setStack] = useState('');
   const [image, setImage] = useState(null);
   const [demo_url, setDemo_url] = useState('');
@@ -47,6 +49,8 @@ export default function ProjectsAdmin() {
   const resetForm = () => {
     setTitle('');
     setDescription('');
+    setDescriptionEs('');
+    setDescriptionEn('');
     setStack('');
     setImage(null);
     setDemo_url('');
@@ -71,6 +75,8 @@ export default function ProjectsAdmin() {
         await updateProject(editingId, {
           title,
           description,
+          description_es: descriptionEs,
+          description_en: descriptionEn,
           stack: techsArray,
           image,
           demo_url,
@@ -93,6 +99,8 @@ export default function ProjectsAdmin() {
       const result = await addProject({
         title,
         description,
+        description_es: descriptionEs,
+        description_en: descriptionEn,
         stack: techsArray,
         image,
         demo_url,
@@ -191,15 +199,28 @@ export default function ProjectsAdmin() {
           <div className="space-y-4">
             <div>
               <label className="block text-xs uppercase text-neutral-500 mb-1 ml-1">
-                Description
+                Descripción · Español
               </label>
               <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Project description..."
-                rows={4}
+                value={descriptionEs}
+                onChange={(e) => setDescriptionEs(e.target.value)}
+                placeholder="Descripción del proyecto..."
+                rows={3}
                 className="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-2 text-white placeholder-neutral-700 focus:outline-none focus:border-neutral-600 focus:ring-1 focus:ring-neutral-600 transition-all resize-none"
                 required
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs uppercase text-neutral-500 mb-1 ml-1">
+                Descripción · English
+              </label>
+              <textarea
+                value={descriptionEn}
+                onChange={(e) => setDescriptionEn(e.target.value)}
+                placeholder="Project description in English..."
+                rows={3}
+                className="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-2 text-white placeholder-neutral-700 focus:outline-none focus:border-neutral-600 focus:ring-1 focus:ring-neutral-600 transition-all resize-none"
               />
             </div>
 
@@ -353,6 +374,8 @@ export default function ProjectsAdmin() {
                   setEditingId(p.id);
                   setTitle(p.title);
                   setDescription(p.description);
+                  setDescriptionEs(p.description_es ?? p.description ?? '');
+                  setDescriptionEn(p.description_en ?? p.description ?? '');
                   setStack((p.stack || []).join(', '));
                   setDemo_url(p.demo_url || '');
                   setRepo_url(p.repo_url || '');

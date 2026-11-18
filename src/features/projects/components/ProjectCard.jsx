@@ -3,6 +3,12 @@ import { useCopy } from '../../../i18n/context';
 
 export default function ProjectCard({ project }) {
   const copy = useCopy();
+  const english = copy.locale === 'en';
+
+  // Respaldo a `description` mientras la tabla no esté migrada del todo.
+  const description = english
+    ? project.description_en ?? project.description
+    : project.description_es ?? project.description;
   const href = project.demo_url || project.repo_url;
   const Element = href ? 'a' : 'div';
   const linkProps = href
@@ -32,7 +38,7 @@ export default function ProjectCard({ project }) {
         </h3>
 
         <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-neutral-400">
-          {project.description}
+          {description}
         </p>
 
         {project.stack?.length > 0 && (
