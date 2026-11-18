@@ -28,7 +28,30 @@ const STATIC_PAGES = [
   },
 ];
 
+const DEFAULT_ORIGIN = 'https://giannipasquinelli-webdev.netlify.app';
+
 const json = (value) => JSON.stringify(value, null, 2);
+
+/**
+ * index.html, robots.txt y llms.txt traen el dominio fijo. Con SITE_URL
+ * definido se reescriben en el build, así cambiar de dominio es una variable
+ * de entorno y no ocho ediciones a mano.
+ */
+async function applyOrigin() {
+  if (ORIGIN === DEFAULT_ORIGIN) return;
+
+  for (const file of ['index.html', 'robots.txt', 'llms.txt']) {
+    const full = path.join(DIST, file);
+    try {
+      const content = await readFile(full, 'utf8');
+      if (!content.includes(DEFAULT_ORIGIN)) continue;
+      await writeFile(full, content.split(DEFAULT_ORIGIN).join(ORIGIN));
+      console.log(`  ✓ ${file} → ${ORIGIN}`);
+    } catch {
+      // Si el archivo no está, no hay nada que reescribir.
+    }
+  }
+}
 
 /**
  * Netlify sirve los directorios con barra final y redirige 301 si falta.
@@ -312,6 +335,8 @@ async function main() {
     await writeFile(path.join(outDir, 'index.html'), html);
     console.log(`  ✓ ${page.meta.path}`);
   }
+
+  await applyOrigin();
 
   await writeFile(path.join(DIST, 'sitemap.xml'), sitemap(pages.map((p) => p.meta.path)));
   console.log(`  ✓ sitemap.xml (${pages.length + 2} URLs)`);
