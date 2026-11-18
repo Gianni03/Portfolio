@@ -35,6 +35,7 @@ export default function Home() {
             text={copy.services.title}
             curve={90}
             className={TITLE_CLASS}
+            direction="right"
           />
           <div className="pt-20">
             <ServicesSection />
@@ -70,6 +71,7 @@ export default function Home() {
             text={copy.process.title}
             curve={-60}
             className={TITLE_CLASS}
+            direction="right"
           />
           <div className="pt-20">
             <p className="mb-10 text-center text-sm text-neutral-400">

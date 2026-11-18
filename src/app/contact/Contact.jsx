@@ -16,7 +16,7 @@ export default function Contact() {
         text={copy.contact.title}
         curve={60}
         className="fill-[#fbfffe] transition-colors duration-1000 hover:fill-[#7A43C1]"
-        direction="right"
+        direction="left"
       />
     </Section>
   );
