@@ -31,6 +31,14 @@ const STATIC_PAGES = [
 const json = (value) => JSON.stringify(value, null, 2);
 
 /**
+ * Netlify sirve los directorios con barra final y redirige 301 si falta.
+ * El canonical y el sitemap tienen que apuntar a la URL servida, no a la que
+ * redirige, o Google recibe señales contradictorias.
+ */
+const publicUrl = (routePath) =>
+  routePath === '/' ? `${ORIGIN}/` : `${ORIGIN}${routePath}/`;
+
+/**
  * En Netlify las variables vienen del entorno. En local están en .env, y este
  * script se ejecuta con Node pelado, así que no las ve. Se cargan acá a mano
  * para no depender de flags de la CLI que cambian entre versiones de Node.
@@ -81,7 +89,7 @@ function serviceSchema(meta) {
     '@type': 'ProfessionalService',
     name: 'Gianni Pasquinelli',
     description: meta.description,
-    url: `${ORIGIN}${meta.path}`,
+    url: publicUrl(meta.path),
     email: 'mailto:giannipasquinelli@gmail.com',
     address: {
       '@type': 'PostalAddress',
@@ -103,7 +111,7 @@ function serviceSchema(meta) {
 }
 
 function documentShell({ meta, body, css, structuredData }) {
-  const url = `${ORIGIN}${meta.path}`;
+  const url = publicUrl(meta.path);
 
   return `<!doctype html>
 <html lang="es-AR">
@@ -210,7 +218,7 @@ async function casePages() {
         headline: item.title,
         description: meta.description,
         image: item.image ?? `${ORIGIN}/og-image.jpg`,
-        url: `${ORIGIN}${meta.path}`,
+        url: publicUrl(meta.path),
         author: { '@type': 'Person', name: 'Gianni Pasquinelli' },
         publisher: { '@type': 'Person', name: 'Gianni Pasquinelli' },
       },
@@ -238,7 +246,7 @@ function sitemap(extraPaths) {
   const entries = [
     { loc: `${ORIGIN}/`, alternates: homeAlternates },
     { loc: `${ORIGIN}/en`, alternates: homeAlternates },
-    ...extraPaths.map((p) => ({ loc: `${ORIGIN}${p}`, alternates: [] })),
+    ...extraPaths.map((p) => ({ loc: publicUrl(p), alternates: [] })),
   ];
 
   const urls = entries
