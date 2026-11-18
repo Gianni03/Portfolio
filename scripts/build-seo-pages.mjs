@@ -17,7 +17,9 @@ import path from 'node:path';
 const ROOT = process.cwd();
 const DIST = path.join(ROOT, 'dist');
 const TMP = path.join(ROOT, 'node_modules', '.seo-build');
-const ORIGIN = 'https://giannipasquinelli-webdev.netlify.app';
+// Se puede sobreescribir con SITE_URL en Netlify el día que haya dominio propio.
+const ORIGIN =
+  process.env.SITE_URL || 'https://giannipasquinelli-webdev.netlify.app';
 
 const STATIC_PAGES = [
   {
