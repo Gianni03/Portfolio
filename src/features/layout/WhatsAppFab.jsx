@@ -9,6 +9,8 @@ const WHATSAPP_NUMBER = String(
 ).replace(/\D/g, '');
 
 const HIDDEN_PREFIXES = ['/admin', '/login'];
+// El CV y el portfolio viejo no son páginas de venta.
+const HIDDEN_SUFFIXES = ['/resume', '/portfolio'];
 
 export default function WhatsAppFab() {
   const copy = useCopy();
@@ -32,6 +34,7 @@ export default function WhatsAppFab() {
   if (!WHATSAPP_NUMBER) return null;
   if (onShowreel) return null;
   if (HIDDEN_PREFIXES.some((prefix) => pathname.startsWith(prefix))) return null;
+  if (HIDDEN_SUFFIXES.some((suffix) => pathname.endsWith(suffix))) return null;
 
   const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     copy.contact.whatsappMessage,

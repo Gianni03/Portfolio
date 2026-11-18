@@ -117,9 +117,20 @@ export default function Header() {
               </NavLink>
             </>
           ) : (
-            <NavLink to={english ? '/en' : '/'} className="hover:text-white transition">
-              {copy.nav.portfolio}
-            </NavLink>
+            <>
+              <NavLink
+                to={english ? '/en' : '/'}
+                className="hover:text-white transition"
+              >
+                {copy.nav.home}
+              </NavLink>
+              <NavLink
+                to="/portfolio"
+                className="hover:text-white transition"
+              >
+                {copy.nav.portfolio}
+              </NavLink>
+            </>
           )}
 
           <Link
@@ -188,13 +199,22 @@ export default function Header() {
               </NavLink>
             </>
           ) : (
-            <NavLink
-              to={english ? '/en' : '/'}
-              onClick={() => setOpen(false)}
-              className="py-2 border-b border-neutral-800 hover:text-white"
-            >
-              {copy.nav.portfolio}
-            </NavLink>
+            <>
+              <NavLink
+                to={english ? '/en' : '/'}
+                onClick={() => setOpen(false)}
+                className="py-2 border-b border-neutral-800 hover:text-white"
+              >
+                {copy.nav.home}
+              </NavLink>
+              <NavLink
+                to="/portfolio"
+                onClick={() => setOpen(false)}
+                className="py-2 border-b border-neutral-800 hover:text-white"
+              >
+                {copy.nav.portfolio}
+              </NavLink>
+            </>
           )}
 
           <Link

@@ -25,6 +25,7 @@ export default function Carousel({
   dotLabel = 'Ir al elemento',
 }) {
   const firstItemRef = useRef(null);
+  const touchStartX = useRef(null);
   const [index, setIndex] = useState(0);
   const [step, setStep] = useState(0);
   const [animate, setAnimate] = useState(true);
@@ -82,6 +83,20 @@ export default function Carousel({
   const loop = total > 1 ? [...items, ...items] : items;
   const active = index % total;
 
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (event) => {
+    if (touchStartX.current === null) return;
+    const delta = event.changedTouches[0].clientX - touchStartX.current;
+    touchStartX.current = null;
+
+    if (Math.abs(delta) < 50 || total <= 1) return;
+    if (delta < 0) next();
+    else previous();
+  };
+
   const handleTransitionEnd = () => {
     if (index < total) return;
     setAnimate(false);
@@ -108,7 +123,12 @@ export default function Carousel({
           </button>
         )}
 
-        <div className="min-w-0 flex-1 overflow-hidden">
+        <div
+          className="min-w-0 flex-1 overflow-hidden"
+          style={{ touchAction: 'pan-y' }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <div
             className={`flex gap-6 ${animate ? 'transition-transform duration-700 ease-out' : ''}`}
             style={{ transform: `translateX(-${index * step}px)` }}
