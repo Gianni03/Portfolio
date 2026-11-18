@@ -10,7 +10,7 @@
 import { build } from 'esbuild';
 import { createElement } from 'react';
 import { renderToString } from 'react-dom/server';
-import { mkdir, readdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
 
@@ -29,6 +29,26 @@ const STATIC_PAGES = [
 ];
 
 const json = (value) => JSON.stringify(value, null, 2);
+
+/**
+ * En Netlify las variables vienen del entorno. En local están en .env, y este
+ * script se ejecuta con Node pelado, así que no las ve. Se cargan acá a mano
+ * para no depender de flags de la CLI que cambian entre versiones de Node.
+ */
+async function loadEnvFile() {
+  if (process.env.VITE_SUPABASE_URL) return;
+
+  try {
+    const content = await readFile(path.join(ROOT, '.env'), 'utf8');
+    for (const line of content.split('\n')) {
+      const match = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
+      if (!match || process.env[match[1]]) continue;
+      process.env[match[1]] = match[2].replace(/^["']|["']$/g, '');
+    }
+  } catch {
+    // Sin .env: en Netlify las variables ya están en el entorno.
+  }
+}
 
 async function findStylesheet() {
   const files = await readdir(path.join(DIST, 'assets'));
@@ -244,6 +264,8 @@ ${urls}
 }
 
 async function main() {
+  await loadEnvFile();
+
   const css = await findStylesheet();
   const pages = [];
 
