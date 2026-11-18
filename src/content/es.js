@@ -112,6 +112,8 @@ export const es = {
   cases: {
     title: 'Casos',
     intro: 'Trabajo real, online ahora mismo.',
+    previous: 'Caso anterior',
+    next: 'Caso siguiente',
     caseLabel: 'Ver caso',
     liveLabel: 'Ver sitio',
     viewAll: 'Ver todos los proyectos',

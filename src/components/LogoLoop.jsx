@@ -1028,8 +1028,9 @@ const LogoLoop = memo(
                         className="logoloop__content"
                         href={item.href}
                         aria-label={name || 'logo link'}
-                        target="_blank"
-                        rel="noreferrer noopener"
+                        {...(/^https?:\/\//i.test(item.href)
+                          ? { target: '_blank', rel: 'noreferrer noopener' }
+                          : {})}
                         draggable={false}
                         tabIndex={isPrimary ? undefined : -1}
                       >

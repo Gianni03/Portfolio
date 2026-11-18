@@ -1,19 +1,25 @@
+import { useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import useCases from '../hooks/useCases';
 import useProjects from '../../projects/hooks/useProjects';
+import CaseCard from './CaseCard';
 import { useCopy } from '../../../i18n/context';
 
 const normalize = (url) =>
   String(url ?? '').trim().replace(/\/+$/, '').toLowerCase();
 
+const ARROW =
+  'flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-neutral-300 transition-colors hover:border-[#7a43c1] hover:text-white';
+
 /**
- * Image-led case cards. The picture is the proof; the text is a caption.
- * The image comes from the case itself. While the table is empty and the copy
- * dictionary is used, it falls back to the matching project screenshot.
+ * Carrusel de casos en la home. Scroll nativo con snap: funciona con touch,
+ * teclado y los botones. Las cards crecen a medida que se agregan casos.
  */
 export default function CasesSection() {
   const copy = useCopy();
   const { items } = useCases();
   const { projects } = useProjects();
+  const trackRef = useRef(null);
 
   const imageByUrl = new Map(
     (Array.isArray(projects) ? projects : [])
@@ -21,49 +27,56 @@ export default function CasesSection() {
       .map((project) => [normalize(project.demo_url), project.image]),
   );
 
+  if (!items || items.length === 0) return null;
+
+  const scroll = (direction) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.scrollBy({
+      left: direction * track.clientWidth * 0.85,
+      behavior: 'smooth',
+    });
+  };
+
   return (
-    <div className="grid gap-6 md:grid-cols-3">
-      {items.map((item) => {
-        const image = item.image || imageByUrl.get(normalize(item.link));
-
-        return (
-          <a
+    <div className="relative">
+      <div
+        ref={trackRef}
+        className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {items.map((item) => (
+          <div
             key={item.title}
-            href={`/casos/${item.slug}`}
-            className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-colors hover:border-[#7a43c1]/60"
+            className="w-[85%] shrink-0 snap-start sm:w-[calc(50%-12px)]"
           >
-            <div className="relative aspect-video overflow-hidden bg-white/5">
-              {image && (
-                <img
-                  src={image}
-                  alt={item.title}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              )}
-            </div>
+            <CaseCard
+              item={{
+                ...item,
+                image: item.image || imageByUrl.get(normalize(item.link)),
+              }}
+            />
+          </div>
+        ))}
+      </div>
 
-            <div className="flex flex-1 flex-col p-6">
-              <span className="text-xs font-medium uppercase tracking-wider text-[#FF9FFC]">
-                {item.rubro}
-              </span>
-
-              <h3 className="mt-2 text-2xl font-bold tracking-tight text-white">
-                {item.title}
-              </h3>
-
-              <p className="mt-3 text-sm leading-relaxed text-neutral-300">
-                {item.result}
-              </p>
-
-              <span className="mt-auto pt-5 text-sm font-medium text-[#FF9FFC] transition-colors group-hover:text-white">
-                {copy.cases.caseLabel} →
-              </span>
-            </div>
-          </a>
-        );
-      })}
+      <div className="mt-6 flex justify-center gap-3">
+        <button
+          type="button"
+          onClick={() => scroll(-1)}
+          aria-label={copy.cases.previous}
+          className={ARROW}
+        >
+          <ChevronLeft size={20} aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          onClick={() => scroll(1)}
+          aria-label={copy.cases.next}
+          className={ARROW}
+        >
+          <ChevronRight size={20} aria-hidden="true" />
+        </button>
+      </div>
     </div>
   );
 }

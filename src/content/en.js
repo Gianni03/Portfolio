@@ -110,6 +110,8 @@ export const en = {
   cases: {
     title: 'Work',
     intro: 'Real work, live right now.',
+    previous: 'Previous case',
+    next: 'Next case',
     caseLabel: 'Read case',
     liveLabel: 'View site',
     viewAll: 'See all projects',
