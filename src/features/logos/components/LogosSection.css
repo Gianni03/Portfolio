@@ -1,0 +1,8 @@
+/**
+ * Los logos vienen en formatos distintos: algunos son texto con fondo
+ * transparente y otros son íconos cuadrados con fondo sólido. Redondear la
+ * caja de la imagen empareja los segundos sin tocar los primeros.
+ */
+.logoloop__item img {
+  border-radius: 12px;
+}

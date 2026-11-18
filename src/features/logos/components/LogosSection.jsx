@@ -2,6 +2,7 @@ import GradientText from '@/components/GradientText';
 import LogoLoop from '@/components/LogoLoop';
 import useLogos from '../hooks/useLogos';
 import { useCopy } from '../../../i18n/context';
+import './LogosSection.css';
 
 export default function LogosSection() {
   const copy = useCopy();
