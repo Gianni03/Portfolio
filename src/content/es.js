@@ -256,6 +256,10 @@ export const es = {
     hint: 'Seguí bajando',
   },
 
+  logos: {
+    title: 'Empresas que confiaron',
+  },
+
   closing: {
     title: 'Una idea, un diseño y un desarrollo hecho a medida.',
     body: 'No necesitás llegar con todo resuelto. Me contás qué necesitás y trabajamos juntos para convertirlo en una solución web concreta.',

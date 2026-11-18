@@ -34,6 +34,7 @@ export default function Admin() {
           <NavLink to="/admin/projects">Projects</NavLink>
           <NavLink to="/admin/studies">Studies</NavLink>
           <NavLink to="/admin/cases">Casos</NavLink>
+          <NavLink to="/admin/logos">Logos</NavLink>
           <NavLink to="/admin/faqs">FAQs</NavLink>
           <NavLink to="/admin/resume">Resume</NavLink>
         </nav>

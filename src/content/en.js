@@ -254,6 +254,10 @@ export const en = {
     hint: 'Keep scrolling',
   },
 
+  logos: {
+    title: 'Companies that trusted',
+  },
+
   closing: {
     title: 'An idea, a design and a build made to measure.',
     body: 'You do not need to arrive with everything figured out. You tell me what you need and we turn it into a concrete web solution together.',

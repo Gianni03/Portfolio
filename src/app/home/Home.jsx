@@ -8,6 +8,7 @@ import CasesSection from '../../features/cases/components/CasesSection';
 import ProcessSection from '../../features/process/components/ProcessSection';
 import FaqSection from '../../features/faq/components/FaqSection';
 import ShowreelSection from '../../features/showreel/components/ShowreelSection';
+import LogosSection from '../../features/logos/components/LogosSection';
 import { useCopy } from '../../i18n/context';
 
 // Only the hero ships with the first paint. Everything below the fold loads
@@ -59,6 +60,8 @@ export default function Home() {
                 {copy.cases.viewAll} →
               </Link>
             </div>
+
+            <LogosSection />
           </div>
         </Section>
 
