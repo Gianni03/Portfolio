@@ -110,6 +110,7 @@ export const en = {
   cases: {
     title: 'Work',
     intro: 'Real work, live right now.',
+    gotoCases: 'Go to case',
     previous: 'Previous case',
     next: 'Next case',
     caseLabel: 'Read case',

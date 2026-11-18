@@ -159,7 +159,7 @@ export default function CasesSection() {
                 setAnimate(true);
                 setIndex(position);
               }}
-              aria-label={`${copy.cases.next} ${position + 1}`}
+              aria-label={`${copy.cases.gotoCases} ${position + 1}`}
               aria-current={position === active}
               className={`h-2 rounded-full transition-all ${
                 position === active

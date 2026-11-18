@@ -112,6 +112,7 @@ export const es = {
   cases: {
     title: 'Casos',
     intro: 'Trabajo real, online ahora mismo.',
+    gotoCases: 'Ir al caso',
     previous: 'Caso anterior',
     next: 'Caso siguiente',
     caseLabel: 'Ver caso',
