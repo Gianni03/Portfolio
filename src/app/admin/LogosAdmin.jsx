@@ -152,19 +152,6 @@ export default function LogosAdmin() {
           </div>
 
           <div>
-            <label className={LABEL} htmlFor="logo-href">
-              Link (opcional)
-            </label>
-            <input
-              id="logo-href"
-              className={FIELD}
-              value={form.href}
-              onChange={update('href')}
-              placeholder="https://"
-            />
-          </div>
-
-          <div>
             <label className={LABEL} htmlFor="logo-image-path">
               Ruta o URL de la imagen
             </label>
@@ -174,6 +161,19 @@ export default function LogosAdmin() {
               value={form.imagePath}
               onChange={update('imagePath')}
               placeholder="/img/logos/archivo.png"
+            />
+          </div>
+
+          <div>
+            <label className={LABEL} htmlFor="logo-href">
+              Link a la vista del proyecto
+            </label>
+            <input
+              id="logo-href"
+              className={FIELD}
+              value={form.href}
+              onChange={update('href')}
+              placeholder="/casos/el-rey-del-chaja"
             />
           </div>
 
