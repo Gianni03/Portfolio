@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import CircularText from '../../components/CircularText';
 import { useCopy } from '../../i18n/context';
+import { trackLead } from '../../lib/analytics';
 
 // Digits only. Set VITE_WHATSAPP_NUMBER in .env to enable the floating button.
 const WHATSAPP_NUMBER = String(
@@ -43,6 +44,7 @@ export default function WhatsAppFab() {
   return (
     <a
       href={href}
+      onClick={() => trackLead('whatsapp')}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={copy.contact.whatsapp}

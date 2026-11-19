@@ -168,6 +168,25 @@ function documentShell({ meta, body, css, structuredData }) {
   <meta property="og:locale" content="es_AR" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="${css}" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HKD5HH88QR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-HKD5HH88QR');
+
+    // Las páginas estáticas no son React: los contactos se miden acá.
+    document.addEventListener('click', function (event) {
+      var link = event.target.closest ? event.target.closest('a') : null;
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      if (href.indexOf('wa.me') !== -1) {
+        gtag('event', 'generate_lead', { method: 'whatsapp' });
+      } else if (href.indexOf('mailto:') === 0) {
+        gtag('event', 'generate_lead', { method: 'email' });
+      }
+    });
+  </script>
 ${structuredData
   .map(
     (data) =>

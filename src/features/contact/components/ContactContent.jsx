@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Linkedin, Mail } from 'lucide-react';
 import { useCopy } from '../../../i18n/context';
+import { trackLead } from '../../../lib/analytics';
 
 const WHATSAPP_NUMBER = String(
   import.meta.env.VITE_WHATSAPP_NUMBER ?? '',
@@ -45,6 +46,7 @@ export default function ContactContent() {
       if (!response.ok) throw new Error(String(response.status));
 
       setStatus('success');
+      trackLead('form');
       form.reset();
     } catch {
       setStatus('error');
@@ -157,6 +159,7 @@ export default function ContactContent() {
         <div className="mt-4 flex flex-wrap gap-2 sm:gap-3">
           <a
             href="mailto:giannipasquinelli@gmail.com"
+            onClick={() => trackLead('email')}
             className={CHANNEL_CLASS}
           >
             <Mail size={14} aria-hidden="true" className="sm:hidden" />
@@ -178,6 +181,7 @@ export default function ContactContent() {
           {whatsappHref && (
             <a
               href={whatsappHref}
+              onClick={() => trackLead('whatsapp')}
               target="_blank"
               rel="noopener noreferrer"
               className={CHANNEL_CLASS}
