@@ -30,6 +30,7 @@ const GUIDE_PAGES = [
   'src/seo/pages/guia-costo.data.js',
   'src/seo/pages/guia-plantilla.data.js',
   'src/seo/pages/guia-actualizar.data.js',
+  'src/seo/pages/guia-contenido-propio.data.js',
 ];
 
 const SERVICE_PAGES = [

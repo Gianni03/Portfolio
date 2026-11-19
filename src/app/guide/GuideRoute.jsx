@@ -3,11 +3,13 @@ import GuidePage from '../../seo/components/GuidePage';
 import { data as costo } from '../../seo/pages/guia-costo.data';
 import { data as plantilla } from '../../seo/pages/guia-plantilla.data';
 import { data as actualizar } from '../../seo/pages/guia-actualizar.data';
+import { data as contenido } from '../../seo/pages/guia-contenido-propio.data';
 
 const GUIDES = {
   'cuanto-cuesta-una-pagina-web': costo,
   'web-a-medida-o-plantilla': plantilla,
   'actualizar-mi-web-sin-programador': actualizar,
+  'tu-contenido-es-tuyo': contenido,
 };
 
 /**

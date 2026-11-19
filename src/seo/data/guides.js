@@ -18,4 +18,9 @@ export const GUIDES = [
     title: 'Actualizar tu web sin depender de un programador',
     blurb: 'Qué pedir antes de firmar para no quedar atado a nadie.',
   },
+  {
+    path: '/guias/tu-contenido-es-tuyo',
+    title: 'Tu contenido es tuyo',
+    blurb: 'Qué pasa si te cierran la cuenta y cómo depender menos de las redes.',
+  },
 ];

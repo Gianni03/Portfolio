@@ -45,9 +45,23 @@ export const data = {
       ],
     },
     {
-      title: 'Proyectos entregados',
+      title: 'Titularidad y licencia de uso',
       paragraphs: [
-        'Una vez abonado el trabajo, el cliente es titular del sitio entregado: dominio, hosting y código, salvo que la propuesta indique otra cosa.',
+        'El dominio queda siempre a nombre del cliente. Los contenidos que aporta el cliente, su marca y sus datos también son de su propiedad.',
+        'El código fuente del sitio es propiedad de Gianni Pasquinelli. Una vez abonado el trabajo, el cliente recibe una licencia perpetua, no exclusiva e intransferible para usar, operar y mantener el sitio entregado en su dominio, sin límite de tiempo.',
+        'La cesión del código fuente, o la transferencia de esa licencia a un tercero, no están incluidas y se acuerdan por separado.',
+      ],
+    },
+    {
+      title: 'Hosting y servicios mensuales',
+      paragraphs: [
+        'El hosting puede contratarse directamente a nombre del cliente, o prestarse como servicio mensual por parte de Gianni Pasquinelli, según lo que establezca la propuesta.',
+        'Cuando el hosting se presta como servicio, la interrupción del pago suspende la prestación, no la titularidad del dominio ni de los contenidos. En ese caso el cliente conserva el dominio y puede contratar el hosting por su cuenta.',
+      ],
+    },
+    {
+      title: 'Exhibición de los trabajos',
+      paragraphs: [
         'Gianni Pasquinelli puede exhibir el proyecto realizado en su portfolio y en sus canales profesionales. Si el cliente prefiere que no se exhiba, debe solicitarlo por escrito.',
       ],
     },
