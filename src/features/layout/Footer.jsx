@@ -32,6 +32,18 @@ export default function Footer() {
               {copy.footer.serviciosSistemas}
             </a>
             <a
+              href="/rubros/gastronomia"
+              className="text-xs text-neutral-500 transition-colors hover:text-white"
+            >
+              {copy.footer.rubroGastronomia}
+            </a>
+            <a
+              href="/rubros/profesionales"
+              className="text-xs text-neutral-500 transition-colors hover:text-white"
+            >
+              {copy.footer.rubroProfesionales}
+            </a>
+            <a
               href="/desarrollo-web-rosario"
               className="text-xs text-neutral-500 transition-colors hover:text-white"
             >

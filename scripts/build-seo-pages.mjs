@@ -30,6 +30,9 @@ const GUIDE_PAGES = [
 const SERVICE_PAGES = [
   'src/seo/pages/servicio-desarrollo-web.data.js',
   'src/seo/pages/servicio-sistemas.data.js',
+  // Los rubros usan la misma plantilla: cambia el contenido, no la forma.
+  'src/seo/pages/rubro-gastronomia.data.js',
+  'src/seo/pages/rubro-profesionales.data.js',
 ];
 
 const STATIC_PAGES = [

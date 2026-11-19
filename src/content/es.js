@@ -322,6 +322,8 @@ export const es = {
   footer: {
     serviciosWeb: 'Desarrollo web',
     serviciosSistemas: 'Sistemas a medida',
+    rubroGastronomia: 'Gastronomía',
+    rubroProfesionales: 'Profesionales',
     rosario: 'Desarrollo web en Rosario',
     role: 'Desarrollo web a medida · Rosario, Argentina',
   },

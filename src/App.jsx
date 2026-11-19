@@ -58,6 +58,7 @@ function AppRoutes() {
           </Route>
           <Route path="/casos/:slug" element={<CaseRoute />} />
           <Route path="/servicios/:slug" element={<ServiceRoute />} />
+          <Route path="/rubros/:slug" element={<ServiceRoute />} />
           <Route path="/guias/:slug" element={<GuideRoute />} />
           <Route path="/desarrollo-web-rosario" element={<RosarioPage />} />
           <Route path="/admin" element={<Admin />}>

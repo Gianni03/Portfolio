@@ -2,10 +2,14 @@ import { Link, useParams } from 'react-router-dom';
 import ServicePage from '../../seo/components/ServicePage';
 import { data as desarrolloWeb } from '../../seo/pages/servicio-desarrollo-web.data';
 import { data as sistemas } from '../../seo/pages/servicio-sistemas.data';
+import { data as gastronomia } from '../../seo/pages/rubro-gastronomia.data';
+import { data as profesionales } from '../../seo/pages/rubro-profesionales.data';
 
 const SERVICES = {
   'desarrollo-web': desarrolloWeb,
   'sistemas-a-medida': sistemas,
+  gastronomia,
+  profesionales,
 };
 
 /**
