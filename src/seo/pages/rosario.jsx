@@ -8,6 +8,7 @@
  */
 
 import { faqs } from './rosario.data';
+import SeoFooter from '../components/SeoFooter';
 
 const SERVICIOS = [
   {
@@ -198,11 +199,7 @@ export default function RosarioPage() {
         </Section>
       </main>
 
-      <footer className="border-t border-white/10">
-        <div className="mx-auto max-w-3xl px-6 py-8 text-xs text-neutral-500">
-          Gianni Pasquinelli · Desarrollo web a medida · Rosario, Argentina
-        </div>
-      </footer>
+      <SeoFooter />
     </div>
   );
 }

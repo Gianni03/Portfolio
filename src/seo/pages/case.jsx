@@ -5,6 +5,8 @@
  * generarse tanto desde Supabase como desde el diccionario de respaldo.
  */
 
+import SeoFooter from '../components/SeoFooter';
+
 const SITE_CONTACT = '/#contact';
 
 function Block({ title, children }) {
@@ -111,11 +113,7 @@ export default function CasePage({ item }) {
         </section>
       </main>
 
-      <footer className="border-t border-white/10">
-        <div className="mx-auto max-w-3xl px-6 py-8 text-xs text-neutral-500">
-          Gianni Pasquinelli · Desarrollo web a medida · Rosario, Argentina
-        </div>
-      </footer>
+      <SeoFooter />
     </div>
   );
 }
