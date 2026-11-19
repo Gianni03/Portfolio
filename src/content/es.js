@@ -324,6 +324,8 @@ export const es = {
     serviciosSistemas: 'Sistemas a medida',
     rubroGastronomia: 'Gastronomía',
     rubroProfesionales: 'Profesionales',
+    terminos: 'Términos y condiciones',
+    privacidad: 'Privacidad',
     rosario: 'Desarrollo web en Rosario',
     role: 'Desarrollo web a medida · Rosario, Argentina',
   },

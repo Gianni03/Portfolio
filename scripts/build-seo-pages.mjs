@@ -21,6 +21,11 @@ const TMP = path.join(ROOT, 'node_modules', '.seo-build');
 const ORIGIN =
   process.env.SITE_URL || 'https://giannipasquinelli-webdev.netlify.app';
 
+const LEGAL_PAGES = [
+  'src/seo/pages/terminos.data.js',
+  'src/seo/pages/privacidad.data.js',
+];
+
 const GUIDE_PAGES = [
   'src/seo/pages/guia-costo.data.js',
   'src/seo/pages/guia-plantilla.data.js',
@@ -253,6 +258,23 @@ async function fallbackCases() {
   }));
 }
 
+async function legalPages() {
+  const LegalPage = (await loadModule('src/seo/components/LegalPage.jsx')).default;
+  const pages = [];
+
+  for (const entry of LEGAL_PAGES) {
+    const { meta, data } = await loadModule(entry);
+
+    pages.push({
+      meta,
+      html: renderToString(createElement(LegalPage, { data })),
+      structuredData: [serviceSchema(meta)],
+    });
+  }
+
+  return pages;
+}
+
 async function guidePages() {
   const GuidePage = (await loadModule('src/seo/components/GuidePage.jsx')).default;
   const pages = [];
@@ -452,6 +474,7 @@ async function main() {
     });
   }
 
+  pages.push(...(await legalPages()));
   pages.push(...(await guidePages()));
   pages.push(...(await servicePages()));
   pages.push(...(await casePages()));

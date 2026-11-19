@@ -44,6 +44,18 @@ export default function Footer() {
               {copy.footer.rubroProfesionales}
             </a>
             <a
+              href="/terminos"
+              className="text-xs text-neutral-500 transition-colors hover:text-white"
+            >
+              {copy.footer.terminos}
+            </a>
+            <a
+              href="/privacidad"
+              className="text-xs text-neutral-500 transition-colors hover:text-white"
+            >
+              {copy.footer.privacidad}
+            </a>
+            <a
               href="/desarrollo-web-rosario"
               className="text-xs text-neutral-500 transition-colors hover:text-white"
             >
