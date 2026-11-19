@@ -320,6 +320,8 @@ export const es = {
   },
 
   footer: {
+    serviciosWeb: 'Desarrollo web',
+    serviciosSistemas: 'Sistemas a medida',
     rosario: 'Desarrollo web en Rosario',
     role: 'Desarrollo web a medida · Rosario, Argentina',
   },

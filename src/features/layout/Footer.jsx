@@ -12,12 +12,26 @@ export default function Footer() {
         <div className="text-sm text-white/70 text-center md:text-left">
           <p className="font-medium text-white">Gianni — {copy.footer.role}</p>
           <p className="text-xs mt-1">© {new Date().getFullYear()}</p>
-          <a
-            href="/desarrollo-web-rosario"
-            className="mt-2 inline-block text-xs text-neutral-500 transition-colors hover:text-white"
-          >
-            {copy.footer.rosario}
-          </a>
+          <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1 md:justify-start">
+            <a
+              href="/servicios/desarrollo-web"
+              className="text-xs text-neutral-500 transition-colors hover:text-white"
+            >
+              {copy.footer.serviciosWeb}
+            </a>
+            <a
+              href="/servicios/sistemas-a-medida"
+              className="text-xs text-neutral-500 transition-colors hover:text-white"
+            >
+              {copy.footer.serviciosSistemas}
+            </a>
+            <a
+              href="/desarrollo-web-rosario"
+              className="text-xs text-neutral-500 transition-colors hover:text-white"
+            >
+              {copy.footer.rosario}
+            </a>
+          </div>
         </div>
 
         {/* Right */}

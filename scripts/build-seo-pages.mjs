@@ -21,6 +21,11 @@ const TMP = path.join(ROOT, 'node_modules', '.seo-build');
 const ORIGIN =
   process.env.SITE_URL || 'https://giannipasquinelli-webdev.netlify.app';
 
+const SERVICE_PAGES = [
+  'src/seo/pages/servicio-desarrollo-web.data.js',
+  'src/seo/pages/servicio-sistemas.data.js',
+];
+
 const STATIC_PAGES = [
   {
     entry: 'src/seo/pages/rosario.jsx',
@@ -220,6 +225,60 @@ async function fallbackCases() {
   }));
 }
 
+async function servicePages() {
+  const ServicePage = (await loadModule('src/seo/components/ServicePage.jsx'))
+    .default;
+  const pages = [];
+
+  for (const entry of SERVICE_PAGES) {
+    const mod = await loadModule(entry);
+    const { meta, data } = mod;
+
+    const structuredData = [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: data.h1,
+        description: meta.description,
+        url: publicUrl(meta.path),
+        areaServed: [
+          'Rosario',
+          'Funes',
+          'Roldán',
+          'Granadero Baigorria',
+          'Villa Gobernador Gálvez',
+          'Pérez',
+          'San Lorenzo',
+          'Argentina',
+        ].map((name) => ({ '@type': 'City', name })),
+        provider: {
+          '@type': 'ProfessionalService',
+          name: 'Gianni Pasquinelli',
+          url: ORIGIN,
+        },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: data.faqs.map(([question, answer]) => ({
+          '@type': 'Question',
+          name: question,
+          acceptedAnswer: { '@type': 'Answer', text: answer },
+        })),
+      },
+      serviceSchema(meta),
+    ];
+
+    pages.push({
+      meta,
+      html: renderToString(createElement(ServicePage, { data })),
+      structuredData,
+    });
+  }
+
+  return pages;
+}
+
 async function casePages() {
   const CasePage = (await loadModule('src/seo/pages/case.jsx')).default;
   const cases = (await fetchCases()) ?? (await fallbackCases());
@@ -326,6 +385,7 @@ async function main() {
     });
   }
 
+  pages.push(...(await servicePages()));
   pages.push(...(await casePages()));
 
   for (const page of pages) {
