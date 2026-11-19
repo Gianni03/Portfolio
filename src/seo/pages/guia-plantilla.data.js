@@ -35,7 +35,7 @@ export const data = {
       ],
       list: [
         'Necesitás que los precios o el stock se actualicen sin llamar a nadie',
-        'Querés integrar un sistema que ya usás (turnos, facturación, planillas)',
+        'Querés integrar un sistema que ya usás (facturación, planillas, stock)',
         'El sitio tiene que cargar rápido en celulares de gama media',
         'Necesitás un flujo particular: presupuestos, reservas, socios, membresías',
       ],

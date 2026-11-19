@@ -2,7 +2,7 @@ export const meta = {
   path: '/servicios/sistemas-a-medida',
   title: 'Sistemas y paneles a medida | Software para negocios — Gianni Pasquinelli',
   description:
-    'Sistemas web a medida para negocios: paneles de administración, gestión de precios, stock, turnos y clientes. Con base de datos propia y acceso desde cualquier dispositivo.',
+    'Sistemas web a medida para negocios: paneles de administración, gestión de precios, stock, presupuestos y clientes. Con base de datos propia y acceso desde cualquier dispositivo.',
 };
 
 export const data = {
@@ -17,7 +17,7 @@ export const data = {
     'Usuarios y permisos por rol',
     'Gestión de contenido, precios y registros',
     'Base de datos propia, con respaldo',
-    'Turnos, stock, presupuestos o clientes',
+    'Stock, presupuestos, socios o clientes',
     'Formularios y flujos de trabajo a medida',
     'Acceso desde computadora y celular',
     'Despliegue y acompañamiento después de la entrega',
@@ -31,7 +31,7 @@ export const data = {
   faqs: [
     [
       '¿Cuánto cuesta un sistema a medida?',
-      'Depende del alcance: no es lo mismo un panel para cargar precios que un sistema con turnos, stock y permisos. Después del relevamiento recibís una propuesta con precio y etapas.',
+      'Depende del alcance: no es lo mismo un panel para cargar precios que un sistema con stock, permisos y varias áreas. Después del relevamiento recibís una propuesta con precio y etapas.',
     ],
     [
       '¿Cuánto tarda?',

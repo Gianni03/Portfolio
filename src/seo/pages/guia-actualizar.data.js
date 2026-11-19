@@ -23,7 +23,7 @@ export const data = {
       ],
       list: [
         'WordPress con un constructor de páginas: instalación rápida, muy extendido, requiere mantenimiento y actualizaciones',
-        'Panel a medida: hecho para los datos exactos de tu negocio (precios, stock, turnos), sin elementos que no usás',
+        'Panel a medida: hecho para los datos exactos de tu negocio (precios, stock, presupuestos), sin elementos que no usás',
         'Sin panel: el sitio se actualiza por código o por archivos. Es la opción más barata al principio y la más cara con el tiempo',
       ],
     },
@@ -42,7 +42,7 @@ export const data = {
     {
       title: 'Panel propio: cuándo se justifica',
       paragraphs: [
-        'Un panel a medida tiene sentido cuando el dato se repite: veinte precios que cambian, un stock, turnos con horarios, catálogos que crecen.',
+        'Un panel a medida tiene sentido cuando el dato se repite: veinte precios que cambian, un stock, presupuestos que vencen, catálogos que crecen.',
         'Si el sitio es una página con seis textos que no cambian nunca, probablemente no valga la pena. La pregunta es cada cuánto lo vas a tocar.',
       ],
     },

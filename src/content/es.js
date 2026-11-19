@@ -248,7 +248,7 @@ export const es = {
     title: 'Sobre mí',
     paragraphs: [
       'Soy Gianni Pasquinelli, desarrollador web en Rosario. Vengo de la música y la docencia, y eso se nota en cómo trabajo: orden, ritmo y atención al detalle.',
-      'Construyo sitios y sistemas para negocios: catálogos, turnos y paneles de administración. Escribo el código yo, sin plantillas.',
+      'Construyo sitios y sistemas para negocios: catálogos, paneles de administración y sistemas internos. Escribo el código yo, sin plantillas.',
       'Trabajo desde Rosario con negocios de todo el país. Cuando necesitás algo, del otro lado estoy yo.',
     ],
     tags: 'Sitios · Sistemas · Panel de administración',

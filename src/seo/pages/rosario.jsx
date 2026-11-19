@@ -21,7 +21,7 @@ const SERVICIOS = [
   },
   {
     title: 'Sistemas y paneles web',
-    body: 'Herramientas para administrar precios, stock, turnos o clientes, con acceso desde cualquier dispositivo.',
+    body: 'Herramientas para administrar precios, stock, presupuestos o clientes, con acceso desde cualquier dispositivo.',
   },
 ];
 
