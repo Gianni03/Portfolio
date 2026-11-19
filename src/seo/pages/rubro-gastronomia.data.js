@@ -19,7 +19,6 @@ export const data = {
     'Horarios, dirección y cómo llegar',
     'Reservas o pedidos por WhatsApp con un toque',
     'SEO local para aparecer en búsquedas de tu zona',
-    'Pantallas para el salón, manejadas desde el mismo panel',
   ],
   process: [
     ['Charla', 'Me contás cómo trabaja el local hoy.'],

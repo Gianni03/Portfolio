@@ -35,7 +35,7 @@ export const en = {
     line1: 'Websites and landing pages',
     line2: 'systems and admin panels',
     intro:
-      'You update prices, text and screens without calling anyone. I design and build every project end to end.',
+      'You update prices and text without calling anyone. I design and build every project end to end.',
     primaryCta: 'See the work',
     secondaryCta: "Let's talk",
   },
@@ -246,10 +246,10 @@ export const en = {
     title: 'About',
     paragraphs: [
       'I am Gianni Pasquinelli, a web developer in Rosario. I come from music and teaching, and it shows in how I work: order, rhythm and attention to detail.',
-      'I build sites and systems for businesses: catalogues, bookings, admin panels, in-store screens. I write the code myself, no templates.',
+      'I build sites and systems for businesses: catalogues, bookings and admin panels. I write the code myself, no templates.',
       'I work from Rosario with businesses across the country. When you need something, I am the one on the other side.',
     ],
-    tags: 'Sites · Systems · Admin panel · In-store screens',
+    tags: 'Sites · Systems · Admin panel',
   },
 
   showreel: {

@@ -35,7 +35,7 @@ export const es = {
     line1: 'Sitios y landing pages',
     line2: 'sistemas y paneles a medida',
     intro:
-      'Actualizás precios, textos y pantallas sin llamar a nadie. Diseño y construyo cada proyecto de principio a fin.',
+      'Actualizás precios y textos sin llamar a nadie. Diseño y construyo cada proyecto de principio a fin.',
     primaryCta: 'Ver casos',
     secondaryCta: 'Hablemos',
   },
@@ -248,10 +248,10 @@ export const es = {
     title: 'Sobre mí',
     paragraphs: [
       'Soy Gianni Pasquinelli, desarrollador web en Rosario. Vengo de la música y la docencia, y eso se nota en cómo trabajo: orden, ritmo y atención al detalle.',
-      'Construyo sitios y sistemas para negocios: catálogos, turnos, paneles de administración, pantallas para el local. Escribo el código yo, sin plantillas.',
+      'Construyo sitios y sistemas para negocios: catálogos, turnos y paneles de administración. Escribo el código yo, sin plantillas.',
       'Trabajo desde Rosario con negocios de todo el país. Cuando necesitás algo, del otro lado estoy yo.',
     ],
-    tags: 'Sitios · Sistemas · Panel de administración · Pantallas',
+    tags: 'Sitios · Sistemas · Panel de administración',
   },
 
   showreel: {
