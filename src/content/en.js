@@ -322,6 +322,7 @@ export const en = {
     serviciosSistemas: 'Custom systems',
     rubroGastronomia: 'Restaurants',
     rubroProfesionales: 'Professionals',
+    guias: 'Guides',
     terminos: 'Terms',
     privacidad: 'Privacy',
     rosario: 'Web development in Rosario',

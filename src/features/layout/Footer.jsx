@@ -44,6 +44,12 @@ export default function Footer() {
               {copy.footer.rubroProfesionales}
             </a>
             <a
+              href="/guias"
+              className="text-xs text-neutral-500 transition-colors hover:text-white"
+            >
+              {copy.footer.guias}
+            </a>
+            <a
               href="/terminos"
               className="text-xs text-neutral-500 transition-colors hover:text-white"
             >

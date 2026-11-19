@@ -22,6 +22,7 @@ const CaseRoute = lazy(() => import('./app/case/CaseRoute'));
 const ServiceRoute = lazy(() => import('./app/service/ServiceRoute'));
 const GuideRoute = lazy(() => import('./app/guide/GuideRoute'));
 const LegalRoute = lazy(() => import('./app/legal/LegalRoute'));
+const GuideIndexPage = lazy(() => import('./seo/components/GuideIndexPage'));
 const RosarioPage = lazy(() => import('./seo/pages/rosario'));
 const StudiesAdmin = lazy(() => import('./app/admin/StudiesAdmin'));
 const ResumeAdmin = lazy(() => import('./app/admin/ResumeAdmin'));
@@ -60,6 +61,7 @@ function AppRoutes() {
           <Route path="/casos/:slug" element={<CaseRoute />} />
           <Route path="/servicios/:slug" element={<ServiceRoute />} />
           <Route path="/rubros/:slug" element={<ServiceRoute />} />
+          <Route path="/guias" element={<GuideIndexPage />} />
           <Route path="/guias/:slug" element={<GuideRoute />} />
           <Route path="/terminos" element={<LegalRoute />} />
           <Route path="/privacidad" element={<LegalRoute />} />

@@ -259,6 +259,27 @@ async function fallbackCases() {
   }));
 }
 
+async function guideIndexPage() {
+  const GuideIndexPage = (
+    await loadModule('src/seo/components/GuideIndexPage.jsx')
+  ).default;
+
+  const meta = {
+    path: '/guias',
+    title: 'Guías para decidir mejor | Gianni Pasquinelli',
+    description:
+      'Preguntas que aparecen antes de contratar a alguien para hacer una web: cuánto cuesta, a medida o plantilla, cómo no quedar atado a un desarrollador.',
+  };
+
+  return [
+    {
+      meta,
+      html: renderToString(createElement(GuideIndexPage)),
+      structuredData: [serviceSchema(meta)],
+    },
+  ];
+}
+
 async function legalPages() {
   const LegalPage = (await loadModule('src/seo/components/LegalPage.jsx')).default;
   const pages = [];
@@ -475,6 +496,7 @@ async function main() {
     });
   }
 
+  pages.push(...(await guideIndexPage()));
   pages.push(...(await legalPages()));
   pages.push(...(await guidePages()));
   pages.push(...(await servicePages()));
