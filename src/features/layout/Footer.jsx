@@ -12,6 +12,12 @@ export default function Footer() {
         <div className="text-sm text-white/70 text-center md:text-left">
           <p className="font-medium text-white">Gianni — {copy.footer.role}</p>
           <p className="text-xs mt-1">© {new Date().getFullYear()}</p>
+          <a
+            href="tel:+5493413704638"
+            className="mt-1 inline-block text-xs text-neutral-500 transition-colors hover:text-white"
+          >
+            +54 9 341 370 4638
+          </a>
           <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1 md:justify-start">
             <a
               href="/servicios/desarrollo-web"

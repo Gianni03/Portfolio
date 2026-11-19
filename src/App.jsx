@@ -19,6 +19,8 @@ const FaqsAdmin = lazy(() => import('./app/admin/FaqsAdmin'));
 const CasesAdmin = lazy(() => import('./app/admin/CasesAdmin'));
 const LogosAdmin = lazy(() => import('./app/admin/LogosAdmin'));
 const CaseRoute = lazy(() => import('./app/case/CaseRoute'));
+const ServiceRoute = lazy(() => import('./app/service/ServiceRoute'));
+const GuideRoute = lazy(() => import('./app/guide/GuideRoute'));
 const RosarioPage = lazy(() => import('./seo/pages/rosario'));
 const StudiesAdmin = lazy(() => import('./app/admin/StudiesAdmin'));
 const ResumeAdmin = lazy(() => import('./app/admin/ResumeAdmin'));
@@ -55,6 +57,8 @@ function AppRoutes() {
             <Route path="/login" element={<Login />} />
           </Route>
           <Route path="/casos/:slug" element={<CaseRoute />} />
+          <Route path="/servicios/:slug" element={<ServiceRoute />} />
+          <Route path="/guias/:slug" element={<GuideRoute />} />
           <Route path="/desarrollo-web-rosario" element={<RosarioPage />} />
           <Route path="/admin" element={<Admin />}>
             <Route path="projects" element={<ProjectsAdmin />} />
