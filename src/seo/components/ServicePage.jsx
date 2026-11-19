@@ -1,3 +1,5 @@
+import { GUIDES } from '../data/guides';
+
 /**
  * Página de servicio: /servicios/<slug>
  *
@@ -104,6 +106,25 @@ export default function ServicePage({ data }) {
               </details>
             ))}
           </div>
+        </section>
+
+        <section className="mt-16 border-t border-white/10 pt-10">
+          <h2 className="text-sm uppercase tracking-wider text-neutral-500">
+            Guías para decidir mejor
+          </h2>
+          <ul className="mt-5 space-y-4">
+            {GUIDES.map((guide) => (
+              <li key={guide.path}>
+                <a
+                  href={guide.path}
+                  className="text-base font-medium text-[#FF9FFC] transition-colors hover:text-white"
+                >
+                  {guide.title} →
+                </a>
+                <p className="mt-1 text-sm text-neutral-500">{guide.blurb}</p>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section className="mt-16 border-t border-white/10 pt-10">

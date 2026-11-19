@@ -21,6 +21,12 @@ const TMP = path.join(ROOT, 'node_modules', '.seo-build');
 const ORIGIN =
   process.env.SITE_URL || 'https://giannipasquinelli-webdev.netlify.app';
 
+const GUIDE_PAGES = [
+  'src/seo/pages/guia-costo.data.js',
+  'src/seo/pages/guia-plantilla.data.js',
+  'src/seo/pages/guia-actualizar.data.js',
+];
+
 const SERVICE_PAGES = [
   'src/seo/pages/servicio-desarrollo-web.data.js',
   'src/seo/pages/servicio-sistemas.data.js',
@@ -225,6 +231,45 @@ async function fallbackCases() {
   }));
 }
 
+async function guidePages() {
+  const GuidePage = (await loadModule('src/seo/components/GuidePage.jsx')).default;
+  const pages = [];
+
+  for (const entry of GUIDE_PAGES) {
+    const { meta, data } = await loadModule(entry);
+
+    const structuredData = [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: data.h1,
+        description: meta.description,
+        url: publicUrl(meta.path),
+        author: { '@type': 'Person', name: 'Gianni Pasquinelli' },
+        publisher: { '@type': 'Person', name: 'Gianni Pasquinelli' },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: data.faqs.map(([question, answer]) => ({
+          '@type': 'Question',
+          name: question,
+          acceptedAnswer: { '@type': 'Answer', text: answer },
+        })),
+      },
+      serviceSchema(meta),
+    ];
+
+    pages.push({
+      meta,
+      html: renderToString(createElement(GuidePage, { data })),
+      structuredData,
+    });
+  }
+
+  return pages;
+}
+
 async function servicePages() {
   const ServicePage = (await loadModule('src/seo/components/ServicePage.jsx'))
     .default;
@@ -385,6 +430,7 @@ async function main() {
     });
   }
 
+  pages.push(...(await guidePages()));
   pages.push(...(await servicePages()));
   pages.push(...(await casePages()));
 
