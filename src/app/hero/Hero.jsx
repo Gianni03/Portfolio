@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Section from '../../ui/Section';
 import HeroCard from '@/features/hero/components/HeroCard';
 import GradientText from '@/components/GradientText';
@@ -6,6 +7,15 @@ import { useCopy } from '../../i18n/context';
 
 export default function Hero() {
   const copy = useCopy();
+
+  // Los rayos son decorativos y son WebGL: montarlos en el primer paint atrasa
+  // la carga sin aportar nada. Se encienden después de pintar el hero.
+  const [showRays, setShowRays] = useState(false);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setShowRays(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   return (
     <Section id="home" fullWidth={false} className="relative">
@@ -55,25 +65,27 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-            inset: '0',
-            zIndex: 0,
-            pointerEvents: 'none',
-          }}
-        >
-          <LightRays
-            raysOrigin="top"
-            lightSpread={8}
-            fadeDistance={1}
-            rayLength={1}
-            raysColor="#7a43c1"
-            className="custom-rays"
-          />
-        </div>
+        {showRays && (
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+              inset: '0',
+              zIndex: 0,
+              pointerEvents: 'none',
+            }}
+          >
+            <LightRays
+              raysOrigin="top"
+              lightSpread={8}
+              fadeDistance={1}
+              rayLength={1}
+              raysColor="#7a43c1"
+              className="custom-rays"
+            />
+          </div>
+        )}
       </div>
     </Section>
   );
