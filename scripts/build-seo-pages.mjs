@@ -60,7 +60,7 @@ const json = (value) => JSON.stringify(value, null, 2);
 async function applyOrigin() {
   if (ORIGIN === DEFAULT_ORIGIN) return;
 
-  for (const file of ['index.html', 'robots.txt', 'llms.txt']) {
+  for (const file of ['index.html', 'portfolio/index.html', 'robots.txt', 'llms.txt']) {
     const full = path.join(DIST, file);
     try {
       const content = await readFile(full, 'utf8');
@@ -257,6 +257,38 @@ async function fallbackCases() {
     image: null,
     position: index + 1,
   }));
+}
+
+/**
+ * /portfolio es una ruta de la SPA, así que comparte el <head> de index.html.
+ * Se escribe un HTML propio copiando el shell y reemplazando solo las
+ * etiquetas sociales, para que al compartirlo muestre el portfolio.
+ */
+async function portfolioShell() {
+  const html = await readFile(path.join(DIST, 'index.html'), 'utf8');
+  const url = publicUrl('/portfolio');
+  const title = 'Portfolio | Gianni Pasquinelli';
+  const description =
+    'Portfolio de Gianni Pasquinelli: proyectos, experiencia y formación.';
+  const image = `${ORIGIN}/og-portfolio.jpg`;
+
+  const out = html
+    .replace(/<title>[\s\S]*?<\/title>/, `<title>${title}</title>`)
+    .replace(/<meta name="description"[\s\S]*?\/>/, `<meta name="description" content="${description}" />`)
+    .replace(/<link rel="canonical"[\s\S]*?\/>/, `<link rel="canonical" href="${url}" />`)
+    .replace(/<meta property="og:url"[\s\S]*?\/>/, `<meta property="og:url" content="${url}" />`)
+    .replace(/<meta property="og:title"[\s\S]*?\/>/, `<meta property="og:title" content="${title}" />`)
+    .replace(/<meta property="og:description"[\s\S]*?\/>/, `<meta property="og:description" content="${description}" />`)
+    .replace(/<meta property="og:image"[\s\S]*?\/>/, `<meta property="og:image" content="${image}" />`)
+    .replace(/<meta property="og:image:alt"[\s\S]*?\/>/, '<meta property="og:image:alt" content="Portfolio de Gianni Pasquinelli" />')
+    .replace(/<meta name="twitter:title"[\s\S]*?\/>/, `<meta name="twitter:title" content="${title}" />`)
+    .replace(/<meta name="twitter:description"[\s\S]*?\/>/, `<meta name="twitter:description" content="${description}" />`)
+    .replace(/<meta name="twitter:image"[\s\S]*?\/>/, `<meta name="twitter:image" content="${image}" />`);
+
+  const outDir = path.join(DIST, 'portfolio');
+  await mkdir(outDir, { recursive: true });
+  await writeFile(path.join(outDir, 'index.html'), out);
+  console.log('  ✓ /portfolio (head propio)');
 }
 
 async function guideIndexPage() {
@@ -495,6 +527,8 @@ async function main() {
       structuredData,
     });
   }
+
+  await portfolioShell();
 
   pages.push(...(await guideIndexPage()));
   pages.push(...(await legalPages()));
