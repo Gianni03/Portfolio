@@ -3,17 +3,31 @@ import { Link } from 'react-router-dom';
 import Section from '../../ui/Section';
 import Hero from '../hero/Hero';
 import CurvedSectionTitle from '../../ui/section-titles/CurvedLoopSectionTitle';
-import ServicesSection from '../../features/services/components/ServicesSection';
-import CasesCarousel from '../../features/cases/components/CasesCarousel';
-import ProcessSection from '../../features/process/components/ProcessSection';
-import FaqSection from '../../features/faq/components/FaqSection';
-import ShowreelSection from '../../features/showreel/components/ShowreelSection';
-import LogosSection from '../../features/logos/components/LogosSection';
 import { useCopy } from '../../i18n/context';
 
 // Only the hero ships with the first paint. Everything below the fold loads
 // while the visitor is still reading the top of the page.
 const Contact = lazy(() => import('../contact/Contact'));
+
+// Todo lo que está debajo del hero se carga aparte. Antes estas secciones y
+// sus componentes de React Bits viajaban en el bundle de entrada, y el primer
+// paint solo necesita el hero.
+const ServicesSection = lazy(
+  () => import('../../features/services/components/ServicesSection'),
+);
+const CasesCarousel = lazy(
+  () => import('../../features/cases/components/CasesCarousel'),
+);
+const ProcessSection = lazy(
+  () => import('../../features/process/components/ProcessSection'),
+);
+const FaqSection = lazy(() => import('../../features/faq/components/FaqSection'));
+const ShowreelSection = lazy(
+  () => import('../../features/showreel/components/ShowreelSection'),
+);
+const LogosSection = lazy(
+  () => import('../../features/logos/components/LogosSection'),
+);
 
 const TITLE_CLASS =
   'fill-[#fbfffe] transition-colors duration-1000 hover:fill-[#7A43C1]';

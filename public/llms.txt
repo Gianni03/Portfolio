@@ -5,49 +5,41 @@
 
 ## Qué hago
 
-- **Sitios web a medida** — diseño y desarrollo personalizado, adaptado a
-  celulares y computadoras, con SEO técnico, formularios de contacto y dominio
-  y hosting configurados a nombre del cliente.
-- **Landing pages** — páginas enfocadas en un objetivo concreto, con formulario
-  o contacto por WhatsApp y medición de visitas y conversiones.
-- **Sistemas y paneles web** — herramientas a medida para administrar contenido,
-  precios, stock, turnos o procesos internos, con acceso desde computadora o
-  celular.
-- **Mantenimiento y evolución** — servicio opcional después de la publicación.
+- [Sitios web a medida](https://giannipasquinelli.com.ar/servicios/desarrollo-web/): diseño y desarrollo personalizado, adaptado a celulares y computadoras, con SEO técnico y dominio a nombre del cliente.
+- [Sistemas y paneles a medida](https://giannipasquinelli.com.ar/servicios/sistemas-a-medida/): herramientas para administrar precios, stock, presupuestos y clientes.
+- [Páginas web para gastronomía](https://giannipasquinelli.com.ar/rubros/gastronomia/): cartas con precios que el local actualiza sin depender de un desarrollador.
+- [Páginas web para profesionales](https://giannipasquinelli.com.ar/rubros/profesionales/): consultorios, estudios y profesionales independientes.
 
-## Cómo trabajo
-
-1. Charla: se define qué necesita el negocio.
-2. Propuesta: alcance, precio y fecha por escrito.
-3. Desarrollo: avances cada semana sobre un entorno de prueba.
-4. Entrega: publicado en el dominio del cliente, con una demostración de uso.
-
-## Diferencial
-
-El negocio actualiza precios, textos y pantallas sin depender de un
-desarrollador. El código lo escribo yo: no hay plantillas ni intermediarios.
-
-## Trabajo publicado
-
-- El Rey del Chajá — pastelería artesanal en Rosario. Sitio, panel de precios y
-  pantallas del local: https://www.elreydelchaja.com/
-- Plataforma 1810 — producto propio para campañas políticas:
-  https://www.plataforma1810.com.ar/
-- Kli — producto propio, plataforma de comunidades con membresías y cobro
-  integrado: https://kli.com.ar/
-
-## Alcance
+## Zona de trabajo
 
 Trabajo desde Rosario con clientes de todo el país, de forma remota. Zona de
 referencia: Rosario, Funes, Roldán, Granadero Baigorria, Villa Gobernador
-Gálvez, Pérez, San Lorenzo y Argentina en general.
+Gálvez, Pérez y San Lorenzo.
+
+- [Desarrollo web en Rosario](https://giannipasquinelli.com.ar/desarrollo-web-rosario/)
+
+## Trabajos publicados
+
+- [El Rey del Chajá](https://giannipasquinelli.com.ar/casos/el-rey-del-chaja/): pastelería artesanal en Rosario. Sitio, panel de precios y pantallas del local.
+- [Plataforma 1810](https://giannipasquinelli.com.ar/casos/plataforma-1810/): producto propio para campañas políticas.
+- [Kli](https://giannipasquinelli.com.ar/casos/kli/): producto propio, plataforma de comunidades con membresías y cobro integrado.
+- [JobTracker](https://giannipasquinelli.com.ar/casos/jobtracker/): aplicación para ordenar la búsqueda laboral.
+- [Vinado](https://giannipasquinelli.com.ar/casos/vinado/): identidad de marca y landing de lanzamiento.
+- [Holocruxe Factory](https://giannipasquinelli.com.ar/casos/holocruxe-factory/): sitio de un servicio de MVPs con IA.
+
+## Guías
+
+- [¿Cuánto cuesta una página web?](https://giannipasquinelli.com.ar/guias/cuanto-cuesta-una-pagina-web/)
+- [Web a medida o plantilla](https://giannipasquinelli.com.ar/guias/web-a-medida-o-plantilla/)
+- [Actualizar tu web sin depender de un programador](https://giannipasquinelli.com.ar/guias/actualizar-mi-web-sin-programador/)
+- [Tu contenido es tuyo](https://giannipasquinelli.com.ar/guias/tu-contenido-es-tuyo/)
 
 ## Contacto
 
-- Formulario: https://giannipasquinelli-webdev.netlify.app/#contact
+- [Formulario](https://giannipasquinelli.com.ar/#contact)
+- [LinkedIn](https://www.linkedin.com/in/gianni-pasquinelli/)
+- [GitHub](https://github.com/Gianni03)
 - Email: giannipasquinelli@gmail.com
-- LinkedIn: https://www.linkedin.com/in/gianni-pasquinelli/
-- GitHub: https://github.com/Gianni03
 
 ## Idiomas
 

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { getCases } from '../../../api/cases.supabase';
+import { getCases } from '../../../api/public';
 import { useCopy } from '../../../i18n/context';
 
 /**

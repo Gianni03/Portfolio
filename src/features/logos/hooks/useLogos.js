@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { getLogos } from '../../../api/logos.supabase';
+import { getLogos } from '../../../api/public';
 
 /**
  * Logos de empresas. Si la tabla no existe, está vacía o falla, se usa esta

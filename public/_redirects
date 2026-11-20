@@ -1,1 +1,5 @@
-/*             /index.html    200
+# Rutas que no existen no deben devolver el HTML de la SPA: eso hace que
+# cualquier archivo faltante (manifiestos, .json, imágenes) responda 200 con
+# HTML y confunda a los validadores.
+/.well-known/*  /404.html  404
+/*              /index.html  200
