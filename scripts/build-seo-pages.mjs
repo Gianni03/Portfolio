@@ -10,7 +10,8 @@
 import { build } from 'esbuild';
 import { createElement } from 'react';
 import { renderToString } from 'react-dom/server';
-import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
 
@@ -101,11 +102,57 @@ async function loadEnvFile() {
   }
 }
 
+/**
+ * El CSS que usan las páginas estáticas es el del entry, el mismo que carga la
+ * SPA. Se lee de `dist/index.html` porque `dist/assets` también contiene los
+ * chunks de CSS de los componentes lazy, y elegir "el primero" terminaba
+ * sirviendo, por ejemplo, solo los estilos del loop de logos.
+ */
 async function findStylesheet() {
-  const files = await readdir(path.join(DIST, 'assets'));
-  const css = files.find((file) => file.endsWith('.css'));
-  if (!css) throw new Error('No se encontró el CSS generado por Vite.');
-  return `/assets/${css}`;
+  const html = await readFile(path.join(DIST, 'index.html'), 'utf8');
+
+  const href = [...html.matchAll(/<link\b[^>]*>/g)]
+    .map(([tag]) => tag)
+    .filter((tag) => /\brel="stylesheet"/.test(tag))
+    .map((tag) => tag.match(/\bhref="([^"]+\.css)"/)?.[1])
+    .find(Boolean);
+
+  if (!href) throw new Error('No se encontró el CSS del entry en dist/index.html.');
+  return href;
+}
+
+/**
+ * Una página que apunta a un asset inexistente se sirve rota y nadie se entera
+ * hasta abrirla en producción. El build tiene que fallar acá. También se
+ * verifica que use exactamente el stylesheet del entry: si alguien vuelve a
+ * resolverlo por otra vía, esto lo detecta antes del deploy.
+ */
+function assertPageAssets(html, routePath, entryCss) {
+  const assetRefs = [...html.matchAll(/(?:href|src)="(\/assets\/[^"]+)"/g)].map(
+    (match) => match[1],
+  );
+
+  const missing = assetRefs.filter(
+    (ref) => !existsSync(path.join(DIST, ref.slice(1))),
+  );
+
+  if (missing.length > 0) {
+    throw new Error(
+      `Página ${routePath}: referencia assets que no existen en dist: ${missing.join(', ')}`,
+    );
+  }
+
+  const stylesheets = [
+    ...html.matchAll(/<link\b[^>]*\brel="stylesheet"[^>]*\bhref="([^"]+)"/g),
+  ].map((match) => match[1]);
+
+  if (stylesheets.length !== 1 || stylesheets[0] !== entryCss) {
+    throw new Error(
+      `Página ${routePath}: esperaba el stylesheet del entry (${entryCss}) y encontró ${
+        stylesheets.join(', ') || 'ninguno'
+      }.`,
+    );
+  }
 }
 
 async function loadModule(entry) {
@@ -153,8 +200,23 @@ function serviceSchema(meta) {
   };
 }
 
+/**
+ * Los títulos y descripciones de los casos vienen de Supabase y pueden traer
+ * comillas, `&` o `<`. Sin escapar, una comilla corta el atributo y deja el
+ * <head> mal formado.
+ */
+const escapeHtml = (value) =>
+  String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+
 function documentShell({ meta, body, css, structuredData }) {
   const url = publicUrl(meta.path);
+  const title = escapeHtml(meta.title);
+  const description = escapeHtml(meta.description);
+  const image = escapeHtml(meta.image ?? `${ORIGIN}/og-image.jpg`);
 
   return `<!doctype html>
 <html lang="es-AR">
@@ -162,15 +224,15 @@ function documentShell({ meta, body, css, structuredData }) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <title>${meta.title}</title>
-  <meta name="description" content="${meta.description}" />
+  <title>${title}</title>
+  <meta name="description" content="${description}" />
   <link rel="canonical" href="${url}" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="${url}" />
   <meta property="og:site_name" content="Gianni Pasquinelli" />
-  <meta property="og:title" content="${meta.title}" />
-  <meta property="og:description" content="${meta.description}" />
-  <meta property="og:image" content="${meta.image ?? `${ORIGIN}/og-image.jpg`}" />
+  <meta property="og:title" content="${title}" />
+  <meta property="og:description" content="${description}" />
+  <meta property="og:image" content="${image}" />
   <meta property="og:locale" content="es_AR" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="${css}" />
@@ -538,6 +600,7 @@ async function main() {
 
   for (const page of pages) {
     const html = documentShell({ meta: page.meta, body: page.html, css, structuredData: page.structuredData });
+    assertPageAssets(html, page.meta.path, css);
     const outDir = path.join(DIST, page.meta.path.replace(/^\//, ''));
     await mkdir(outDir, { recursive: true });
     await writeFile(path.join(outDir, 'index.html'), html);
