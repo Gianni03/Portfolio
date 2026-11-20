@@ -10,6 +10,7 @@
 import { build } from 'esbuild';
 import { createElement } from 'react';
 import { renderToString } from 'react-dom/server';
+import { existsSync } from 'node:fs';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
@@ -118,6 +119,40 @@ async function findStylesheet() {
 
   if (!href) throw new Error('No se encontró el CSS del entry en dist/index.html.');
   return href;
+}
+
+/**
+ * Una página que apunta a un asset inexistente se sirve rota y nadie se entera
+ * hasta abrirla en producción. El build tiene que fallar acá. También se
+ * verifica que use exactamente el stylesheet del entry: si alguien vuelve a
+ * resolverlo por otra vía, esto lo detecta antes del deploy.
+ */
+function assertPageAssets(html, routePath, entryCss) {
+  const assetRefs = [...html.matchAll(/(?:href|src)="(\/assets\/[^"]+)"/g)].map(
+    (match) => match[1],
+  );
+
+  const missing = assetRefs.filter(
+    (ref) => !existsSync(path.join(DIST, ref.slice(1))),
+  );
+
+  if (missing.length > 0) {
+    throw new Error(
+      `Página ${routePath}: referencia assets que no existen en dist: ${missing.join(', ')}`,
+    );
+  }
+
+  const stylesheets = [
+    ...html.matchAll(/<link\b[^>]*\brel="stylesheet"[^>]*\bhref="([^"]+)"/g),
+  ].map((match) => match[1]);
+
+  if (stylesheets.length !== 1 || stylesheets[0] !== entryCss) {
+    throw new Error(
+      `Página ${routePath}: esperaba el stylesheet del entry (${entryCss}) y encontró ${
+        stylesheets.join(', ') || 'ninguno'
+      }.`,
+    );
+  }
 }
 
 async function loadModule(entry) {
@@ -565,6 +600,7 @@ async function main() {
 
   for (const page of pages) {
     const html = documentShell({ meta: page.meta, body: page.html, css, structuredData: page.structuredData });
+    assertPageAssets(html, page.meta.path, css);
     const outDir = path.join(DIST, page.meta.path.replace(/^\//, ''));
     await mkdir(outDir, { recursive: true });
     await writeFile(path.join(outDir, 'index.html'), html);
