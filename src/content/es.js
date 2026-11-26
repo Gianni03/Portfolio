@@ -117,7 +117,7 @@ export const es = {
     next: 'Caso siguiente',
     caseLabel: 'Ver caso',
     liveLabel: 'Ver sitio',
-    viewAll: 'Ver todos los proyectos',
+    viewAll: 'Ver todos los casos',
     labels: {
       problem: 'El problema',
       built: 'Qué hice',
