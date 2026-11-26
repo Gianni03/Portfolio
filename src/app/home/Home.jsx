@@ -76,7 +76,6 @@ function useHashLanding() {
 export default function Home() {
   const copy = useCopy();
   useHashLanding();
-  const projectsPath = copy.locale === 'en' ? '/en/projects' : '/projects';
 
   return (
     <>
@@ -104,7 +103,7 @@ export default function Home() {
             <CasesCarousel />
             <div className="mt-10 text-center">
               <Link
-                to={projectsPath}
+                to="/casos"
                 className="text-sm font-medium text-[#FF9FFC] transition-colors hover:text-white"
               >
                 {copy.cases.viewAll} →

@@ -18,6 +18,7 @@ const ProjectsAdmin = lazy(() => import('./app/admin/ProjectsAdmin'));
 const FaqsAdmin = lazy(() => import('./app/admin/FaqsAdmin'));
 const CasesAdmin = lazy(() => import('./app/admin/CasesAdmin'));
 const LogosAdmin = lazy(() => import('./app/admin/LogosAdmin'));
+const CasesRoute = lazy(() => import('./app/case/CasesRoute'));
 const CaseRoute = lazy(() => import('./app/case/CaseRoute'));
 const ServiceRoute = lazy(() => import('./app/service/ServiceRoute'));
 const GuideRoute = lazy(() => import('./app/guide/GuideRoute'));
@@ -58,6 +59,7 @@ function AppRoutes() {
             <Route path="/en/resume" element={<Resume />} />
             <Route path="/login" element={<Login />} />
           </Route>
+          <Route path="/casos" element={<CasesRoute />} />
           <Route path="/casos/:slug" element={<CaseRoute />} />
           <Route path="/servicios/:slug" element={<ServiceRoute />} />
           <Route path="/rubros/:slug" element={<ServiceRoute />} />

@@ -484,9 +484,27 @@ async function servicePages() {
   return pages;
 }
 
-async function casePages() {
+async function casesIndexPage(cases) {
+  const CasesPage = (await loadModule('src/seo/pages/cases.jsx')).default;
+
+  const meta = {
+    path: '/casos',
+    title: 'Casos de desarrollo web y sistemas | Gianni Pasquinelli',
+    description:
+      'Trabajo real, online ahora mismo: sitios web y sistemas a medida para negocios de Rosario y Argentina.',
+  };
+
+  return [
+    {
+      meta,
+      html: renderToString(createElement(CasesPage, { items: cases })),
+      structuredData: [serviceSchema(meta)],
+    },
+  ];
+}
+
+async function casePages(cases) {
   const CasePage = (await loadModule('src/seo/pages/case.jsx')).default;
-  const cases = (await fetchCases()) ?? (await fallbackCases());
   const pages = [];
 
   for (const item of cases) {
@@ -592,11 +610,14 @@ async function main() {
 
   await portfolioShell();
 
+  const cases = (await fetchCases()) ?? (await fallbackCases());
+
   pages.push(...(await guideIndexPage()));
   pages.push(...(await legalPages()));
   pages.push(...(await guidePages()));
   pages.push(...(await servicePages()));
-  pages.push(...(await casePages()));
+  pages.push(...(await casesIndexPage(cases)));
+  pages.push(...(await casePages(cases)));
 
   for (const page of pages) {
     const html = documentShell({ meta: page.meta, body: page.html, css, structuredData: page.structuredData });
