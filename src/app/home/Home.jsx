@@ -1,5 +1,5 @@
-import { lazy, Suspense } from 'react';
-import { Link } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import Section from '../../ui/Section';
 import Hero from '../hero/Hero';
 import CurvedSectionTitle from '../../ui/section-titles/CurvedLoopSectionTitle';
@@ -36,11 +36,46 @@ const INTRO_CLASS =
   'mb-10 bg-linear-to-r from-[#7a43c1] via-[#FF9FFC] to-[#fbfffe] bg-clip-text text-center text-sm font-medium text-transparent';
 
 /**
+ * En una visita directa a /#contact el navegador intenta saltar al ancla
+ * antes de que React monte las secciones lazy: no la encuentra y la página
+ * queda arriba. Reintentamos hasta que el destino exista y ahí saltamos.
+ */
+function useHashLanding() {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return undefined;
+
+    const id = decodeURIComponent(hash.slice(1));
+
+    const land = (behavior) => {
+      const target = document.getElementById(id);
+      if (!target) return false;
+      target.scrollIntoView({ behavior, block: 'start' });
+      return true;
+    };
+
+    // El ancla ya existe (cambio de hash dentro de la home): se anima.
+    if (land('smooth')) return undefined;
+
+    // Visita directa: las secciones lazy todavía no están montadas. Esperamos
+    // a que aparezcan y saltamos, como haría el navegador con el ancla.
+    const observer = new MutationObserver(() => {
+      if (land('instant')) observer.disconnect();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    return () => observer.disconnect();
+  }, [hash]);
+}
+
+/**
  * Sales page order: promise -> what you can buy -> proof -> process ->
  * call to action -> objections.
  */
 export default function Home() {
   const copy = useCopy();
+  useHashLanding();
   const projectsPath = copy.locale === 'en' ? '/en/projects' : '/projects';
 
   return (
